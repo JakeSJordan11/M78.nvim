@@ -78,7 +78,7 @@ vim.opt.nrformats:remove("octal") -- Interpret octal as decimal when incrementin
 vim.opt.shell = "/bin/zsh" -- The shell used to execute commands.
 vim.opt.spell = false -- Enable spellchecking.
 vim.opt.wildignore:append(".pyc,.swp") -- Ignore files matching these patterns when opening files based on a glob pattern.
-vim.opt.guifont = "OperatorMonoSSmLig NF, DankMono NF, Hack NF, Cascadia Mono, *" -- Set font when using GUI app.
+vim.opt.guifont = "OperatorMonoSSmLig NF, DankMono NF, Hack NF, Cascadia Mono, *:h18" -- Set font when using GUI app.
 vim.opt.clipboard = "unnamedplus" -- Share system clipboard on yank.
 vim.opt.concealcursor = "i" -- Hide cursor when entering insert mode
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp

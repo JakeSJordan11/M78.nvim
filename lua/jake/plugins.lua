@@ -52,6 +52,24 @@ return packer.startup(function(use)
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
+	use("ahmedkhalf/project.nvim")
+	use("lewis6991/impatient.nvim")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("goolord/alpha-nvim")
+	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
+	use("folke/which-key.nvim")
+	use("MunifTanjim/nui.nvim")
+	use("VonHeikemen/fine-cmdline.nvim")
+	use("VonHeikemen/searchbox.nvim")
+	use("beauwilliams/focus.nvim")
+	use("rcarriga/nvim-notify")
+	use("folke/zen-mode.nvim")
+	use("simrat39/rust-tools.nvim")
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		ft = "markdown",
+	})
 
 	-- Colorschemes
 	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
@@ -80,6 +98,20 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
+	use({
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+			})
+		end,
+		after = "nvim-cmp",
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
+	})
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -93,6 +125,8 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use("nvim-telescope/telescope-file-browser.nvim")
 
 	-- Treesitter
 	use({
@@ -103,6 +137,12 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
 
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+	-- Dap
+	use("mfussenegger/nvim-dap")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("rcarriga/nvim-dap-ui")
+	use("Pocco81/DAPInstall.nvim")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")

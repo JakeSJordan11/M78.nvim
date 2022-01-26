@@ -45,3 +45,6 @@ keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+
+keymap("n", "<leader>p", ":Telescope projects<cr>", opts)

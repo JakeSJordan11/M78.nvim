@@ -100,7 +100,16 @@ cmp.setup({
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			if entry.source.name == "cmp_tabnine" then
+				-- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+				-- menu = entry.completion_item.data.detail .. " " .. menu
+				-- end
+				vim_item.kind = "ﯟ"
+			end
+			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- NOTE: order matters
 			vim_item.menu = ({
+				cmp_tabnine = "[TabNine]",
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVIM_LUA]",
 				luasnip = "[Snippet]",
@@ -111,6 +120,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
@@ -125,7 +135,7 @@ cmp.setup({
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
 	experimental = {
-		ghost_text = false,
+		ghost_text = true,
 		native_menu = false,
 	},
 })

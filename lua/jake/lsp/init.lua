@@ -5,3 +5,4 @@ end
 
 require("jake.lsp.lsp-installer")
 require("jake.lsp.handlers").setup()
+require("jake.lsp.null-ls")

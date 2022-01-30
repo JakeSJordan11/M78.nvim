@@ -31,7 +31,7 @@ vim.opt.lazyredraw = true -- Don’t update screen during macro and script execu
 vim.opt.display:append("lastline") -- Always try to show a paragraph’s last line.
 vim.opt.encoding = "utf-8" -- Use an encoding that supports unicode.
 vim.opt.linebreak = true -- Avoid wrapping a line in the middle of a word.
-vim.opt.scrolloff = 1 -- The number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 5 -- The number of screen lines to keep above and below the cursor.
 vim.opt.sidescrolloff = 5 -- The number of screen columns to keep to the left and right of the cursor.
 vim.opt.syntax = "on" -- Enable syntax highlighting.
 vim.opt.wrap = true -- Enable line wrapping.
@@ -52,6 +52,8 @@ vim.opt.mouse = "a" -- Enable mouse for scrolling and resizing.
 vim.opt.title = true -- Set the window’s title, reflecting the file currently being edited.
 vim.opt.background = "dark" -- Use colors that suit a dark background.
 vim.opt.termguicolors = true -- Allow fuller color syntax
+vim.opt.cmdheight = 1 -- Set the command height
+vim.opt.confirm = false -- Display a confirmation dialog when closing an unsaved file.
 
 --------------------------------
 -- Code Folding Options --

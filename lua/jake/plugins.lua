@@ -31,10 +31,14 @@ end
 
 -- Have packer use a popup window
 packer.init({
+	max_jobs = 50,
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
 		end,
+	},
+	profile = {
+		enable = true,
 	},
 })
 
@@ -60,12 +64,11 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
 	use("MunifTanjim/nui.nvim")
-	use("VonHeikemen/fine-cmdline.nvim")
-	use("VonHeikemen/searchbox.nvim")
 	use("beauwilliams/focus.nvim")
 	use("rcarriga/nvim-notify")
 	use("folke/zen-mode.nvim")
 	use("simrat39/rust-tools.nvim")
+	use("wfxr/minimap.vim")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",

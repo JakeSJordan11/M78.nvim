@@ -11,7 +11,7 @@ local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
-  local should_profile = false
+  local should_profile = true
   if should_profile then
     local hrtime = vim.loop.hrtime
     profile_info = {}
@@ -168,11 +168,6 @@ _G.packer_plugins = {
     path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/sainnhe/everforest"
   },
-  ["fine-cmdline.nvim"] = {
-    loaded = true,
-    path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/fine-cmdline.nvim",
-    url = "https://github.com/VonHeikemen/fine-cmdline.nvim"
-  },
   ["focus.nvim"] = {
     loaded = true,
     path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/focus.nvim",
@@ -239,6 +234,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/melange",
     url = "https://github.com/savq/melange"
+  },
+  ["minimap.vim"] = {
+    loaded = true,
+    path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/minimap.vim",
+    url = "https://github.com/wfxr/minimap.vim"
   },
   ["night-owl.nvim"] = {
     loaded = true,
@@ -374,11 +374,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
-  },
-  ["searchbox.nvim"] = {
-    loaded = true,
-    path = "/Users/jakejordan/.local/share/nvim/site/pack/packer/start/searchbox.nvim",
-    url = "https://github.com/VonHeikemen/searchbox.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,

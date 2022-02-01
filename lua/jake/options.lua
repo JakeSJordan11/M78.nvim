@@ -84,3 +84,4 @@ vim.opt.guifont = "OperatorMonoSSmLig NF, DankMono NF, Hack NF, Cascadia Mono, *
 vim.opt.clipboard = "unnamedplus" -- Share system clipboard on yank.
 vim.opt.concealcursor = "i" -- Hide cursor when entering insert mode
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical separators.

@@ -50,12 +50,12 @@ vim.opt.errorbells = false -- Disable beep on errors.
 vim.opt.visualbell = true -- Flash the screen instead of beeping on errors.
 vim.opt.mouse = "a" -- Enable mouse for scrolling and resizing.
 vim.opt.title = true -- Set the window’s title, reflecting the file currently being edited.
-vim.opt.winblend = 100 -- Enables pseudo-transparency for a floating window. Valid values are in
+-- vim.opt.winblend = 100 -- Enables pseudo-transparency for a floating window. Valid values are in
 vim.opt.background = "dark" -- Use colors that suit a dark background.
 vim.opt.termguicolors = true -- Allow fuller color syntax
 vim.opt.cmdheight = 1 -- Set the command height
 vim.opt.confirm = false -- Display a confirmation dialog when closing an unsaved file.
-vim.opt.pumblend = 15 -- Enables pseudo-transparency for the |popup-menu|. Valid values are in
+-- vim.opt.pumblend = 15 -- Enables pseudo-transparency for the |popup-menu|. Valid values are in
 
 --------------------------------
 -- Code Folding Options --

@@ -1,4 +1,4 @@
--- Taken from the folowing site to start
+-- Taken from the folowing site to starts
 -- https://www.shortcutfoo.com/blog/top-50-vim-configuration-options/
 
 --------------------------------
@@ -34,7 +34,7 @@ vim.opt.linebreak = true -- Avoid wrapping a line in the middle of a word.
 vim.opt.scrolloff = 5 -- The number of screen lines to keep above and below the cursor.
 vim.opt.sidescrolloff = 5 -- The number of screen columns to keep to the left and right of the cursor.
 vim.opt.syntax = "on" -- Enable syntax highlighting.
-vim.opt.wrap = true -- Enable line wrapping.
+vim.opt.wrap = false -- Enable line wrapping.
 
 --------------------------------
 -- User Interface Options --
@@ -50,10 +50,12 @@ vim.opt.errorbells = false -- Disable beep on errors.
 vim.opt.visualbell = true -- Flash the screen instead of beeping on errors.
 vim.opt.mouse = "a" -- Enable mouse for scrolling and resizing.
 vim.opt.title = true -- Set the window’s title, reflecting the file currently being edited.
+vim.opt.winblend = 100 -- Enables pseudo-transparency for a floating window. Valid values are in
 vim.opt.background = "dark" -- Use colors that suit a dark background.
 vim.opt.termguicolors = true -- Allow fuller color syntax
 vim.opt.cmdheight = 1 -- Set the command height
 vim.opt.confirm = false -- Display a confirmation dialog when closing an unsaved file.
+vim.opt.pumblend = 15 -- Enables pseudo-transparency for the |popup-menu|. Valid values are in
 
 --------------------------------
 -- Code Folding Options --
@@ -85,3 +87,4 @@ vim.opt.clipboard = "unnamedplus" -- Share system clipboard on yank.
 vim.opt.concealcursor = "i" -- Hide cursor when entering insert mode
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical separators.
+vim.opt.highlight.blend = 100

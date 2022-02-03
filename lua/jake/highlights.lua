@@ -19,6 +19,7 @@
 -- vim.cmd("highlight DiagnosticInfo ctermbg=NONE guibg=NONE")
 -- vim.cmd("highlight DiagnosticError ctermbg=NONE guibg=NONE")
 
-
 -- vim.cmd("highlight BufferLineBackground ctermbg=NONE guibg=red") -- Background of tabs not including icons and empty bar
+
+-- vim.cmd("highlight Normal guibg=NONE") -- fg - command text colors bg - background color
 

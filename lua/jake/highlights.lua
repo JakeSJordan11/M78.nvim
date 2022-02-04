@@ -1,25 +1,9 @@
--- vim.cmd("highlight Normal ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight NormalNC ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight CursorLineNC ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight CursorLineNr ctermfg=NONE ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight SignColumn ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight SignColumnNC ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight EndOfBuffer ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight EndOfBufferNC ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight BufferCurrentMod ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight BufferCurrentSelection ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight ColorColumn ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight LineNr ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE")
--- vim.cmd("highlight GitSignsChange ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight GitSignsAdd ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight Comment ctermbg=NONE guibg=NONE") -- remove comment bg highlights
--- vim.cmd("highlight DiagnosticWarn ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight DiagnosticHint ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight DiagnosticInfo ctermbg=NONE guibg=NONE")
--- vim.cmd("highlight DiagnosticError ctermbg=NONE guibg=NONE")
+vim.cmd("highlight SignColumn guibg=NONE") -- background color of signcolumn bar not edits
+vim.cmd("highlight CursorLine guibg=NONE") -- background of current cursor line
+vim.cmd("highlight CursorLineNr guibg=NONE") -- background of number column on current cursor line
 
--- vim.cmd("highlight BufferLineBackground ctermbg=NONE guibg=red") -- Background of tabs not including icons and empty bar
-
--- vim.cmd("highlight Normal guibg=NONE") -- fg - command text colors bg - background color
-
+-- Git Signs remove background highlight in signcolumn
+vim.cmd("highlight GitSignsAdd guibg=NONE")
+vim.cmd("highlight GitSignsChange guibg=NONE")
+vim.cmd("highlight GitSignsDelete guibg=NONE")
+vim.cmd("highlight GitSignsChange guibg=NONE")

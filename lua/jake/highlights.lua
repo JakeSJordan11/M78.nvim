@@ -7,3 +7,11 @@ vim.cmd("highlight GitSignsAdd guibg=NONE")
 vim.cmd("highlight GitSignsChange guibg=NONE")
 vim.cmd("highlight GitSignsDelete guibg=NONE")
 vim.cmd("highlight GitSignsChange guibg=NONE")
+
+-- Diagnostics remove background highlight in signcolumn
+vim.cmd("highlight DiagnosticSignError guibg=NONE")
+vim.cmd("highlight DiagnosticSignWarn guibg=NONE")
+vim.cmd("highlight DiagnosticSignInfo guibg=NONE")
+vim.cmd("highlight DiagnosticSignHint guibg=NONE")
+
+vim.cmd("highlight Pmenu ctermbg=NONE guibg=NONE")

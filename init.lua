@@ -1,7 +1,7 @@
 require("jake.options")
 require("jake.keymaps")
 require("jake.plugins")
--- require("jake.neovide")
+require("jake.neovide")
 require("jake.colorscheme")
 require("jake.highlights")
 require("jake.cmp")

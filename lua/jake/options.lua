@@ -69,15 +69,15 @@ vim.opt.foldenable = false -- Disable folding by default.
 --------------------------------
 vim.opt.autoread = true -- Automatically re-read files if unmodified inside Vim.
 vim.opt.backup = false -- creates a backup file
+-- vim.opt.backupdir = ".cache/backup" -- Directory to store backup files.
+vim.opt.swapfile = false -- Enable swap files.
+-- vim.opt.dir = ".cache/swap" -- Directory to store swap files.
 vim.opt.backspace = "indent,eol,start" -- Allow backspacing over indention, line breaks and insertion start.
--- vim.opt.backupdir = "~/.cache/vim"	        -- Directory to store backup files.
 vim.opt.confirm = true -- Display a confirmation dialog when closing an unsaved file.
--- vim.opt.dir = "~/.cache/vim"		            -- Directory to store swap files.
 vim.opt.formatoptions:append("j") -- Delete comment characters when joining lines.
 vim.opt.hidden = true -- Hide files in the background instead of closing them.
 vim.opt.history = 1000 -- Increase the undo limit.
 vim.opt.modeline = false -- Ignore file’s mode lines; use vimrc configurations instead.
-vim.opt.swapfile = false -- Enable swap files.
 vim.opt.nrformats:remove("octal") -- Interpret octal as decimal when incrementing numbers.
 vim.opt.shell = "/bin/zsh" -- The shell used to execute commands.
 vim.opt.spell = false -- Enable spellchecking.
@@ -88,3 +88,5 @@ vim.opt.concealcursor = "i" -- Hide cursor when entering insert mode
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical separators.
 vim.opt.highlight.blend = 100
+vim.opt.undofile = true
+vim.opt.undodir = ".cache/undo"

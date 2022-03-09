@@ -12,6 +12,7 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.localleader = " "
 
+keymap("n", "<c-s>", "<cmd>w!<CR>", opts)
 -- use leader w for window mode
 -- keymap("n", "<leader>w", "<C-w>", opts)
 

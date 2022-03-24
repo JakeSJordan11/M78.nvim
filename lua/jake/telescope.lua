@@ -10,7 +10,7 @@ telescope.setup({
 		layout_config = {
 			vertical = { width = 0.5 },
 			-- other layout configuration here
-			preview_width = 0.5,
+			-- preview_width = 0.5,
 		},
 		prompt_prefix = " ",
 		selection_caret = " ",
@@ -91,27 +91,24 @@ telescope.setup({
 		-- builtin picker
 	},
 	extensions = {
-		extensions = {
-			file_browser = {
-				theme = "ivy",
-				mappings = {
-					["i"] = {
-						-- your custom insert mode mappings
-					},
-					["n"] = {
-						-- your custom normal mode mappings
-					},
+		file_browser = {
+			theme = "ivy",
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+				},
+				["n"] = {
+					-- your custom normal mode mappings
 				},
 			},
 		},
-		-- To get telescope-file-browser loaded and working with telescope,
-		-- you need to call load_extension, somewhere after setup function:
-		require("telescope").load_extension("file_browser"),
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+				-- even more opts
+			}),
+		},
 	},
 })
 telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")

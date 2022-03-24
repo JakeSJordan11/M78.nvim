@@ -67,13 +67,15 @@ return packer.startup(function(use)
 	use("beauwilliams/focus.nvim")
 	use("rcarriga/nvim-notify")
 	use("folke/zen-mode.nvim")
-	use("simrat39/rust-tools.nvim")
+	-- use("simrat39/rust-tools.nvim")
+	use("rust-lang/rust.vim")
 	use("wfxr/minimap.vim")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
 		ft = "markdown",
 	})
+	use("projekt0n/circles.nvim")
 
 	-- Colorschemes
 	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
@@ -132,6 +134,7 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("nvim-telescope/telescope-file-browser.nvim")
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 	-- Treesitter
 	use({

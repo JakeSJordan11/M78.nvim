@@ -89,4 +89,4 @@ vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical separators.
 vim.opt.highlight.blend = 100
 vim.opt.undofile = true
-vim.opt.undodir = ".cache/undo"
+-- vim.opt.undodir = ".cache/undo"

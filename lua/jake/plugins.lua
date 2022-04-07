@@ -54,9 +54,9 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
+	use("akinsho/toggleterm.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
@@ -157,6 +157,7 @@ return packer.startup(function(use)
 
 	-- Github
 	use("pwntester/octo.nvim")
+	use("github/copilot.vim")
 
 	use("wakatime/vim-wakatime")
 

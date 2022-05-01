@@ -39,7 +39,7 @@ vim.opt.wrap = false -- Enable line wrapping.
 --------------------------------
 -- User Interface Options --
 --------------------------------
-vim.opt.laststatus = 2 -- Always display the status bar.
+vim.opt.laststatus = 3 -- Always display the status bar.
 vim.opt.ruler = true -- Always show cursor position.
 vim.opt.wildmenu = true -- Display command line’s tab complete options as a menu.
 vim.opt.tabpagemax = 50 -- Maximum number of tab pages that can be opened from the command line.

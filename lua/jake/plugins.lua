@@ -67,7 +67,7 @@ return packer.startup(function(use)
 	use("beauwilliams/focus.nvim")
 	use("rcarriga/nvim-notify")
 	use("folke/zen-mode.nvim")
-	-- use("simrat39/rust-tools.nvim")
+	use("simrat39/rust-tools.nvim")
 	use("rust-lang/rust.vim")
 	use("wfxr/minimap.vim")
 	use({

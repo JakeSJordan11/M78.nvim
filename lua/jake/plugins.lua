@@ -158,7 +158,10 @@ return packer.startup(function(use)
 	-- Github
 	use("github/copilot.vim")
 
+  -- Time Management
 	use("wakatime/vim-wakatime")
+
+  use("windwp/windline.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

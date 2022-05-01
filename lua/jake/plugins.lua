@@ -156,7 +156,6 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- Github
-	use("pwntester/octo.nvim")
 	use("github/copilot.vim")
 
 	use("wakatime/vim-wakatime")

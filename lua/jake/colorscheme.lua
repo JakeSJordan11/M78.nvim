@@ -11,6 +11,7 @@ local colorscheme = "gruvbox"
 -- local colorscheme = "night-owl"
 -- local colorscheme = "rvcs"
 -- local colorscheme = "tokyonight"
+-- local colorscheme = "codemonkey"
 vim.api.nvim_set_var(colorscheme .. "_italic_comments", true)
 vim.api.nvim_set_var(colorscheme .. "_italic_keywords", true)
 vim.api.nvim_set_var(colorscheme .. "_italic_functions", true)

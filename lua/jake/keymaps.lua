@@ -5,14 +5,14 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Set leader to space
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.localleader = " "
 
-keymap("n", "<c-s>", "<cmd>w!<CR>", opts)
+keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
 -- use leader w for window mode
 -- keymap("n", "<leader>w", "<C-w>", opts)
 
@@ -40,5 +40,5 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Rust keymaps
-keymap("n", "<leader>rf", ":RustFmt<CR>", opts)
-keymap("n", "<leader>rr", ":RustRun<CR>", opts)
+-- keymap("n", "<leader>rf", ":RustFmt<CR>", opts)
+-- keymap("n", "<leader>rr", ":RustRun<CR>", opts)

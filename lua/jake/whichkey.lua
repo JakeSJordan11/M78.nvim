@@ -17,9 +17,9 @@ local setup = {
       operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = false, -- adds help for motions
       text_objects = false, -- help for text objects triggered after entering an operator
-      -- windows = true, -- default bindings on <c-w>
+      windows = false, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
-      -- z = true, -- bindings for folds, spelling and others prefixed with z
+      z = false, -- bindings for folds, spelling and others prefixed with z
       g = true, -- bindings for prefixed with g
     },
   },
@@ -83,13 +83,19 @@ local mappings =
 {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
   ["A"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = { require('telescope.builtin').buffers, "Buffers" },
+  -- ["b"] = { require('telescope.builtin').buffers, "Buffers" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
   ["M"] = { "<cmd>MinimapToggle<cr>", "Toggle Minimap" },
+
+  b = {
+    name = "Buffer",
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    b = { require("telescope.builtin").buffers, "Buffers" },
+  },
 
   f = {
     name = "Find",

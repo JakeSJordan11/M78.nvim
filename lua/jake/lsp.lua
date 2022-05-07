@@ -80,7 +80,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'efm', 'pylsp', 'cssls', 'cssmodules_ls', 'eslint', 'jsonls', 'sumneko_lua', 'tsserver', 'gopls', 'rust_analyzer', 'html', 'bashls', 'GraphQL' }
+local servers = { 'tailwindcss', 'efm', 'pylsp', 'cssls', 'cssmodules_ls', 'eslint', 'jsonls', 'sumneko_lua', 'tsserver', 'gopls', 'rust_analyzer', 'html', 'bashls', 'GraphQL' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,

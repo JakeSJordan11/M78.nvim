@@ -15,11 +15,11 @@ local setup = {
     -- No actual key bindings are created
     presets = {
       operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = false, -- adds help for motions
-      text_objects = false, -- help for text objects triggered after entering an operator
-      windows = false, -- default bindings on <c-w>
+      motions = true, -- adds help for motions
+      text_objects = true, -- help for text objects triggered after entering an operator
+      windows = true, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
-      z = false, -- bindings for folds, spelling and others prefixed with z
+      z = true, -- bindings for folds, spelling and others prefixed with z
       g = true, -- bindings for prefixed with g
     },
   },
@@ -29,7 +29,7 @@ local setup = {
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
-    ["<leader>"] = "LEADER",
+    ["<leader>"] = "Leader",
     -- ["<space>"] = "SPC",
     -- ["<cr>"] = "RET",
     -- ["<tab>"] = "TAB",
@@ -43,10 +43,17 @@ local setup = {
     scroll_down = "<c-d>", -- binding to scroll down inside the popup
     scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
-  window = {
+  --[[ window = {
     border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    winblend = 0,
+  }, ]]
+  window = {
+    border = "single", -- none, single, double, shadow
+    position = "top", -- bottom, top
+    margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
     winblend = 0,
   },
@@ -54,9 +61,9 @@ local setup = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
+    align = "center", -- align columns left, center or right
   },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
@@ -82,13 +89,10 @@ local opts = {
 local mappings =
 {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
-  ["A"] = { "<cmd>Alpha<cr>", "Alpha" },
-  -- ["b"] = { require('telescope.builtin').buffers, "Buffers" },
+  -- ["A"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
   ["M"] = { "<cmd>MinimapToggle<cr>", "Toggle Minimap" },
 
   b = {
@@ -100,15 +104,16 @@ local mappings =
   f = {
     name = "Find",
     f = { require('telescope.builtin').find_files, "Find files" },
-    t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    p = { "<cmd>Telescope projects<cr>", "Projects" },
+    t = { require('telescope.builtin').live_grep, "Find Text" },
+    b = { "<cmd> Telescope file_browser<CR>", "File Browser" },
+    c = { require('telescope.builtin').colorscheme, "Colorscheme" },
+    h = { require('telescope.builtin').help_tags, "Find Help" },
+    m = { require('telescope.builtin').man_pages, "Man Pages" },
+    r = { require('telescope.builtin').oldfiles, "Old Files" },
+    R = { require('telescope.builtin').registers, "Registers" },
+    k = { require('telescope.builtin').keymaps, "Keymaps" },
+    C = { require('telescope.builtin').commands, "Commands" },
   },
 
   p = {
@@ -122,35 +127,18 @@ local mappings =
 
   g = {
     name = "Git",
+    b = { require('telescope.builtin').git_branches, "Branches" },
+    c = { require('telescope.builtin').git_commits, "Commits" },
+    f = { require('telescope.builtin').git_files, "Files" },
     g = { _LAZYGIT_TOGGLE, "Lazygit" },
-    j = { require 'gitsigns'.next_hunk, "Next Hunk" },
-    k = { require 'gitsigns'.prev_hunk, "Prev Hunk" },
-    l = { require 'gitsigns'.blame_line, "Blame" },
-    p = { require 'gitsigns'.preview_hunk, "Preview Hunk" },
-    r = { require 'gitsigns'.reset_hunk, "Reset Hunk" },
-    R = { require 'gitsigns'.reset_buffer, "Reset Buffer" },
-    s = { require 'gitsigns'.stage_hunk, "Stage Hunk" },
-    u = { require 'gitsigns'.undo_stage_hunk, "Undo Stage Hunk" },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    f = { "<cmd>Telescope git_files<cr>", "Git files" },
-    d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
+    s = { require('telescope.builtin').git_status, "Status" },
   },
 
   l = {
     name = "LSP",
     a = { vim.lsp.buf.code_action, "Code Action" },
-    d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
-      "Document Diagnostics",
-    },
-    w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-      "Workspace Diagnostics",
-    },
     f = { vim.lsp.buf.formatting, "Format" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
+    i = { "<cmd>LspInfo<CR>", "Info" },
     j = { vim.diagnostic.goto_next, "Next Diagnostic" },
     k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
     l = { vim.lsp.codelens.run, "CodeLens Action" },
@@ -160,6 +148,7 @@ local mappings =
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
   },
   w = {
+
     name = "Window",
     ["+"] = { "<cmd>wincmd +<cr>", "Increase height" },
     ["-"] = { "<cmd>wincmd -<cr>", "Decrease height" },

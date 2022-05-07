@@ -157,7 +157,6 @@ local mappings =
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
   },
   w = {
-
     name = "Window",
     ["+"] = { "<cmd>wincmd +<cr>", "Increase height" },
     ["-"] = { "<cmd>wincmd -<cr>", "Decrease height" },
@@ -183,8 +182,9 @@ local mappings =
     t = { _HTOP_TOGGLE, "Htop" },
     p = { _PYTHON_TOGGLE, "Python" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<CR>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<CR>", "Vertical" },
+    w = { "<cmd>!rustywind % --write<CR><CR>", "Rustywind" },
   },
 }
 which_key.setup(setup)

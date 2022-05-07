@@ -47,14 +47,12 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
   use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-  use("windwp/nvim-ts-autotag")
   use("numToStr/Comment.nvim") -- Easily comment stuff
   use("kyazdani42/nvim-web-devicons")
   use("kyazdani42/nvim-tree.lua")
   use("akinsho/bufferline.nvim")
   use("akinsho/toggleterm.nvim")
   use("moll/vim-bbye")
-  use("nvim-lualine/lualine.nvim")
   use("ahmedkhalf/project.nvim")
   use("lewis6991/impatient.nvim")
   use("lukas-reineke/indent-blankline.nvim")
@@ -65,8 +63,6 @@ return packer.startup(function(use)
   use("beauwilliams/focus.nvim")
   use("rcarriga/nvim-notify")
   use("folke/zen-mode.nvim")
-  use("simrat39/rust-tools.nvim")
-  use("rust-lang/rust.vim")
   use("wfxr/minimap.vim")
   use({
     "iamcco/markdown-preview.nvim",
@@ -94,15 +90,21 @@ return packer.startup(function(use)
   use("shaeinst/roshnivim-cs")
   use("lvim-tech/lvim-colorscheme")
 
-  -- cmp plugins
+  -- rust
+  use("simrat39/rust-tools.nvim")
+  use("rust-lang/rust.vim")
+
+  -- cmp
   use({ "hrsh7th/nvim-cmp", commit = "d93104244c3834fbd8f3dd01da9729920e0b5fe7" }) -- The completion plugin
-  -- use("hrsh7th/nvim-cmp") -- The completion plugin
   use("hrsh7th/cmp-buffer") -- buffer completions
   use("hrsh7th/cmp-path") -- path completions
   use("hrsh7th/cmp-cmdline") -- cmdline completions
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
+
+  -- ai assistance
+  use("github/copilot.vim")
   use({
     "tzachar/cmp-tabnine",
     config = function()
@@ -124,9 +126,6 @@ return packer.startup(function(use)
 
   -- LSP
   use("neovim/nvim-lspconfig") -- enable LSP
-  -- use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-  -- use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
-  -- use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
@@ -138,27 +137,19 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   })
-  -- use("p00f/nvim-ts-rainbow")
   use("nvim-treesitter/playground")
-
   use("JoosepAlviste/nvim-ts-context-commentstring")
+  use("windwp/nvim-ts-autotag")
 
-  -- Dap
-  use("mfussenegger/nvim-dap")
-  use("theHamsta/nvim-dap-virtual-text")
-  use("rcarriga/nvim-dap-ui")
-  use("Pocco81/DAPInstall.nvim")
-
-  -- Git
+  -- git
   use("lewis6991/gitsigns.nvim")
 
-  -- Github
-  use("github/copilot.vim")
-
-  -- Time Management
-  use("wakatime/vim-wakatime")
-
+  -- statusline
   use("windwp/windline.nvim")
+  -- use("nvim-lualine/lualine.nvim")
+
+  -- time management
+  use("wakatime/vim-wakatime")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

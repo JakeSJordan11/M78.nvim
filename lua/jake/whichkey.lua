@@ -86,6 +86,13 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local function GitToggle()
+  local git = require("gitsigns")
+  git.toggle_signs()
+  git.toggle_numhl()
+  git.toggle_linehl()
+end
+
 local mappings =
 {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
@@ -129,9 +136,11 @@ local mappings =
     name = "Git",
     b = { require('telescope.builtin').git_branches, "Branches" },
     c = { require('telescope.builtin').git_commits, "Commits" },
+    d = { require('gitsigns').diffthis, "Diff" },
     f = { require('telescope.builtin').git_files, "Files" },
     g = { _LAZYGIT_TOGGLE, "Lazygit" },
     s = { require('telescope.builtin').git_status, "Status" },
+    t = { GitToggle, "Signs" },
   },
 
   l = {

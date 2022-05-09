@@ -9,28 +9,23 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-local config = {
-  virtual_text = false,
-  signs = {
-    active = signs,
-  },
-  update_in_insert = true,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-}
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(clients)
+      -- filter out clients that you don't want to use
+      return vim.tbl_filter(function(client)
+        return client.name
+      end, clients)
+    end,
+    bufnr = bufnr,
+  })
+end
 
-vim.diagnostic.config(config)
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 
 -- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<leader>de', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap("n", "dn", '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -39,32 +34,24 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+-- local on_attach = function(_, bufnr)
+-- add to your shared on_attach callback
 local on_attach = function(client, bufnr)
-  if client.name == 'cssls' then
-    require('lspconfig').efm.setup {
-      init_options = {
-        documentformatting = true
-      },
-      settings = {
-        rootmarkers = { ".git/" },
-        languages = {
-          css = {
-            { formatcommand = "prettier ${--tab-width:tabwidth} ${--single-quote:singlequote} --parser css", formatstdin = true }
-          }
-        }
-      }
-    }
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        lsp_formatting(bufnr)
+      end,
+    })
   end
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -75,12 +62,12 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.format {async=true}<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tailwindcss', 'efm', 'pylsp', 'cssls', 'cssmodules_ls', 'eslint', 'jsonls', 'sumneko_lua', 'tsserver', 'gopls', 'rust_analyzer', 'html', 'bashls', 'GraphQL' }
+local servers = { 'tailwindcss', --[[ 'efm', ]] 'pylsp', 'cssls', 'cssmodules_ls', 'eslint', 'jsonls', 'sumneko_lua', 'tsserver', 'gopls', 'rust_analyzer', 'html', 'bashls', 'GraphQL' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,

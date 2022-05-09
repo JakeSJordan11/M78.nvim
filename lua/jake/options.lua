@@ -40,7 +40,7 @@ vim.opt.wrap = false -- Enable line wrapping.
 -- User Interface Options --
 --------------------------------
 vim.opt.laststatus = 3 -- Always display the status bar.
-vim.opt.ruler = true -- Always show cursor position.
+-- vim.opt.ruler = true -- Always show cursor position.
 vim.opt.wildmenu = true -- Display command line’s tab complete options as a menu.
 vim.opt.tabpagemax = 50 -- Maximum number of tab pages that can be opened from the command line.
 vim.opt.cursorline = true -- Highlight the line currently under cursor.
@@ -51,7 +51,7 @@ vim.opt.visualbell = true -- Flash the screen instead of beeping on errors.
 vim.opt.mouse = "a" -- Enable mouse for scrolling and resizing.
 vim.opt.title = true -- Set the window’s title, reflecting the file currently being edited.
 -- vim.opt.winblend = 100 -- Enables pseudo-transparency for a floating window. Valid values are in
-vim.opt.background = "dark" -- Use colors that suit a dark background.
+-- vim.opt.background = "dark" -- Use colors that suit a dark background.
 vim.opt.termguicolors = true -- Allow fuller color syntax
 vim.opt.cmdheight = 1 -- Set the command height
 vim.opt.confirm = false -- Display a confirmation dialog when closing an unsaved file.
@@ -73,7 +73,6 @@ vim.opt.backup = false -- creates a backup file
 vim.opt.swapfile = false -- Enable swap files.
 -- vim.opt.dir = ".cache/swap" -- Directory to store swap files.
 vim.opt.backspace = "indent,eol,start" -- Allow backspacing over indention, line breaks and insertion start.
-vim.opt.confirm = true -- Display a confirmation dialog when closing an unsaved file.
 vim.opt.formatoptions:append("j") -- Delete comment characters when joining lines.
 vim.opt.hidden = true -- Hide files in the background instead of closing them.
 vim.opt.history = 1000 -- Increase the undo limit.
@@ -90,3 +89,4 @@ vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical s
 vim.opt.highlight.blend = 100
 vim.opt.undofile = true
 -- vim.opt.undodir = ".cache/undo"
+vim.opt.showmode = false -- Show the current mode in the cmd line.

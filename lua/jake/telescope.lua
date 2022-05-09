@@ -23,6 +23,9 @@ telescope.setup({
     diagnostics = {
       theme = "ivy",
     },
+    buffers = {
+      theme = "ivy",
+    },
   },
   extensions = {
     file_browser = {

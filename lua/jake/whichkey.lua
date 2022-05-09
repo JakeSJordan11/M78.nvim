@@ -43,17 +43,10 @@ local setup = {
     scroll_down = "<c-d>", -- binding to scroll down inside the popup
     scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
-  --[[ window = {
+  window = {
     border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
-  }, ]]
-  window = {
-    border = "single", -- none, single, double, shadow
-    position = "top", -- bottom, top
-    margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
     winblend = 0,
   },
@@ -117,7 +110,7 @@ local mappings =
     c = { require('telescope.builtin').colorscheme, "Colorscheme" },
     h = { require('telescope.builtin').help_tags, "Find Help" },
     m = { require('telescope.builtin').man_pages, "Man Pages" },
-    r = { require('telescope.builtin').oldfiles, "Old Files" },
+    o = { require('telescope.builtin').oldfiles, "Old Files" },
     R = { require('telescope.builtin').registers, "Registers" },
     k = { require('telescope.builtin').keymaps, "Keymaps" },
     C = { require('telescope.builtin').commands, "Commands" },
@@ -164,15 +157,25 @@ local mappings =
     [">"] = { "<cmd>wincmd ><cr>", "Increase width" },
     ["|"] = { "<cmd>wincmd |<cr>", "Max out the width" },
     ["<"] = { "<cmd>wincmd < <cr>", "Decrease width" },
-    h = { "<cmd>wincmd h<cr>", "Go to the left window" },
-    j = { "<cmd>wincmd j<cr>", "Go to the down window" },
-    k = { "<cmd>wincmd k<cr>", "Go to the right window" },
-    l = { "<cmd>wincmd l<cr>", "Go to the up window" },
-    q = { "<cmd>wincmd q<cr>", "Quit a window" },
-    s = { "<cmd>wincmd s<cr>", "Split Window" },
-    v = { "<cmd>wincmd v<cr>", "Split Window Vertacally" },
-    w = { "<cmd> wincmd w<cr>", "Switch Windows" },
-    x = { "<cmd> wincmd x<cr>", "Swap current with next" },
+    h = { "<cmd>wincmd h<CR>", "Go to the left window" },
+    j = { "<cmd>wincmd j<CR>", "Go to the down window" },
+    k = { "<cmd>wincmd k<CR>", "Go to the right window" },
+    l = { "<cmd>wincmd l<CR>", "Go to the up window" },
+    q = { "<cmd>wincmd q<XR>", "Quit a window" },
+    s = { "<cmd>wincmd s<CR>", "Split Window" },
+    v = { "<cmd>wincmd v<CR>", "Split Window Vertacally" },
+    w = { "<cmd> wincmd w<CR>", "Switch Windows" },
+    x = { "<cmd> wincmd x<CR>", "Swap current with next" },
+  },
+
+  s = {
+    name = "Spotify",
+    n = { "<Plug>(SpotifySkip)", "Next" },
+    ["<leader>"] = { "<Plug>(SpotifyPause)", "Play/Pause" },
+    s = { "<Plug>(SpotifySave)", "Save" },
+    o = { "<cmd>Spotify<CR>", "Open" },
+    d = { "<cmd>SpotifyDevices<CR>", "Devices" },
+    p = { "<Plug>(SpotifyPrev)", "Previous" },
   },
 
   t = {

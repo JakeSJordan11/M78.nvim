@@ -1,86 +1,201 @@
-require('wlsample.airline_anim')
+local status = require 'nvim-spotify'.status
+status:start()
 local windline = require('windline')
-local effects = require('wlanimation.effects')
-local HSL = require('wlanimation.utils')
-require('wlsample.airline')
-local animation = require('wlanimation')
+local helper = require('windline.helpers')
+local sep = helper.separators
+local vim_components = require('windline.components.vim')
 
-local magenta_anim = {}
-local yellow_anim = {}
-local blue_anim = {}
-local green_anim = {}
-local red_anim = {}
-local colors = windline.get_colors()
+local b_components = require('windline.components.basic')
+local state = _G.WindLine.state
 
-if vim.o.background == 'light' then
-  magenta_anim = HSL.rgb_to_hsl(colors.magenta):tints(10, 8)
-  yellow_anim = HSL.rgb_to_hsl(colors.yellow):tints(10, 8)
-  blue_anim = HSL.rgb_to_hsl(colors.blue):tints(10, 8)
-  green_anim = HSL.rgb_to_hsl(colors.green):tints(10, 8)
-  red_anim = HSL.rgb_to_hsl(colors.red):tints(10, 8)
-else
-  -- shades will create array of color from color to black color .I don't need
-  -- black color then I only take 8
-  magenta_anim = HSL.rgb_to_hsl(colors.magenta):shades(10, 8)
-  yellow_anim = HSL.rgb_to_hsl(colors.yellow):shades(10, 8)
-  blue_anim = HSL.rgb_to_hsl(colors.blue):shades(10, 8)
-  green_anim = HSL.rgb_to_hsl(colors.green):shades(10, 8)
-  red_anim = HSL.rgb_to_hsl(colors.red):shades(10, 8)
-end
+local lsp_comps = require('windline.components.lsp')
+local git_comps = require('windline.components.git')
 
-animation.stop_all()
-animation.animation({
-  data = {
-    { 'magenta_a', effects.list_color(magenta_anim, 3) },
-    { 'magenta_b', effects.list_color(magenta_anim, 2) },
-    { 'magenta_c', effects.list_color(magenta_anim, 1) },
+local hl_list = {
+  Black = { 'white', 'black' },
+  White = { 'black', 'white' },
+  Inactive = { 'InactiveFg', 'InactiveBg' },
+  Active = { 'ActiveFg', 'ActiveBg' },
+}
+local basic = {}
 
-    { 'yellow_a', effects.list_color(yellow_anim, 3) },
-    { 'yellow_b', effects.list_color(yellow_anim, 2) },
-    { 'yellow_c', effects.list_color(yellow_anim, 1) },
+basic.divider = { b_components.divider, '' }
+basic.file_name_inactive = { b_components.full_file_name, hl_list.Inactive }
+basic.line_col_inactive = { b_components.line_col, hl_list.Inactive }
+basic.progress_inactive = { b_components.progress, hl_list.Inactive }
 
-    { 'blue_a', effects.list_color(blue_anim, 3) },
-    { 'blue_b', effects.list_color(blue_anim, 2) },
-    { 'blue_c', effects.list_color(blue_anim, 1) },
-
-    { 'green_a', effects.list_color(green_anim, 3) },
-    { 'green_b', effects.list_color(green_anim, 2) },
-    { 'green_c', effects.list_color(green_anim, 1) },
-
-    { 'red_a', effects.list_color(red_anim, 3) },
-    { 'red_b', effects.list_color(red_anim, 2) },
-    { 'red_c', effects.list_color(red_anim, 1) },
+basic.vi_mode = {
+  name = 'vi_mode',
+  hl_colors = {
+    Normal = { 'black', 'red', 'bold' },
+    Insert = { 'black', 'green', 'bold' },
+    Visual = { 'black', 'yellow', 'bold' },
+    Replace = { 'black', 'blue_light', 'bold' },
+    Command = { 'black', 'magenta', 'bold' },
+    NormalBefore = { 'red', 'black' },
+    InsertBefore = { 'green', 'black' },
+    VisualBefore = { 'yellow', 'black' },
+    ReplaceBefore = { 'blue_light', 'black' },
+    CommandBefore = { 'magenta', 'black' },
+    NormalAfter = { 'white', 'red' },
+    InsertAfter = { 'white', 'green' },
+    VisualAfter = { 'white', 'yellow' },
+    ReplaceAfter = { 'white', 'blue_light' },
+    CommandAfter = { 'white', 'magenta' },
   },
+  text = function()
+    return {
+      { sep.left_rounded, state.mode[2] .. 'Before' },
+      { state.mode[1] .. ' ', state.mode[2] },
+      { sep.left_rounded, state.mode[2] .. 'After' },
+    }
+  end,
+}
 
-  timeout = 60,
-  delay = 120,
-  interval = 120,
-})
+basic.lsp_diagnos = {
+  name = 'diagnostic',
+  hl_colors = {
+    red = { 'red', 'black' },
+    yellow = { 'yellow', 'black' },
+    blue = { 'blue', 'black' },
+  },
+  width = 90,
+  text = function(bufnr)
+    if lsp_comps.check_lsp(bufnr) then
+      return {
+        { lsp_comps.lsp_error({ format = '  %s' }), 'red' },
+        { lsp_comps.lsp_warning({ format = '  %s' }), 'yellow' },
+        { lsp_comps.lsp_hint({ format = '  %s' }), 'blue' },
+      }
+    end
+    return ''
+  end,
+}
 
+basic.file = {
+  name = 'file',
+  hl_colors = {
+    default = hl_list.White,
+  },
+  text = function()
+    return {
+      { b_components.cache_file_icon({ default = '' }), 'default' },
+      { ' ', 'default' },
+      { b_components.cache_file_name('[No Name]', 'unique') },
+      { b_components.file_modified(' ') },
+      { b_components.cache_file_size() },
+      { ' ', 'default' },
+      { status.listen },
+    }
+  end,
+}
 
-windline.default = {
+basic.right = {
+  hl_colors = {
+    sep_before = { 'black_light', 'black' },
+    sep_after = { 'black_light', 'black' },
+    text = { 'white', 'black_light' },
+  },
+  text = function()
+    return {
+      { sep.left_rounded, 'sep_before' },
+      { 'l/n', 'text' },
+      { b_components.line_col_lua },
+      { '' },
+      { b_components.progress_lua },
+      { sep.right_rounded, 'sep_after' },
+    }
+  end,
+}
+basic.git = {
+  name = 'git',
+  width = 90,
+  hl_colors = {
+    green = { 'green', 'black' },
+    red = { 'red', 'black' },
+    blue = { 'blue', 'black' },
+  },
+  text = function(bufnr)
+    if git_comps.is_git(bufnr) then
+      return {
+        { ' ' },
+        { git_comps.diff_added({ format = ' %s' }), 'green' },
+        { git_comps.diff_removed({ format = '  %s' }), 'red' },
+        { git_comps.diff_changed({ format = ' 柳%s' }), 'blue' },
+      }
+    end
+    return ''
+  end,
+}
+
+local default = {
   filetypes = { 'default' },
   active = {
-    --- components...
+    { ' ', hl_list.Black },
+    basic.vi_mode,
+    basic.file,
+    { vim_components.search_count(), { 'red', 'white' } },
+    { sep.right_rounded, hl_list.Black },
+    basic.lsp_diagnos,
+    basic.git,
+    basic.divider,
+    { git_comps.git_branch({ icon = '  ' }), { 'green', 'black' }, 90 },
+    { ' ', hl_list.Black },
+    basic.right,
+    { ' ', hl_list.Black },
   },
   inactive = {
-    --- components...
-  }
-}
-
-windline.explorer = {
-  filetypes = { 'fern', 'NvimTree', 'netrw' },
-  active = {
-    { '  ', { 'white', 'black' } },
+    basic.file_name_inactive,
+    basic.divider,
+    basic.divider,
+    basic.line_col_inactive,
+    { '', hl_list.Inactive },
+    basic.progress_inactive,
   },
-  --- show active components when the window is inactive
-  always_active = true,
-  --- It will display a last window statusline even that window should inactive
-  show_last_status = true,
-
-  -- setting for floatline
-  -- display statusline to that filetype.If that filetype on floating window
-  floatline_show_float = false,
-  -- display both on floatline and default statusline
-  floatline_show_both = false
 }
+
+local quickfix = {
+  filetypes = { 'qf', 'Trouble' },
+  active = {
+    { '🚦 Quickfix ', { 'white', 'black' } },
+    { helper.separators.slant_right, { 'black', 'black_light' } },
+    {
+      function()
+        return vim.fn.getqflist({ title = 0 }).title
+      end,
+      { 'cyan', 'black_light' },
+    },
+    { ' Total : %L ', { 'cyan', 'black_light' } },
+    { helper.separators.slant_right, { 'black_light', 'InactiveBg' } },
+    { ' ', { 'InactiveFg', 'InactiveBg' } },
+    basic.divider,
+    { helper.separators.slant_right, { 'InactiveBg', 'black' } },
+    { '🧛 ', { 'white', 'black' } },
+  },
+  always_active = true,
+  show_last_status = true
+}
+
+local explorer = {
+  filetypes = { 'fern', 'NvimTree', 'lir' },
+  active = {
+    { '  ', { 'white', 'black_light' } },
+    { helper.separators.slant_right, { 'black_light', 'NormalBg' } },
+    { b_components.divider, '' },
+    { b_components.file_name(''), { 'NormalFg', 'NormalBg' } },
+  },
+  always_active = true,
+  show_last_status = true
+}
+
+windline.setup({
+  colors_name = function(colors)
+    -- ADD MORE COLOR HERE ----
+    return colors
+  end,
+  statuslines = {
+    default,
+    explorer,
+    quickfix,
+  },
+})

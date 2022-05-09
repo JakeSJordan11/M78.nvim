@@ -72,13 +72,13 @@ return packer.startup(function(use)
   use("projekt0n/circles.nvim")
 
   -- Colorschemes
+  use("ellisonleao/gruvbox.nvim")
   use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
   use("lunarvim/darkplus.nvim")
   use("catppuccin/nvim")
   use("savq/melange")
   use("Julpikar/night-owl.nvim")
   use("CantoroMC/ayu-nvim")
-  use("ellisonleao/gruvbox.nvim")
   use("rebelot/kanagawa.nvim")
   use("rockerBOO/boo-colorscheme-nvim")
   use("kwsp/halcyon-neovim")
@@ -150,6 +150,23 @@ return packer.startup(function(use)
 
   -- time management
   use("wakatime/vim-wakatime")
+
+  -- spotify
+  use {
+    'KadoBOT/nvim-spotify',
+    config = function()
+      local spotify = require 'nvim-spotify'
+
+      spotify.setup {
+        -- default opts
+        status = {
+          update_interval = 10000, -- the interval (ms) to check for what's currently playing
+          format = '%s %t by %a' -- spotify-tui --format argument
+        }
+      }
+    end,
+    run = 'make'
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

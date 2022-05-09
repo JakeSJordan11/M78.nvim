@@ -11,7 +11,7 @@ vim.g.localleader = " "
 
 vim.keymap.set("n", "<C-s>", "<cmd>w!<CR>", opts)
 -- use leader w for window mode
--- keymap("n", "<leader>w", "<C-w>", opts)
+vim.keymap.set("n", "<leader>w", "<C-w>", opts)
 
 -- Navigate buffers keymap("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
@@ -31,7 +31,7 @@ vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Better terminal navigation
-vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+-- vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+-- vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+-- vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)

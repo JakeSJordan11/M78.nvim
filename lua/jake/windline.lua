@@ -1,5 +1,3 @@
-local status = require 'nvim-spotify'.status
-status:start()
 local windline = require('windline')
 local helper = require('windline.helpers')
 local sep = helper.separators
@@ -27,7 +25,7 @@ basic.progress_inactive = { b_components.progress, hl_list.Inactive }
 basic.vi_mode = {
   name = 'vi_mode',
   hl_colors = {
-    Normal = { 'black', 'red', 'bold' },
+    Normal = { 'black', 'red' },
     Insert = { 'black', 'green', 'bold' },
     Visual = { 'black', 'yellow', 'bold' },
     Replace = { 'black', 'blue_light', 'bold' },
@@ -72,6 +70,9 @@ basic.lsp_diagnos = {
   end,
 }
 
+local status = require 'nvim-spotify'.status
+status:start()
+
 basic.file = {
   name = 'file',
   hl_colors = {
@@ -85,7 +86,6 @@ basic.file = {
       { b_components.file_modified(' ') },
       { b_components.cache_file_size() },
       { ' ', 'default' },
-      { status.listen },
     }
   end,
 }
@@ -128,6 +128,7 @@ basic.git = {
   end,
 }
 
+
 local default = {
   filetypes = { 'default' },
   active = {
@@ -139,6 +140,7 @@ local default = {
     basic.lsp_diagnos,
     basic.git,
     basic.divider,
+    { status.listen, { "red" } },
     { git_comps.git_branch({ icon = '  ' }), { 'green', 'black' }, 90 },
     { ' ', hl_list.Black },
     basic.right,

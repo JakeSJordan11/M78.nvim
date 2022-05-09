@@ -116,15 +116,6 @@ local mappings =
     C = { require('telescope.builtin').commands, "Commands" },
   },
 
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-
   g = {
     name = "Git",
     b = { require('telescope.builtin').git_branches, "Branches" },
@@ -149,30 +140,22 @@ local mappings =
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
   },
-  w = {
-    name = "Window",
-    ["+"] = { "<cmd>wincmd +<cr>", "Increase height" },
-    ["-"] = { "<cmd>wincmd -<cr>", "Decrease height" },
-    ["="] = { "<cmd>wincmd =<cr>", "Equally high and wide" },
-    [">"] = { "<cmd>wincmd ><cr>", "Increase width" },
-    ["|"] = { "<cmd>wincmd |<cr>", "Max out the width" },
-    ["<"] = { "<cmd>wincmd < <cr>", "Decrease width" },
-    h = { "<cmd>wincmd h<CR>", "Go to the left window" },
-    j = { "<cmd>wincmd j<CR>", "Go to the down window" },
-    k = { "<cmd>wincmd k<CR>", "Go to the right window" },
-    l = { "<cmd>wincmd l<CR>", "Go to the up window" },
-    q = { "<cmd>wincmd q<XR>", "Quit a window" },
-    s = { "<cmd>wincmd s<CR>", "Split Window" },
-    v = { "<cmd>wincmd v<CR>", "Split Window Vertacally" },
-    w = { "<cmd> wincmd w<CR>", "Switch Windows" },
-    x = { "<cmd> wincmd x<CR>", "Swap current with next" },
+
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    s = { "<cmd>PackerSync<cr>", "Sync" },
+    S = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
   s = {
     name = "Spotify",
     n = { "<Plug>(SpotifySkip)", "Next" },
     ["<leader>"] = { "<Plug>(SpotifyPause)", "Play/Pause" },
-    s = { "<Plug>(SpotifySave)", "Save" },
+    l = { "<Plug>(SpotifySave)", "Love" },
+    u = { _SPOTIFY_TOGGLE, "Spotify" },
     o = { "<cmd>Spotify<CR>", "Open" },
     d = { "<cmd>SpotifyDevices<CR>", "Devices" },
     p = { "<Plug>(SpotifyPrev)", "Previous" },
@@ -188,6 +171,25 @@ local mappings =
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<CR>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<CR>", "Vertical" },
     w = { "<cmd>!rustywind % --write<CR><CR>", "Rustywind" },
+  },
+
+  w = {
+    name = "Window",
+    ["+"] = { "<cmd>wincmd +<cr>", "Increase height" },
+    ["-"] = { "<cmd>wincmd -<cr>", "Decrease height" },
+    ["="] = { "<cmd>wincmd =<cr>", "Equally high and wide" },
+    [">"] = { "<cmd>wincmd ><cr>", "Increase width" },
+    ["|"] = { "<cmd>wincmd |<cr>", "Max out the width" },
+    ["<"] = { "<cmd>wincmd < <cr>", "Decrease width" },
+    h = { "<cmd>wincmd h<CR>", "Go to the left window" },
+    j = { "<cmd>wincmd j<CR>", "Go to the down window" },
+    k = { "<cmd>wincmd k<CR>", "Go to the right window" },
+    l = { "<cmd>wincmd l<CR>", "Go to the up window" },
+    q = { "<cmd>wincmd q<CR>", "Quit a window" },
+    s = { "<cmd>wincmd s<CR>", "Split Window" },
+    v = { "<cmd>wincmd v<CR>", "Split Window Vertacally" },
+    w = { "<cmd> wincmd w<CR>", "Switch Windows" },
+    x = { "<cmd> wincmd x<CR>", "Swap current with next" },
   },
 }
 which_key.setup(setup)

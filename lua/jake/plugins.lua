@@ -44,34 +44,32 @@ packer.init({
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim") -- Have packer manage itself
-  use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-  use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-  use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-  use("numToStr/Comment.nvim") -- Easily comment stuff
-  use("kyazdani42/nvim-web-devicons")
-  use("kyazdani42/nvim-tree.lua")
-  use("akinsho/bufferline.nvim")
-  use("akinsho/toggleterm.nvim")
-  use("moll/vim-bbye")
-  use("ahmedkhalf/project.nvim")
-  use("lewis6991/impatient.nvim")
-  use("lukas-reineke/indent-blankline.nvim")
-  use("goolord/alpha-nvim")
-  use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
-  use("folke/which-key.nvim")
-  use("MunifTanjim/nui.nvim")
-  use("beauwilliams/focus.nvim")
-  use("rcarriga/nvim-notify")
-  use("folke/zen-mode.nvim")
-  use("wfxr/minimap.vim")
+
+  -- AI assistance
+  use("github/copilot.vim")
   use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
+    "tzachar/cmp-tabnine",
+    config = function()
+      local tabnine = require("cmp_tabnine.config")
+      tabnine:setup({
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+      })
+    end,
+    after = "nvim-cmp",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
   })
-  use("projekt0n/circles.nvim")
+
+  -- AutoPairs
+  use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+
+  -- Bufferline
+  use("akinsho/bufferline.nvim")
 
   -- Colorschemes
+  use("f-person/auto-dark-mode.nvim")
   use("ellisonleao/gruvbox.nvim")
   use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
   use("lunarvim/darkplus.nvim")
@@ -89,12 +87,13 @@ return packer.startup(function(use)
   use("shaeinst/roshnivim")
   use("shaeinst/roshnivim-cs")
   use("lvim-tech/lvim-colorscheme")
+  use("rafamadriz/neon")
+  use("bluz71/vim-nightfly-guicolors")
 
-  -- rust
-  use("simrat39/rust-tools.nvim")
-  use("rust-lang/rust.vim")
+  -- Comments
+  use("numToStr/Comment.nvim") -- Easily comment stuff
 
-  -- cmp
+  -- Completion
   use({ "hrsh7th/nvim-cmp", commit = "d93104244c3834fbd8f3dd01da9729920e0b5fe7" }) -- The completion plugin
   use("hrsh7th/cmp-buffer") -- buffer completions
   use("hrsh7th/cmp-path") -- path completions
@@ -103,34 +102,62 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
 
-  -- ai assistance
-  use("github/copilot.vim")
-  use({
-    "tzachar/cmp-tabnine",
-    config = function()
-      local tabnine = require("cmp_tabnine.config")
-      tabnine:setup({
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-      })
-    end,
-    after = "nvim-cmp",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  })
+  -- Git
+  use("lewis6991/gitsigns.nvim")
 
-  -- snippets
-  use("L3MON4D3/LuaSnip") --snippet engine
-  use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+  -- Icons
+  use("kyazdani42/nvim-web-devicons")
+  use("projekt0n/circles.nvim")
+
+  -- Keymaps
+  use("folke/which-key.nvim")
 
   -- LSP
   use("neovim/nvim-lspconfig") -- enable LSP
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+
+  -- Markdown
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  })
+
+  -- Notifications
+  use("rcarriga/nvim-notify")
+
+  -- MiniMap
+  use("wfxr/minimap.vim")
+
+  -- Project Management
+  use("wakatime/vim-wakatime")
+  use("ahmedkhalf/project.nvim")
+  use("goolord/alpha-nvim")
+  use("kyazdani42/nvim-tree.lua")
+
+  -- Rust
+  use("simrat39/rust-tools.nvim")
+  use("rust-lang/rust.vim")
+
+  -- Statusline
+  use("windwp/windline.nvim")
+  -- use("nvim-lualine/lualine.nvim")
+
+  -- Snippets
+  use("L3MON4D3/LuaSnip") --snippet engine
+  use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+
+  -- Spotify
+  use("KadoBOT/nvim-spotify")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use("nvim-telescope/telescope-file-browser.nvim")
+
+  -- Terminal
+  use("akinsho/toggleterm.nvim")
 
   -- Treesitter
   use({
@@ -141,32 +168,13 @@ return packer.startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("windwp/nvim-ts-autotag")
 
-  -- git
-  use("lewis6991/gitsigns.nvim")
-
-  -- statusline
-  use("windwp/windline.nvim")
-  -- use("nvim-lualine/lualine.nvim")
-
-  -- time management
-  use("wakatime/vim-wakatime")
-
-  -- spotify
-  use {
-    'KadoBOT/nvim-spotify',
-    config = function()
-      local spotify = require 'nvim-spotify'
-
-      spotify.setup {
-        -- default opts
-        status = {
-          update_interval = 10000, -- the interval (ms) to check for what's currently playing
-          format = '%s %t by %a' -- spotify-tui --format argument
-        }
-      }
-    end,
-    run = 'make'
-  }
+  -- UI
+  use("MunifTanjim/nui.nvim")
+  use("beauwilliams/focus.nvim")
+  use("folke/zen-mode.nvim")
+  use("lukas-reineke/indent-blankline.nvim")
+  use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+  use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

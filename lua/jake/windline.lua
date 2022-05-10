@@ -3,7 +3,7 @@ local windline = require('windline')
 local helper = require('windline.helpers')
 local sep = helper.separators
 local b_components = require('windline.components.basic')
-local state = _G.WindLine.state
+local state = windline.state
 local vim_components = require('windline.components.vim')
 local HSL = require('wlanimation.utils')
 
@@ -246,9 +246,9 @@ local default = {
     basic.section_c,
     basic.lsp_diagnos,
     basic.divider,
-    { status.listen, { 'magenta_a' } },
+    -- { status.listen, { 'magenta_a' } },
     { vim_components.search_count(), { 'cyan', 'NormalBg' } },
-    basic.divider,
+    -- basic.divider,
     basic.git,
     basic.section_x,
     basic.section_y,

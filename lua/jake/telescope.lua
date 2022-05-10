@@ -5,31 +5,32 @@ end
 
 telescope.setup({
   defaults = {
+    layout_config = {
+      preview_width = 0.6,
+    },
+    mappings = {
+      i = {
+        ["<C-h>"] = "which_key"
+      }
+    }
   },
   pickers = {
     colorscheme = {
       theme = "dropdown",
     },
-    find_files = {
-      layout_config = {
-        preview_width = 0.5,
-      },
+    current_buffer_fuzzy_find = {
+      theme = "dropdown",
     },
-    oldfiles = {
-      layout_config = {
-        preview_width = 0.5,
-      },
-    },
-    diagnostics = {
+    commands = {
       theme = "ivy",
     },
-    buffers = {
+    keymaps = {
       theme = "ivy",
     },
   },
   extensions = {
     file_browser = {
-      theme = "ivy",
+      theme = "dropdown",
     },
   },
 })

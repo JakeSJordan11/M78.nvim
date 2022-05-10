@@ -98,15 +98,15 @@ local mappings =
   b = {
     name = "Buffer",
     c = { "<cmd>bdelete!<CR>", "Close Buffer" },
-    b = { require("telescope.builtin").buffers, "Buffers" },
   },
 
   f = {
     name = "Find",
+    b = { require("telescope.builtin").buffers, "Find Buffers" },
     f = { require('telescope.builtin').find_files, "Find files" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     t = { require('telescope.builtin').live_grep, "Find Text" },
-    b = { "<cmd> Telescope file_browser<CR>", "File Browser" },
+    e = { "<cmd> Telescope file_browser<CR>", "File Explorer" },
     c = { require('telescope.builtin').colorscheme, "Colorscheme" },
     h = { require('telescope.builtin').help_tags, "Find Help" },
     m = { require('telescope.builtin').man_pages, "Man Pages" },
@@ -114,6 +114,8 @@ local mappings =
     R = { require('telescope.builtin').registers, "Registers" },
     k = { require('telescope.builtin').keymaps, "Keymaps" },
     C = { require('telescope.builtin').commands, "Commands" },
+    g = { require('telescope.builtin').git_files, "Git Files" },
+    i = { require('telescope.builtin').current_buffer_fuzzy_find, "Search In File" },
   },
 
   g = {
@@ -121,7 +123,6 @@ local mappings =
     b = { require('telescope.builtin').git_branches, "Branches" },
     c = { require('telescope.builtin').git_commits, "Commits" },
     d = { require('gitsigns').diffthis, "Diff" },
-    f = { require('telescope.builtin').git_files, "Files" },
     g = { _LAZYGIT_TOGGLE, "Lazygit" },
     s = { require('telescope.builtin').git_status, "Status" },
     t = { GitToggle, "Signs" },

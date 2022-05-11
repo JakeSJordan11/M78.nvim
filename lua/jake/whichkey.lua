@@ -97,7 +97,7 @@ local mappings =
 
   b = {
     name = "Buffer",
-    -- c = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
   },
 
   f = {

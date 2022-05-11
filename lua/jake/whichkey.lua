@@ -128,19 +128,19 @@ local mappings =
     t = { GitToggle, "Signs" },
   },
 
-  l = {
-    name = "LSP",
-    a = { vim.lsp.buf.code_action, "Code Action" },
-    f = { vim.lsp.buf.formatting, "Format" },
-    i = { "<cmd>LspInfo<CR>", "Info" },
-    j = { vim.diagnostic.goto_next, "Next Diagnostic" },
-    k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
-    l = { vim.lsp.codelens.run, "CodeLens Action" },
-    q = { vim.lsp.diagnostic.set_loclist, "Quickfix" },
-    r = { vim.lsp.buf.rename, "Rename" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-  },
+  -- l = {
+  --   name = "LSP",
+  --   a = { vim.lsp.buf.code_action, "Code Action" },
+  --   f = { vim.lsp.buf.formatting, "Format" },
+  --   i = { "<cmd>LspInfo<CR>", "Info" },
+  --   j = { vim.diagnostic.goto_next, "Next Diagnostic" },
+  --   k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
+  --   l = { vim.lsp.codelens.run, "CodeLens Action" },
+  --   q = { vim.lsp.diagnostic.set_loclist, "Quickfix" },
+  --   r = { vim.lsp.buf.rename, "Rename" },
+  --   s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+  --   S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+  -- },
 
   p = {
     name = "Packer",

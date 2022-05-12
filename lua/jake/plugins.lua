@@ -148,9 +148,6 @@ return packer.startup(function(use)
   use("L3MON4D3/LuaSnip") --snippet engine
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
-  -- Spotify
-  use("KadoBOT/nvim-spotify")
-
   -- Telescope
   use("nvim-telescope/telescope.nvim")
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })

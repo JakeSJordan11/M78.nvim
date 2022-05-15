@@ -3,12 +3,13 @@ local prettier = require("prettier")
 
 null_ls.setup({
   sources = {
-    require("null-ls").builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettierd.with({
+      filetypes = { "css" },
+    }),
   },
-  on_attach = function(client, bufnr)
+  on_attach = function(client, _)
     if client.server_capabilities then
-      -- vim.cmd("nnoremap <silent><buffer> <Leader>lf :lua vim.lsp.buf.format {async=true}<CR>")
-      -- format on save
+      vim.cmd("nnoremap <silent><buffer> <Leader>lf :lua vim.lsp.buf.format {async=true}<CR>")
       vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.format {async=true}")
       vim.cmd("xnoremap <silent><buffer> <Leader>lf :lua vim.lsp.buf.range_formatting({})<CR>")
     end

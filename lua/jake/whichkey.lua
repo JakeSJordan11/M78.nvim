@@ -89,8 +89,7 @@ end
 local mappings =
 {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
-  -- ["A"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["e"] = { "<cmd> Telescope file_browser<CR>", "File Explorer" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["M"] = { "<cmd>MinimapToggle<cr>", "Toggle Minimap" },
@@ -106,8 +105,8 @@ local mappings =
     f = { require('telescope.builtin').find_files, "Find files" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     t = { require('telescope.builtin').live_grep, "Find Text" },
-    e = { "<cmd> Telescope file_browser<CR>", "File Explorer" },
-    c = { require('telescope.builtin').colorscheme, "Colorscheme" },
+    e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    c = { "<cmd>Telescope themes<cr>", "Colorscheme" },
     h = { require('telescope.builtin').help_tags, "Find Help" },
     m = { require('telescope.builtin').man_pages, "Man Pages" },
     o = { require('telescope.builtin').oldfiles, "Old Files" },
@@ -116,6 +115,7 @@ local mappings =
     C = { require('telescope.builtin').commands, "Commands" },
     g = { require('telescope.builtin').git_files, "Git Files" },
     i = { require('telescope.builtin').current_buffer_fuzzy_find, "Search In File" },
+    l = { require('telescope').extensions.frecency.frecency, "Frecency" },
   },
 
   g = {

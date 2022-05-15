@@ -69,26 +69,27 @@ return packer.startup(function(use)
   use "akinsho/bufferline.nvim"
 
   -- Colorschemes
-  use "f-person/auto-dark-mode.nvim"
-  use "ellisonleao/gruvbox.nvim"
-  use "lunarvim/colorschemes"
-  use "lunarvim/darkplus.nvim"
-  use "catppuccin/nvim"
-  use "savq/melange"
-  use "Julpikar/night-owl.nvim"
-  use "CantoroMC/ayu-nvim"
-  use "rebelot/kanagawa.nvim"
-  use "rockerBOO/boo-colorscheme-nvim"
-  use "kwsp/halcyon-neovim"
-  use "eddyekofo94/bogster.nvim"
-  use "folke/tokyonight.nvim"
-  use "marko-cerovac/material.nvim"
-  use "sainnhe/everforest"
-  use "shaeinst/roshnivim"
-  use "shaeinst/roshnivim-cs"
-  use "lvim-tech/lvim-colorscheme"
-  use "rafamadriz/neon"
-  use "bluz71/vim-nightfly-guicolors"
+  -- use "f-person/auto-dark-mode.nvim"
+  -- use "ellisonleao/gruvbox.nvim"
+  -- use "lunarvim/colorschemes"
+  -- use "lunarvim/darkplus.nvim"
+  -- use "catppuccin/nvim"
+  -- use "savq/melange"
+  -- use "Julpikar/night-owl.nvim"
+  -- use "CantoroMC/ayu-nvim"
+  -- use "rebelot/kanagawa.nvim"
+  -- use "rockerBOO/boo-colorscheme-nvim"
+  -- use "kwsp/halcyon-neovim"
+  -- use "eddyekofo94/bogster.nvim"
+  -- use "folke/tokyonight.nvim"
+  -- use "marko-cerovac/material.nvim"
+  -- use "sainnhe/everforest"
+  -- use "shaeinst/roshnivim"
+  -- use "shaeinst/roshnivim-cs"
+  -- use "lvim-tech/lvim-colorscheme"
+  -- use "rafamadriz/neon"
+  -- use "bluz71/vim-nightfly-guicolors"
+  use "themercorp/themer.lua"
 
   -- Comments
   use "numToStr/Comment.nvim"
@@ -149,6 +150,14 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "nvim-telescope/telescope-file-browser.nvim"
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require "telescope".load_extension("frecency")
+    end,
+    requires = { "tami5/sqlite.lua" }
+  }
 
   -- Terminal
   use "akinsho/toggleterm.nvim"
@@ -172,7 +181,6 @@ return packer.startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-
   if PACKER_BOOTSTRAP then
     require "packer".sync()
   end

@@ -8,10 +8,9 @@ vim.cmd([[
   \ | highlight GitSignsAdd guibg=NONE 
   \ | highlight GitSignsChange guibg=NONE 
   \ | highlight GitSignsDelete guibg=NONE 
-  \ | highlight DiagnosticSignError guibg=NONE 
+  \ | highlight DiagnosticSignError guibg=NONE
   \ | highlight DiagnosticSignWarn guibg=NONE
-  \ | highlight DiagnosticSignInfo guibg=NONE 
+  \ | highlight DiagnosticSignInfo guibg=NONE
   \ | highlight DiagnosticSignHint guibg=NONE
-  \ | highlight Pmenu ctermbg=NONE guibg=NONE
   augroup END
 ]])

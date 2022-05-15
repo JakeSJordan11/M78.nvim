@@ -1,4 +1,3 @@
-local status = require 'nvim-spotify'.status
 local windline = require('windline')
 local helper = require('windline.helpers')
 local sep = helper.separators
@@ -21,8 +20,6 @@ local hl_list = {
 local basic = {}
 
 local airline_colors = {}
-
-status:start()
 
 airline_colors.a = {
   NormalSep = { 'magenta_a', 'magenta_b' },
@@ -174,9 +171,9 @@ basic.lsp_diagnos = {
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
       return {
-        { lsp_comps.lsp_error({ format = '  %s', show_zero = true }), 'red' },
-        { lsp_comps.lsp_warning({ format = '  %s', show_zero = true }), 'yellow' },
-        { lsp_comps.lsp_hint({ format = '  %s', show_zero = true }), 'blue' },
+        { lsp_comps.lsp_error({ format = ' ◉ %s', show_zero = true }), 'red' },
+        { lsp_comps.lsp_warning({ format = ' ◉ %s', show_zero = true }), 'yellow' },
+        { lsp_comps.lsp_hint({ format = ' ◉ %s', show_zero = true }), 'blue' },
       }
     end
     return { ' ', 'red' }
@@ -246,9 +243,7 @@ local default = {
     basic.section_c,
     basic.lsp_diagnos,
     basic.divider,
-    -- { status.listen, { 'magenta_a' } },
     { vim_components.search_count(), { 'cyan', 'NormalBg' } },
-    -- basic.divider,
     basic.git,
     basic.section_x,
     basic.section_y,

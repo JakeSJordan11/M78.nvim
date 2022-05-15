@@ -89,7 +89,7 @@ end
 local mappings =
 {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
-  ["e"] = { "<cmd> Telescope file_browser<CR>", "File Explorer" },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["M"] = { "<cmd>MinimapToggle<cr>", "Toggle Minimap" },
@@ -102,10 +102,10 @@ local mappings =
   f = {
     name = "Find",
     b = { require("telescope.builtin").buffers, "Find Buffers" },
+    e = { "<cmd> Telescope file_browser<CR>", "File Explorer" },
     f = { require('telescope.builtin').find_files, "Find files" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     t = { require('telescope.builtin').live_grep, "Find Text" },
-    e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     c = { "<cmd>Telescope themes<cr>", "Colorscheme" },
     h = { require('telescope.builtin').help_tags, "Find Help" },
     m = { require('telescope.builtin').man_pages, "Man Pages" },

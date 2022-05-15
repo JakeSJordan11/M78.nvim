@@ -84,7 +84,7 @@ vim.opt.wildignore:append(".pyc,.swp") -- Ignore files matching these patterns w
 vim.opt.guifont = "OperatorMonoSSmLig NF, DankMono NF, Hack NF, Cascadia Mono, *:h20" -- Set font when using GUI app.
 vim.opt.clipboard = "unnamedplus" -- Share system clipboard on yank.
 vim.opt.concealcursor = "i" -- Hide cursor when entering insert mode
-vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 vim.opt.fillchars = "eob: " -- Characters to fill the statuslines and vertical separators.
 vim.opt.highlight.blend = 100
 vim.opt.undofile = true

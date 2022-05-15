@@ -18,9 +18,6 @@ telescope.setup({
     colorscheme = {
       theme = "dropdown",
     },
-    current_buffer_fuzzy_find = {
-      theme = "dropdown",
-    },
     commands = {
       theme = "ivy",
     },
@@ -29,11 +26,14 @@ telescope.setup({
     },
   },
   extensions = {
-    file_browser = {
-      theme = "dropdown",
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+      }
     },
   },
 })
-telescope.load_extension("fzf")
-telescope.load_extension("file_browser")
-telescope.load_extension("projects")
+telescope.load_extension "fzf"
+telescope.load_extension "file_browser"
+telescope.load_extension "projects"
+telescope.load_extension "ui-select"
+telescope.load_extension "themes"

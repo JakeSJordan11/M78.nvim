@@ -3,4 +3,6 @@ if not status_ok then
   return
 end
 
-circles.setup()
+circles.setup({
+  lsp = false
+})

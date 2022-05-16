@@ -10,9 +10,9 @@ telescope.setup({
     },
     mappings = {
       i = {
-        ["<C-h>"] = "which_key"
-      }
-    }
+        ["<C-h>"] = "which_key",
+      },
+    },
   },
   pickers = {
     colorscheme = {
@@ -27,13 +27,12 @@ telescope.setup({
   },
   extensions = {
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {
-      }
+      require("telescope.themes").get_dropdown({}),
     },
   },
 })
-telescope.load_extension "fzf"
-telescope.load_extension "file_browser"
-telescope.load_extension "projects"
-telescope.load_extension "ui-select"
-telescope.load_extension "themes"
+telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
+telescope.load_extension("projects")
+telescope.load_extension("ui-select")
+telescope.load_extension("themes")

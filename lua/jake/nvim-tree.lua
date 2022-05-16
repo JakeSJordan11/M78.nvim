@@ -4,7 +4,7 @@ if not config_status_ok then
 end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
-require 'nvim-tree'.setup {
+require("nvim-tree").setup({
   hijack_unnamed_buffer_when_opening = true,
   update_cwd = true,
   view = {
@@ -35,4 +35,4 @@ require 'nvim-tree'.setup {
   filters = {
     dotfiles = true,
   },
-}
+})

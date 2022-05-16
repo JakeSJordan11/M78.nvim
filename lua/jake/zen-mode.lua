@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-zen.setup {
+zen.setup({
   window = {
     backdrop = 1,
     options = {
@@ -11,6 +11,4 @@ zen.setup {
       relativenumber = false,
     },
   },
-}
-
-vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>ZenMode<cr>", { nowait = true, silent = true, noremap = true })
+})

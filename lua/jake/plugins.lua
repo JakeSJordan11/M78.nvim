@@ -1,21 +1,18 @@
 local fn = vim.fn
-
--- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+  PACKER_BOOTSTRAP = fn.system({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
+  print("Installing packer close and reopen Neovim...")
+  vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -23,148 +20,143 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+  return
 end
 
--- Have packer use a popup window
 packer.init({
-	-- max_jobs = 50, -- temp fix for packer bug
-	compile_path = vim.fn.stdpath("data") .. "/site/pack/loader/start/packer.nvim/plugin/packer.lua",
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-	profile = {
-		enable = true,
-	},
+  compile_path = vim.fn.stdpath("data") .. "/site/pack/loader/start/packer.nvim/plugin/packer.lua",
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
+  profile = {
+    enable = true,
+  },
 })
 
 return packer.startup(function(use)
-	use("wbthomason/packer.nvim")
+  use("wbthomason/packer.nvim")
 
-	-- AI assistance
-	use("github/copilot.vim")
-	use({
-		"tzachar/cmp-tabnine",
-		config = function()
-			local tabnine = require("cmp_tabnine.config")
-			tabnine:setup({
-				max_lines = 1000,
-				max_num_results = 20,
-				sort = true,
-			})
-		end,
-		after = "nvim-cmp",
-		run = "./install.sh",
-	})
+  -- AI assistance
+  use("github/copilot.vim")
+  use({
+    "tzachar/cmp-tabnine",
+    config = function()
+      local tabnine = require("cmp_tabnine.config")
+      tabnine:setup({
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+      })
+    end,
+    after = "nvim-cmp",
+    run = "./install.sh",
+  })
 
-	-- AutoPairs
-	use("windwp/nvim-autopairs")
+  -- AutoPairs
+  use("windwp/nvim-autopairs")
 
-	-- Bufferline
-	use("akinsho/bufferline.nvim")
+  -- Bufferline
+  use("akinsho/bufferline.nvim")
 
-	-- Colorschemes
-	use("themercorp/themer.lua")
+  -- Colorschemes
+  use("themercorp/themer.lua")
 
-	-- Comments
-	use("numToStr/Comment.nvim")
+  -- Comments
+  use("numToStr/Comment.nvim")
 
-	-- Completion
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
-	use("saadparwaiz1/cmp_luasnip")
+  -- Completion
+  use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+  use("hrsh7th/cmp-cmdline")
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-nvim-lua")
+  use("saadparwaiz1/cmp_luasnip")
 
-	-- Git
-	use("lewis6991/gitsigns.nvim")
+  -- Git
+  use("lewis6991/gitsigns.nvim")
 
-	-- Icons
-	use("kyazdani42/nvim-web-devicons")
-	use("projekt0n/circles.nvim")
+  -- Icons
+  use("kyazdani42/nvim-web-devicons")
+  use("projekt0n/circles.nvim")
 
-	-- Keymaps
-	use("folke/which-key.nvim")
+  -- Keymaps
+  use("folke/which-key.nvim")
 
-	-- LSP
-	use("neovim/nvim-lspconfig")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("MunifTanjim/prettier.nvim")
+  -- LSP
+  use("neovim/nvim-lspconfig")
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("MunifTanjim/prettier.nvim")
 
-	-- Notifications
-	use("rcarriga/nvim-notify")
+  -- Notifications
+  use("rcarriga/nvim-notify")
 
-	-- MiniMap
-	use("wfxr/minimap.vim")
+  -- MiniMap
+  use("wfxr/minimap.vim")
 
-	-- Lua
-	use("ckipp01/stylua-nvim")
+  -- Lua
+  use("ckipp01/stylua-nvim")
 
-	-- Project Management
-	use("wakatime/vim-wakatime")
-	use("ahmedkhalf/project.nvim")
-	use("goolord/alpha-nvim")
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-		},
-		tag = "nightly",
-	})
+  -- Project Management
+  use("wakatime/vim-wakatime")
+  use("ahmedkhalf/project.nvim")
+  use("goolord/alpha-nvim")
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    tag = "nightly",
+  })
 
-	-- Rust
-	use("simrat39/rust-tools.nvim")
-	use("rust-lang/rust.vim")
+  -- Rust
+  use("simrat39/rust-tools.nvim")
+  use("rust-lang/rust.vim")
 
-	-- Statusline
-	use("windwp/windline.nvim")
+  -- Statusline
+  use("windwp/windline.nvim")
 
-	-- Snippets
-	use("L3MON4D3/LuaSnip")
+  -- Snippets
+  use("L3MON4D3/LuaSnip")
 
-	-- Telescope
-	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-		requires = { "tami5/sqlite.lua" },
-	})
+  -- Telescope
+  use("nvim-telescope/telescope.nvim")
+  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use("nvim-telescope/telescope-file-browser.nvim")
+  use({ "nvim-telescope/telescope-ui-select.nvim" })
+  use({
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension("frecency")
+    end,
+    requires = { "tami5/sqlite.lua" },
+  })
 
-	-- Terminal
-	use("akinsho/toggleterm.nvim")
+  -- Terminal
+  use("akinsho/toggleterm.nvim")
 
-	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-	use("nvim-treesitter/playground")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("windwp/nvim-ts-autotag")
+  -- Treesitter
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  })
+  use("nvim-treesitter/playground")
+  use("JoosepAlviste/nvim-ts-context-commentstring")
+  use("windwp/nvim-ts-autotag")
 
-	-- UI
-	use("MunifTanjim/nui.nvim")
-	use("beauwilliams/focus.nvim")
-	use("folke/zen-mode.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+  -- UI
+  use("MunifTanjim/nui.nvim")
+  use("beauwilliams/focus.nvim")
+  use("folke/zen-mode.nvim")
+  use("lukas-reineke/indent-blankline.nvim")
+  use("nvim-lua/popup.nvim")
+  use("nvim-lua/plenary.nvim")
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
+  if PACKER_BOOTSTRAP then
+    require("packer").sync()
+  end
 end)

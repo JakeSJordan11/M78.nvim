@@ -4,5 +4,5 @@ if not status_ok then
 end
 
 circles.setup({
-  lsp = false
+  lsp = false,
 })

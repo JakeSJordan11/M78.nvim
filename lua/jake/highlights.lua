@@ -12,5 +12,13 @@ vim.cmd([[
   \ | highlight DiagnosticSignWarn guibg=NONE
   \ | highlight DiagnosticSignInfo guibg=NONE
   \ | highlight DiagnosticSignHint guibg=NONE
+  \ | highlight NormalFloat guibg=NONE
+  augroup END
+]])
+
+vim.cmd([[
+  augroup yank_highlight
+    autocmd!
+    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'IncSearch', timeout = 200})
   augroup END
 ]])

@@ -1,10 +1,8 @@
 require("jake.alpha")
-require("jake.autocommands")
 require("jake.autopairs")
 require("jake.bufferline")
 require("jake.circles")
 require("jake.cmp")
--- require "jake.colorscheme"
 require("jake.comment")
 require("jake.diagnostics")
 require("jake.focus")

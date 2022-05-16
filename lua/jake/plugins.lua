@@ -124,6 +124,9 @@ return packer.startup(function(use)
   -- MiniMap
   use "wfxr/minimap.vim"
 
+  -- Lua
+  use "ckipp01/stylua-nvim"
+
   -- Project Management
   use "wakatime/vim-wakatime"
   use "ahmedkhalf/project.nvim"

@@ -4,7 +4,7 @@ local prettier = require("prettier")
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd.with({
-      filetypes = { "css" },
+      filetypes = { "css", "yaml" },
     }),
   },
   on_attach = function(client, _)

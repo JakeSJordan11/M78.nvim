@@ -196,39 +196,6 @@ basic.git = {
     return ""
   end,
 }
-local quickfix = {
-  filetypes = { "qf", "Trouble" },
-  active = {
-    { "🚦 Quickfix ", { "white", "black" } },
-    { helper.separators.slant_right, { "black", "black_light" } },
-    {
-      function()
-        return vim.fn.getqflist({ title = 0 }).title
-      end,
-      { "cyan", "black_light" },
-    },
-    { " Total : %L ", { "yellow", "black_light" } },
-    { helper.separators.slant_right, { "black_light", "InactiveBg" } },
-    { " ", { "InactiveFg", "InactiveBg" } },
-    basic.divider,
-    { helper.separators.slant_right, { "InactiveBg", "black" } },
-    { "🧛 ", { "white", "black" } },
-  },
-  always_active = true,
-  show_last_status = true,
-}
-
-local explorer = {
-  filetypes = { "fern", "NvimTree", "lir" },
-  active = {
-    { "  ", { "white", "magenta_b" } },
-    { helper.separators.slant_right, { "magenta_b", "NormalBg" } },
-    { b_components.divider, "" },
-    { b_components.file_name(""), { "NormalFg", "NormalBg" } },
-  },
-  always_active = true,
-  show_last_status = true,
-}
 
 local default = {
   filetypes = { "default" },
@@ -285,7 +252,5 @@ windline.setup({
   end,
   statuslines = {
     default,
-    quickfix,
-    explorer,
   },
 })

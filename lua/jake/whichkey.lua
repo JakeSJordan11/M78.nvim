@@ -76,7 +76,8 @@ end
 local mappings = {
   ["/"] = { require("Comment.api").toggle_current_linewise, "Comment" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+  -- ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["q"] = { "<cmd>TroubleToggle<CR>", "QuickFix" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["M"] = { "<cmd>MinimapToggle<cr>", "Toggle Minimap" },
   ["z"] = { "<cmd>ZenMode<cr>", "Toggle ZenMode" },

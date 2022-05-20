@@ -63,7 +63,8 @@ return packer.startup(function(use)
   use("akinsho/bufferline.nvim")
 
   -- Colorschemes
-  use("themercorp/themer.lua")
+  use("ellisonleao/gruvbox.nvim")
+  -- use("themercorp/themer.lua")
 
   -- Comments
   use("numToStr/Comment.nvim")

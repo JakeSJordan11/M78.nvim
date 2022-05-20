@@ -86,11 +86,11 @@ for _, lsp in pairs(servers) do
   })
 end
 
-require("lspconfig").stylelint_lsp.setup {
-  settings = {
-    stylelintplus = {
-      autoFixOnSave = true,
-      autoFixOnFormat = true,
-    }
-  },
-}
+-- require("lspconfig").stylelint_lsp.setup {
+--   settings = {
+--     stylelintplus = {
+--       autoFixOnSave = true,
+--       autoFixOnFormat = true,
+--     }
+--   },
+-- }

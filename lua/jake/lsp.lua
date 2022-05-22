@@ -1,4 +1,5 @@
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
@@ -61,20 +62,21 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  "tailwindcss",
+  "bashls",
   "pylsp",
   "cssls",
   "cssmodules_ls",
+  "emmet_ls",
   "eslint",
-  "jsonls",
-  "sumneko_lua",
-  "tsserver",
   "gopls",
-  "rust_analyzer",
-  "html",
-  "bashls",
   "graphql",
+  "html",
+  "jsonls",
+  "rust_analyzer",
   "stylelint_lsp",
+  "sumneko_lua",
+  "tailwindcss",
+  "tsserver",
 }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup({
@@ -85,12 +87,3 @@ for _, lsp in pairs(servers) do
     },
   })
 end
-
--- require("lspconfig").stylelint_lsp.setup {
---   settings = {
---     stylelintplus = {
---       autoFixOnSave = true,
---       autoFixOnFormat = true,
---     }
---   },
--- }

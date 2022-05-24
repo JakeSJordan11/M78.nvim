@@ -67,7 +67,7 @@ local servers = {
   "pylsp",
   "cssls",
   "cssmodules_ls",
-  -- "emmet_ls",
+  "emmet_ls",
   "eslint",
   "gopls",
   "graphql",
@@ -75,7 +75,7 @@ local servers = {
   "jsonls",
   "rust_analyzer",
   "stylelint_lsp",
-  -- "sumneko_lua",
+  "sumneko_lua",
   "tailwindcss",
   "tsserver",
 }
@@ -90,9 +90,6 @@ end
 
 require("lspconfig").emmet_ls.setup {
   filetypes = { "html", "javascriptreact", "typescriptreact" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
 }
 
 require("lspconfig").sumneko_lua.setup {
@@ -103,9 +100,6 @@ require("lspconfig").sumneko_lua.setup {
       },
     },
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
 }
 
 require("null-ls").setup {

@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-project.setup({
+project.setup {
   active = true,
   on_config_done = nil,
   manual_mode = false,
@@ -12,5 +12,5 @@ project.setup({
   show_hidden = false,
   silent_chdir = true,
   ignore_lsp = {},
-  datapath = vim.fn.stdpath("data"),
-})
+  datapath = vim.fn.stdpath "data",
+}

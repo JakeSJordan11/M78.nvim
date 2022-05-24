@@ -42,6 +42,6 @@ vim.g.indent_blankline_context_patterns = {
   "operation_type",
 }
 
-indent_blankline.setup({
+indent_blankline.setup {
   show_current_context = true,
-})
+}

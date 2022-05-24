@@ -1,4 +1,4 @@
-require("themer").setup({
+require("themer").setup {
   colorscheme = "gruvbox",
   styles = {
     ["function"] = { style = "italic" },
@@ -8,4 +8,4 @@ require("themer").setup({
     parameter = { style = "italic" },
   },
   enable_installer = true,
-})
+}

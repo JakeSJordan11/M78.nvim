@@ -4,16 +4,16 @@ if not config_status_ok then
 end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
-require("nvim-tree").setup({
+require("nvim-tree").setup {
   hijack_unnamed_buffer_when_opening = true,
   update_cwd = true,
   view = {
     hide_root_folder = true,
     mappings = {
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "h", cb = tree_cb("close_node") },
-        { key = "v", cb = tree_cb("vsplit") },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "v", cb = tree_cb "vsplit" },
       },
     },
   },
@@ -35,4 +35,4 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
-})
+}

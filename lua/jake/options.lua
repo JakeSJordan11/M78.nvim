@@ -8,9 +8,9 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
-vim.opt.complete:remove("i")
+vim.opt.complete:remove "i"
 vim.opt.lazyredraw = true
-vim.opt.display:append("lastline")
+vim.opt.display:append "lastline"
 vim.opt.encoding = "utf-8"
 vim.opt.linebreak = true
 vim.opt.scrolloff = 5
@@ -37,14 +37,14 @@ vim.opt.autoread = true
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.backspace = "indent,eol,start"
-vim.opt.formatoptions:append("j")
+vim.opt.formatoptions:append "j"
 vim.opt.hidden = true
 vim.opt.history = 1000
 vim.opt.modeline = false
-vim.opt.nrformats:remove("octal")
+vim.opt.nrformats:remove "octal"
 vim.opt.shell = "/bin/zsh"
 vim.opt.spell = false
-vim.opt.wildignore:append(".pyc,.swp")
+vim.opt.wildignore:append ".pyc,.swp"
 vim.opt.guifont = "OperatorMonoSSmLig NF, DankMono NF, Hack NF, Cascadia Mono, *:h20"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.concealcursor = "i"

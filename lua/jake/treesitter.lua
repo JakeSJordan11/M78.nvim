@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 require("nvim-treesitter.install").compilers = { "clang", "gcc" }
-configs.setup({
+configs.setup {
   ensure_installed = "all",
   sync_install = false,
   ignore_install = { "phpdoc" },
@@ -65,4 +65,4 @@ configs.setup({
     enable = true,
     enable_autocmd = false,
   },
-})
+}

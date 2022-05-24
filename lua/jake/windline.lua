@@ -1,13 +1,13 @@
-local windline = require("windline")
-local helper = require("windline.helpers")
+local windline = require "windline"
+local helper = require "windline.helpers"
 local sep = helper.separators
-local b_components = require("windline.components.basic")
+local b_components = require "windline.components.basic"
 local state = windline.state
-local vim_components = require("windline.components.vim")
-local HSL = require("wlanimation.utils")
+local vim_components = require "windline.components.vim"
+local HSL = require "wlanimation.utils"
 
-local lsp_comps = require("windline.components.lsp")
-local git_comps = require("windline.components.git")
+local lsp_comps = require "windline.components.lsp"
+local git_comps = require "windline.components.git"
 
 local hl_list = {
   Black = { "white", "black" },
@@ -114,7 +114,7 @@ basic.section_x = {
         { " ", state.mode[2] },
         { b_components.file_encoding() },
         { " " },
-        { b_components.file_format({ icon = true }) },
+        { b_components.file_format { icon = true } },
         { " " },
       }
     end
@@ -130,7 +130,7 @@ basic.section_y = {
     if width > width_breakpoint then
       return {
         { sep.left_filled, state.mode[2] .. "Sep" },
-        { b_components.cache_file_type({ icon = true }), state.mode[2] },
+        { b_components.cache_file_type { icon = true }, state.mode[2] },
         { " " },
       }
     end
@@ -168,9 +168,9 @@ basic.lsp_diagnos = {
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
       return {
-        { lsp_comps.lsp_error({ format = " ◉ %s", show_zero = true }), "red" },
-        { lsp_comps.lsp_warning({ format = " ◉ %s", show_zero = true }), "yellow" },
-        { lsp_comps.lsp_hint({ format = " ◉ %s", show_zero = true }), "blue" },
+        { lsp_comps.lsp_error { format = " ◉ %s", show_zero = true }, "red" },
+        { lsp_comps.lsp_warning { format = " ◉ %s", show_zero = true }, "yellow" },
+        { lsp_comps.lsp_hint { format = " ◉ %s", show_zero = true }, "blue" },
       }
     end
     return { " ", "red" }
@@ -188,9 +188,9 @@ basic.git = {
   text = function(bufnr)
     if git_comps.is_git(bufnr) then
       return {
-        { git_comps.diff_added({ format = "  %s" }), "green" },
-        { git_comps.diff_removed({ format = "  %s" }), "red" },
-        { git_comps.diff_changed({ format = " 柳%s" }), "blue" },
+        { git_comps.diff_added { format = "  %s" }, "green" },
+        { git_comps.diff_removed { format = "  %s" }, "red" },
+        { git_comps.diff_changed { format = " 柳%s" }, "blue" },
       }
     end
     return ""
@@ -219,7 +219,7 @@ local default = {
   },
 }
 
-windline.setup({
+windline.setup {
   colors_name = function(colors)
     local mod = function(c, value)
       if vim.o.background == "light" then
@@ -253,4 +253,4 @@ windline.setup({
   statuslines = {
     default,
   },
-})
+}

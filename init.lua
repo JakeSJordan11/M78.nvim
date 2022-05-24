@@ -1,25 +1,26 @@
-require("jake.alpha")
-require("jake.autopairs")
-require("jake.bufferline")
-require("jake.circles")
-require("jake.cmp")
-require("jake.comment")
-require("jake.colorsheme")
-require("jake.diagnostics")
-require("jake.focus")
-require("jake.gitsigns")
-require("jake.highlights")
-require("jake.indentline")
-require("jake.keymaps")
-require("jake.lsp")
-require("jake.nvim-tree")
-require("jake.options")
-require("jake.plugins")
-require("jake.project")
-require("jake.telescope")
-require("jake.toggleterm")
-require("jake.treesitter")
-require("jake.trouble")
-require("jake.whichkey")
-require("jake.windline")
-require("jake.zen-mode")
+require "jake.alpha"
+require "jake.autopairs"
+require "jake.bufferline"
+require "jake.circles"
+require "jake.cmp"
+require "jake.comment"
+require "jake.colorsheme"
+require "jake.diagnostics"
+require "jake.focus"
+require "jake.gitsigns"
+require "jake.highlights"
+require "jake.indentline"
+require "jake.keymaps"
+require "jake.lsp"
+require "jake.luasnip"
+require "jake.nvim-tree"
+require "jake.options"
+require "jake.plugins"
+require "jake.project"
+require "jake.telescope"
+require "jake.toggleterm"
+require "jake.treesitter"
+require "jake.trouble"
+require "jake.whichkey"
+require "jake.windline"
+require "jake.zen-mode"

@@ -26,7 +26,8 @@ local lsp_formatting = function(bufnr)
     filter = function(clients)
       -- filter out clients that you don't want to use
       return vim.tbl_filter(function(client)
-        return client.name ~= "sumneko_lua"
+        -- return client.name ~= "sumneko_lua"
+        return client
         -- return client.name == "null_ls"
       end, clients)
     end,
@@ -62,22 +63,27 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 end
 
+require("nvim-lsp-installer").setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+}
 local servers = {
   "bashls",
   "pylsp",
   "cssls",
   "cssmodules_ls",
-  "emmet_ls",
+  -- "emmet_ls",
   "eslint",
   "gopls",
   "graphql",
   "html",
   "jsonls",
-  "rust_analyzer",
   "stylelint_lsp",
-  "sumneko_lua",
+  -- "sumneko_lua",
   "tailwindcss",
   "tsserver",
+  -- "rust_analyzer",
 }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup {
@@ -88,11 +94,10 @@ for _, lsp in pairs(servers) do
   }
 end
 
-require("lspconfig").emmet_ls.setup {
-  filetypes = { "html", "javascriptreact", "typescriptreact" },
-}
-
 require("lspconfig").sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
   settings = {
     Lua = {
       diagnostics = {
@@ -102,15 +107,46 @@ require("lspconfig").sumneko_lua.setup {
   },
 }
 
-require("null-ls").setup {
-  sources = {
-    require("null-ls").builtins.formatting.stylua,
-    require("null-ls").builtins.formatting.prettierd,
-    require("null-ls").builtins.formatting.prismaFmt,
-    require("null-ls").builtins.formatting.stylelint,
-    require("null-ls").builtins.formatting.rustywind,
-  },
+require("lspconfig").emmet_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
+  filetypes = { "html", "javascriptreact", "typescriptreact" },
 }
+
+require("null-ls").setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+  sources = {
+    require("null-ls").builtins.formatting.eslint_d,
+    require("null-ls").builtins.formatting.stylua,
+    -- require("null-ls").builtins.formatting.prettierd,
+    -- require("null-ls").builtins.formatting.prismaFmt,
+    require("null-ls").builtins.formatting.stylelint,
+    require("null-ls").builtins.formatting.rustywind,
+    require("null-ls").builtins.formatting.rustfmt,
+  },
+}
+
+require("lspconfig").rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importGranularity = "module",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
+}
+
+require("rust-tools").setup {}

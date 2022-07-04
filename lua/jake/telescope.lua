@@ -31,4 +31,12 @@ telescope.load_extension "fzf"
 telescope.load_extension "file_browser"
 telescope.load_extension "projects"
 telescope.load_extension "ui-select"
+telescope.load_extension "toggleterm"
 --telescope.load_extension("themes")
+
+require("telescope-toggleterm").setup {
+  telescope_mappings = {
+    -- <ctrl-c> : kill the terminal buffer (default) .
+    ["<C-c>"] = require("telescope-toggleterm").actions.exit_terminal,
+  },
+}

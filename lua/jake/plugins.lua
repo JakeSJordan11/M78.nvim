@@ -81,6 +81,9 @@ return packer.startup(function(use)
   -- Diagnostics
   use "folke/trouble.nvim"
 
+  -- Debugging
+  use "mfussenegger/nvim-dap"
+
   -- Git
   use "lewis6991/gitsigns.nvim"
 
@@ -92,6 +95,7 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- LSP
+  use "williamboman/nvim-lsp-installer"
   use "neovim/nvim-lspconfig"
   use "jose-elias-alvarez/null-ls.nvim"
   use "MunifTanjim/prettier.nvim"
@@ -131,6 +135,7 @@ return packer.startup(function(use)
 
   -- Statusline
   use "windwp/windline.nvim"
+  use "nvim-lualine/lualine.nvim"
 
   -- Snippets
   use "rafamadriz/friendly-snippets"
@@ -147,7 +152,8 @@ return packer.startup(function(use)
   }
 
   -- Terminal
-  use "akinsho/toggleterm.nvim"
+  use "https://git.sr.ht/~havi/telescope-toggleterm.nvim"
+  use { "akinsho/toggleterm.nvim", tag = "v1.*" }
 
   -- Treesitter
   use {

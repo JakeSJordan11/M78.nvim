@@ -74,9 +74,6 @@ return packer.startup(function(use)
   -- Diagnostics
   use "folke/trouble.nvim"
 
-  -- Git
-  use "lewis6991/gitsigns.nvim"
-
   -- Icons
   use "kyazdani42/nvim-web-devicons"
 

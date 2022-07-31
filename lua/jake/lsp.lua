@@ -24,18 +24,14 @@ vim.api.nvim_set_keymap("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format {
     filter = function(clients)
-      -- filter out clients that you don't want to use
       return vim.tbl_filter(function(client)
-        -- return client.name ~= "sumneko_lua"
         return client
-        -- return client.name == "null_ls"
       end, clients)
     end,
     bufnr = bufnr,
   }
 end
 
--- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
@@ -73,7 +69,6 @@ local servers = {
   "pylsp",
   "cssls",
   "cssmodules_ls",
-  -- "emmet_ls",
   "eslint",
   "gopls",
   "graphql",
@@ -81,10 +76,8 @@ local servers = {
   "jsonls",
   "prismals",
   "stylelint_lsp",
-  -- "sumneko_lua",
   "tailwindcss",
   "tsserver",
-  -- "rust_analyzer",
 }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup {
@@ -123,11 +116,9 @@ require("null-ls").setup {
     require("null-ls").builtins.formatting.eslint_d,
     require("null-ls").builtins.formatting.stylua,
     require("null-ls").builtins.formatting.prettierd,
-    -- require("null-ls").builtins.formatting.prismaFmt,
     require("null-ls").builtins.formatting.stylelint,
     require("null-ls").builtins.formatting.rustywind,
     require("null-ls").builtins.formatting.rustfmt,
-    -- require("null-ls").builtins.formatting.stylelint_lsp,
   },
 }
 

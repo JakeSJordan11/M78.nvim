@@ -11,7 +11,7 @@ require("nvim-tree").setup {
     hide_root_folder = true,
     mappings = {
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "open_node" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
       },

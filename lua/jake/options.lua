@@ -1,3 +1,4 @@
+vim.opt.background = "dark"
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftround = true

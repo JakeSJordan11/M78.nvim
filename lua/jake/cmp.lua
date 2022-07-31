@@ -24,6 +24,7 @@ cmp.setup {
     { name = "calc" },
     { name = "nvim_lsp_signature_help" },
     { name = "omni" },
+    { name = "tmux" },
   }, {
     { name = "buffer" },
   }),

@@ -1,5 +1,5 @@
 require("themer").setup {
-  colorscheme = "gruvbox",
+  colorscheme = "darknight",
   styles = {
     ["function"] = { style = "italic" },
     functionbuiltin = { style = "italic" },

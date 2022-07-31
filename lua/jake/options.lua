@@ -5,7 +5,7 @@ vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
 vim.opt.tabstop = 2
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
@@ -54,3 +54,10 @@ vim.opt.fillchars = "eob: "
 vim.opt.highlight.blend = 100
 vim.opt.undofile = true
 vim.opt.showmode = false
+
+vim.cmd [[
+  augroup yank_highlight
+    autocmd!
+    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'IncSearch', timeout = 200})
+  augroup END
+]]

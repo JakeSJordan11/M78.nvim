@@ -5,10 +5,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 require("nvim-tree").setup {
-  hijack_unnamed_buffer_when_opening = true,
-  update_cwd = true,
   view = {
-    hide_root_folder = true,
     mappings = {
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "open_node" },

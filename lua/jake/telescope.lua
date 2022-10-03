@@ -6,33 +6,22 @@ end
 telescope.setup {
   defaults = {
     layout_config = {
-      preview_width = 0.6,
+      prompt_position = "top",
     },
-    mappings = {
-      i = {
-        ["<C-h>"] = "which_key",
-      },
-    },
+    sorting_strategy = "ascending",
   },
   pickers = {
     colorscheme = {
       theme = "dropdown",
     },
-    commands = {
-      theme = "ivy",
-    },
-    keymaps = {
-      theme = "ivy",
-    },
   },
   extensions = {
     file_browser = {
-      theme = "ivy",
+      previewer = false,
     },
   },
 }
-telescope.load_extension "fzf"
+pcall(require('telescope').load_extension, 'fzf')
 telescope.load_extension "file_browser"
 telescope.load_extension "projects"
 telescope.load_extension "ui-select"
-telescope.load_extension "harpoon"

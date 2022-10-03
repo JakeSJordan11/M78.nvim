@@ -41,11 +41,27 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
+  -- Dap And Mason
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "mfussenegger/nvim-dap"
+  use "theHamsta/nvim-dap-virtual-text"
+
+  -- Nvim Kickstart Plugins
+  use "j-hui/fidget.nvim"
+  use "folke/neodev.nvim"
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use "tpope/vim-sleuth"
+
+  -- Testing
+  use "rcarriga/nvim-notify"
+
   -- AI assistance
   use "github/copilot.vim"
 
-  -- Bufferline
-  use "akinsho/bufferline.nvim"
+  -- Cmdline
+  use "MunifTanjim/nui.nvim"
 
   -- Colorschemes
   use "jadnw/nightwing.nvim"
@@ -55,8 +71,14 @@ return packer.startup(function(use)
   use "savq/melange"
   use "Julpikar/night-owl.nvim"
   use "eddyekofo94/bogster.nvim"
-  use "folke/tokyonight.nvim"
-  use "sainnhe/everforest"
+  use "luisiacc/gruvbox-baby"
+  use "Shatur/neovim-ayu"
+  use "rafamadriz/neon"
+  use "yonlu/omni.vim"
+  use "sainnhe/sonokai"
+  use "sainnhe/edge"
+  use "baliestri/aura-theme"
+  use "aswathkk/DarkScene.vim"
 
   -- Comments
   use "numToStr/Comment.nvim"
@@ -70,9 +92,21 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
   use "saadparwaiz1/cmp_luasnip"
+  use "dmitmel/cmp-cmdline-history"
+  use "hrsh7th/cmp-emoji"
+  use "chrisgrieser/cmp-nerdfont"
+  use "petertriho/cmp-git"
+  use "hrsh7th/cmp-nvim-lsp-document-symbol"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
 
   -- Diagnostics
   use "folke/trouble.nvim"
+
+  -- Font size updater
+  use "ktunprasert/gui-font-resize.nvim"
 
   -- Icons
   use "kyazdani42/nvim-web-devicons"
@@ -81,27 +115,20 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- LSP
-  use "williamboman/nvim-lsp-installer"
   use "neovim/nvim-lspconfig"
   use "jose-elias-alvarez/null-ls.nvim"
 
   -- Navigation
   use "kyazdani42/nvim-tree.lua"
-  use "ThePrimeagen/harpoon"
   use "ahmedkhalf/project.nvim"
   use "goolord/alpha-nvim"
-  use "nvim-telescope/telescope-file-browser.nvim"
   use "nvim-telescope/telescope.nvim"
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use "nvim-telescope/telescope-file-browser.nvim"
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
   use "nvim-telescope/telescope-ui-select.nvim"
 
   -- Project Management
   use "wakatime/vim-wakatime"
-
-  -- Rust
-  use "simrat39/rust-tools.nvim"
-  use "rust-lang/rust.vim"
-  use "saecki/crates.nvim"
 
   -- Statusline
   use "windwp/windline.nvim"
@@ -115,10 +142,11 @@ return packer.startup(function(use)
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
   use "windwp/nvim-ts-autotag"
 
-  -- Window Management
-  use "beauwilliams/focus.nvim"
+  -- Zen
+  use "folke/zen-mode.nvim"
 
   -- Dependencies
   use "nvim-lua/popup.nvim"

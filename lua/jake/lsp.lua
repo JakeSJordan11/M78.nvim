@@ -1,4 +1,4 @@
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local handlers = {
@@ -6,7 +6,7 @@ local handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = false }
+    { virtual_text = false, signs = true, numhl = true }
   ),
 }
 
@@ -35,6 +35,7 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
+  client.server_capabilities.semanticTokensProvider = nil
   if client.supports_method "textDocument/formatting" then
     vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -46,7 +47,7 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>kd", "<cmd>lua vim.lsp.buf.format {bufnr=bufnr}<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format {bufnr=bufnr}<CR>", opts)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -55,91 +56,58 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fs", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 end
 
-require("nvim-lsp-installer").setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
-}
 local servers = {
-  "bashls",
-  "pylsp",
-  "cssls",
-  "cssmodules_ls",
-  "eslint",
-  "gopls",
-  "graphql",
-  "html",
-  "jsonls",
-  "prismals",
-  "stylelint_lsp",
-  "tailwindcss",
-  "tsserver",
-}
-for _, lsp in pairs(servers) do
-  require("lspconfig")[lsp].setup {
+  denols = {
     on_attach = on_attach,
+    root_dir = require("lspconfig").util.root_pattern("deno.json"),
     capabilities = capabilities,
     handlers = handlers,
     flags = {},
-  }
-end
+  },
 
-require("lspconfig").sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
-  settings = {
+  tsserver = {
+    on_attach = on_attach,
+    root_dir = require("lspconfig").util.root_pattern("package.json"),
+    cmd = { "typescript-language-server", "--stdio", '--tsserver-path',
+      '/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib/tsserver.js' },
+    capabilities = capabilities,
+    handlers = handlers,
+    flags = {},
+  },
+
+  sumneko_lua = {
     Lua = {
       diagnostics = {
-        globals = { "vim" },
+        globals = "vim",
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
       },
     },
   },
 }
+-- Setup mason so it can manage external tooling
+require('mason').setup()
 
-require("lspconfig").emmet_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
-  filetypes = { "html", "javascriptreact", "typescriptreact" },
+-- Ensure the servers above are installed
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
 }
 
-require("null-ls").setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
-  sources = {
-    require("null-ls").builtins.formatting.eslint_d,
-    require("null-ls").builtins.formatting.stylua,
-    require("null-ls").builtins.formatting.prettierd,
-    require("null-ls").builtins.formatting.stylelint,
-    require("null-ls").builtins.formatting.rustywind,
-    require("null-ls").builtins.formatting.rustfmt,
-  },
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      handlers = handlers,
+      settings = servers[server_name],
+    }
+  end,
 }
-
-require("lspconfig").rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers = handlers,
-  settings = {
-    ["rust-analyzer"] = {
-      assist = {
-        importGranularity = "module",
-        importPrefix = "by_self",
-      },
-      cargo = {
-        loadOutDirsFromCheck = true,
-      },
-      procMacro = {
-        enable = true,
-      },
-    },
-  },
-}
-
-require("rust-tools").setup {}

@@ -21,20 +21,3 @@ require "jake.toggleterm"
 require "jake.treesitter"
 require "jake.whichkey"
 require "jake.windline"
-local ui = {
-  icons = {
-    cmd = "⌘",
-    config = "🛠",
-    event = "📅",
-    ft = "📂",
-    init = "⚙",
-    keys = "🗝",
-    plugin = "🔌",
-    runtime = "💻",
-    source = "📄",
-    start = "🚀",
-    task = "📌",
-  },
-}
-
-return ui

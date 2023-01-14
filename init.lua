@@ -1,11 +1,11 @@
-require "config.options"
-require "config.lazy"
-require "config.neovide"
+require 'config.options'
+require 'config.lazy'
+require 'config.neovide'
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "VeryLazy",
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
   callback = function()
-    require "config.autocmds"
-    require "config.keymaps"
+    require 'config.autocmds'
+    require 'config.keymaps'
   end,
 })

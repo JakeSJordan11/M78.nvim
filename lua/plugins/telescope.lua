@@ -5,9 +5,11 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-telescope/telescope-fzf-native.nvim',
+    'ahmedkhalf/project.nvim',
   },
+  lazy = false,
   cmd = 'Telescope',
-  opts = function()
+  config = function()
     require('telescope').setup {
       defaults = {
         layout_config = {

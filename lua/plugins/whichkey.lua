@@ -81,7 +81,7 @@ return {
           b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
           c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
           f = { '<cmd>Telescope git_files<cr>', 'Git files' },
-          d = { '<cmd>Gitsigns diffthis HEAD<cr>', 'Diff' },
+          d = { '<cmd>DiffviewOpen<cr>', 'Diff' },
           s = { '<cmd>Gitsigns toggle_signs<cr>', 'Toggle Signs' },
           n = { '<cmd>Gitsigns toggle_numhl<cr>', 'Toggle Number Highlight' },
         },

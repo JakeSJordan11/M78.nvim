@@ -113,6 +113,7 @@ return packer.startup(function(use)
   use("folke/which-key.nvim")
 
   -- LSP
+  use ("williamboman/nvim-lsp-installer")
   use("neovim/nvim-lspconfig") -- enable LSP
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')

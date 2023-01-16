@@ -6,6 +6,7 @@ vim.opt.breakindent = true
 vim.opt.cmdheight = 0
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.completeopt = 'menuone,noselect'
+vim.opt.cursorline = false
 vim.opt.conceallevel = 3
 vim.opt.confirm = true
 vim.opt.expandtab = true

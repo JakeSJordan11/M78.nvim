@@ -56,6 +56,7 @@ local servers = {
   kotlin_language_server = {},
   jsonnet_ls = {},
   quick_lint_js = {},
+
 }
 
 local function lsp_attach(on_attach)

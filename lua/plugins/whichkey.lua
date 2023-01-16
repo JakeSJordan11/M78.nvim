@@ -34,7 +34,6 @@ return {
 
       local mappings = {
         ['A'] = { '<cmd>Alpha<cr>', 'Alpha' },
-        ['e'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
         ['q'] = { '<cmd>q!<CR>', 'Quit' },
         ['c'] = { '<cmd>bdelete!<CR>', 'Close Buffer' },
         ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
@@ -55,15 +54,6 @@ return {
           R = { '<cmd>Telescope registers<cr>', 'Registers' },
           k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
           C = { '<cmd>Telescope commands<cr>', 'Commands' },
-        },
-
-        p = {
-          name = 'Packer',
-          c = { '<cmd>PackerCompile<cr>', 'Compile' },
-          i = { '<cmd>PackerInstall<cr>', 'Install' },
-          s = { '<cmd>PackerSync<cr>', 'Sync' },
-          S = { '<cmd>PackerStatus<cr>', 'Status' },
-          u = { '<cmd>PackerUpdate<cr>', 'Update' },
         },
 
         g = {
@@ -124,13 +114,6 @@ return {
           v = { '<cmd>wincmd v<cr>', 'Split Window Vertacally' },
           w = { '<cmd> wincmd w<cr>', 'Switch Windows' },
           x = { '<cmd> wincmd x<cr>', 'Swap current with next' },
-        },
-
-        t = {
-          name = 'Terminal',
-          f = { '<cmd>ToggleTerm direction=float<cr>', 'Float' },
-          h = { '<cmd>ToggleTerm size=10 direction=horizontal<cr>', 'Horizontal' },
-          v = { '<cmd>ToggleTerm size=80 direction=vertical<cr>', 'Vertical' },
         },
       }
       which_key.setup(setup)

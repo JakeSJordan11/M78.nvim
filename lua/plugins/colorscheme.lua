@@ -1,18 +1,18 @@
 return {
   {
     'folke/tokyonight.nvim',
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
   {
     'catppuccin/nvim',
-    lazy = false,
+    lazy = true,
     name = 'catppuccin',
     priority = 1000,
   },
   {
     'savq/melange-nvim',
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
   {

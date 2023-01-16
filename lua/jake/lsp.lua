@@ -6,8 +6,7 @@ local handlers = {
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
   ['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = false, signs = true, update_in_insert = false,
-      highlight = { enable = true, use_lsp_diagnostic_signs = true } }
+    { virtual_text = false }
   ),
 }
 
@@ -18,18 +17,13 @@ for type, icon in pairs(signs) do
 end
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format {
     filter = function(clients)
       -- filter out clients that you don't want to use
       return vim.tbl_filter(function(client)
-        -- return client.name ~= "sumneko_lua"
         return client
-        -- return client.name == "null_ls"
       end, clients)
     end,
     bufnr = bufnr,

@@ -16,3 +16,4 @@ vim.api.nvim_set_var('neovide_cursor_antialiasing', false)
 --[[ vim.api.nvim_set_var("neovide_window_floating_opacity", 0) ]]
 --[[ vim.api.nvim_set_var("neovide_background_color", "#00000000") ]]
 vim.api.nvim_set_var('neovide_input_macos_alt_is_meta', false)
+vim.opt.guifont = 'OperatorMonoSSmLig NF:h18'

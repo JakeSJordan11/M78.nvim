@@ -18,7 +18,7 @@ return {
     opts = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      local icons = require 'jake.icons'
+      local icons = require 'utils.icons'
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -68,7 +68,7 @@ return {
 
         g = {
           name = 'Git',
-          g = { require 'utils'.Lazygit, 'Lazygit' },
+          g = { require 'utils.lazygit'.lazygit, 'Lazygit' },
           J = { '<cmd>Gitsigns next_hunk<cr>', 'Next Hunk' },
           k = { '<cmd>Gitsigns prev_hunk<cr>', 'Prev Hunk' },
           L = { '<cmd>Gitsigns blame_line<cr>', 'Blame' },

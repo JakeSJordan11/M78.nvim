@@ -13,7 +13,7 @@ function M.on_attach()
 
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-  local icons = require 'jake.icons'
+  local icons = require 'utils.icons'
   local diagnostic_signs =
   { Error = icons.diagnostics.BoldError, Warn = icons.diagnostics.BoldWarning, Hint = icons.diagnostics.Hint,
     Info = icons.diagnostics.Information }

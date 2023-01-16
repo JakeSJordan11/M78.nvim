@@ -37,3 +37,6 @@ keymap('n', '<C-s>', '<cmd>w!<CR>')
 -- switch buffers
 keymap('n', '<S-l>', ':bnext<CR>', { silent = true })
 keymap('n', '<S-h>', ':bprevious<CR>', { silent = true })
+
+keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
+keymap('n', '/', '<cmd>SearchBoxMatchAll<CR>', { noremap = true })

@@ -13,7 +13,7 @@ return {
     },
     keys = {
       {
-        '<tab>',
+        '<C-n>',
         function()
           return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<tab>'
         end,
@@ -23,14 +23,14 @@ return {
         mode = 'i',
       },
       {
-        '<tab>',
+        '<C-n>',
         function()
           require('luasnip').jump(1)
         end,
         mode = 's',
       },
       {
-        '<s-tab>',
+        '<C-p>',
         function()
           require('luasnip').jump(-1)
         end,

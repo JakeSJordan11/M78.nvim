@@ -16,6 +16,11 @@ return {
     priority = 1000,
   },
   {
+    'savq/melange-nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
     'ellisonleao/gruvbox.nvim',
     lazy = false,
     priority = 1000,
@@ -27,10 +32,13 @@ return {
           CursorLine = { bg = 'NONE' },
           CursorLineNr = { bg = 'NONE' },
           Pmenu = { bg = 'NONE' },
-          DiagnosticSignInfo = { bg = 'NONE', fg = 'LightBlue' },
-          DiagnosticSignHint = { bg = 'NONE', fg = 'LightGrey' },
-          DiagnosticSignWarn = { bg = 'NONE', fg = 'Orange' },
-          DiagnosticSignError = { bg = 'NONE', fg = 'Red' },
+          GruvboxGreenSign = { bg = 'NONE' },
+          GruvboxAquaSign = { bg = 'NONE' },
+          GruvboxOrangeSign = { bg = 'NONE' },
+          GruvboxRedSign = { bg = 'NONE' },
+          GruvboxBlueSign = { bg = 'NONE' },
+          GruvboxPurpleSign = { bg = 'NONE' },
+          GruvboxYellowSign = { bg = 'NONE' },
         },
       }
       gruvbox.load()

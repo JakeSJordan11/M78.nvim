@@ -42,6 +42,20 @@ local servers = {
     disable_formatting = false,
   },
   dockerls = {},
+  cssls = {},
+  emmet_ls = {},
+  html = {},
+  cssmodules_ls = {},
+  jsonls = {},
+  graphql = {},
+  prismals = {},
+  tailwindcss = {},
+  yamlls = {},
+  taplo = {},
+  stylelint_lsp = {},
+  kotlin_language_server = {},
+  jsonnet_ls = {},
+  quick_lint_js = {},
 }
 
 local function lsp_attach(on_attach)

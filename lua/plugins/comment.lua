@@ -1,7 +1,7 @@
 return {
   {
     'numToStr/Comment.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     opts = function()
       require('Comment').setup {
         pre_hook = function(ctx)

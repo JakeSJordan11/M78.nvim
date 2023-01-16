@@ -24,7 +24,7 @@ function M.format()
 end
 
 function M.on_attach(client, buf)
-  --  client.server_capabilities.semanticTokensProvider = nil
+  client.server_capabilities.semanticTokensProvider = nil
   if client.supports_method 'textDocument/formatting' then
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = vim.api.nvim_create_augroup('LspFormat.' .. buf, {}),

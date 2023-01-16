@@ -13,9 +13,10 @@ function M.on_attach()
 
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-  local icons = require 'config.icons'
+  local icons = require 'jake.icons'
   local diagnostic_signs =
-    { Error = icons.diagnostics.BoldError, Warn = icons.diagnostics.BoldWarning, Hint = icons.diagnostics.Hint, Info = icons.diagnostics.Information }
+  { Error = icons.diagnostics.BoldError, Warn = icons.diagnostics.BoldWarning, Hint = icons.diagnostics.Hint,
+    Info = icons.diagnostics.Information }
   for type, icon in pairs(diagnostic_signs) do
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -27,4 +28,5 @@ function M.on_attach()
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
   end
 end
+
 return M

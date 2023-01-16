@@ -1,7 +1,6 @@
 return {
   {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
@@ -16,10 +15,10 @@ return {
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-nvim-lsp-signature-help',
     },
-    config = function()
+    opts = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      local icons = require 'config.icons'
+      local icons = require 'jake.icons'
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -1,6 +1,7 @@
 return {
   {
     "akinsho/toggleterm.nvim",
+    keys = '<C-\\>',
     opts = function()
       require("toggleterm").setup {
         size = 20,

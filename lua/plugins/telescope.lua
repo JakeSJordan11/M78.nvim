@@ -4,7 +4,6 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-telescope/telescope-fzf-native.nvim',
-    'ahmedkhalf/project.nvim',
   },
   cmd = 'Telescope',
   keys = {

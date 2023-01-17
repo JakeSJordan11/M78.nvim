@@ -68,7 +68,7 @@ return {
 
         g = {
           name = 'Git',
-          g = { require 'utils.lazygit'.lazygit, 'Lazygit' },
+          g = { require('utils.lazygit').lazygit, 'Lazygit' },
           J = { '<Cmd>Gitsigns next_hunk<CR>', 'Next Hunk' },
           k = { '<Cmd>Gitsigns prev_hunk<CR>', 'Prev Hunk' },
           L = { '<Cmd>Gitsigns blame_line<CR>', 'Blame' },
@@ -101,30 +101,11 @@ return {
         },
 
         s = {
-          name = 'Searchbox',
+          name = 'Search',
           s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
           m = { '<Cmd>SearchBoxMatchAll<CR>', 'Match All' },
           i = { '<Cmd>SearchBoxIncSearch<CR>', 'Include Serach' },
           r = { '<Cmd>SearchBoxReplace<CR>', 'Replace' },
-        },
-
-        w = {
-          name = 'Window',
-          ['+'] = { '<Cmd>winCmd +<CR>', 'Increase height' },
-          ['-'] = { '<Cmd>winCmd -<CR>', 'Decrease height' },
-          ['='] = { '<Cmd>winCmd =<CR>', 'Equally high and wide' },
-          ['>'] = { '<Cmd>winCmd ><CR>', 'Increase width' },
-          ['|'] = { '<Cmd>winCmd |<CR>', 'Max out the width' },
-          ['<'] = { '<Cmd>winCmd < <CR>', 'Decrease width' },
-          h = { '<Cmd>winCmd h<CR>', 'Go to the left window' },
-          j = { '<Cmd>winCmd j<CR>', 'Go to the down window' },
-          k = { '<Cmd>winCmd k<CR>', 'Go to the right window' },
-          l = { '<Cmd>winCmd l<CR>', 'Go to the up window' },
-          q = { '<Cmd>winCmd q<CR>', 'Quit a window' },
-          s = { '<Cmd>winCmd s<CR>', 'Split Window' },
-          v = { '<Cmd>winCmd v<CR>', 'Split Window Vertacally' },
-          w = { '<Cmd> winCmd w<CR>', 'Switch Windows' },
-          x = { '<Cmd> winCmd x<CR>', 'Swap current with next' },
         },
       }
       which_key.setup(setup)

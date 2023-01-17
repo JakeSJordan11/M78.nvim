@@ -30,7 +30,7 @@ vim.keymap.set('n', '<S-Left>', '<Cmd>vertical resize -2<CR>')
 vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
 
 -- control s save
-vim.keymap.set('n', '<C-s>', '<Cmd>w!<CR>')
+vim.keymap.set('n', '<D-s>', '<Cmd>w!<CR>')
 
 -- switch buffers
 vim.keymap.set('n', '<S-l>', '<Cmd>bnext<CR>', { silent = true })

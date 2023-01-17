@@ -89,6 +89,15 @@ return {
           s = { '<Cmd>Telescope lsp_document_symbols<CR>', 'Document Symbols' },
           S = { '<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'Workspace Symbols' },
         },
+
+        s = {
+          name = 'Searchbox',
+          s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
+          m = { '<Cmd>SearchBoxMatchAll<CR>', 'Match All' },
+          i = { '<Cmd>SearchBoxIncSearch<CR>', 'Include Serach' },
+          r = { '<Cmd>SearchBoxReplace<CR>', 'Replace' },
+        },
+
         w = {
           name = 'Window',
           ['+'] = { '<Cmd>winCmd +<CR>', 'Increase height' },

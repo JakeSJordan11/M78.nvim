@@ -3,9 +3,12 @@ return {
     'folke/which-key.nvim',
     lazy = false,
     config = function()
-      local status_ok, which_key = pcall(require, 'which-key')
-      if not status_ok then
-        return
+      local wk = require 'which-key'
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true }
+
+      function _lazygit_toggle()
+        lazygit:toggle()
       end
 
       local setup = {
@@ -72,7 +75,7 @@ return {
           c = { '<Cmd>Telescope git_commits<CR>', 'Checkout commit' },
           d = { '<Cmd>DiffviewOpen<CR>', 'Diff' },
           f = { '<Cmd>Telescope git_files<CR>', 'Git files' },
-          g = { require('utils.lazygit').lazygit, 'Lazygit' },
+          g = { '<Cmd>lua _lazygit_toggle()<CR>', 'Lazygit' },
           J = { '<Cmd>Gitsigns next_hunk<CR>', 'Next Hunk' },
           k = { '<Cmd>Gitsigns prev_hunk<CR>', 'Prev Hunk' },
           L = { '<Cmd>Gitsigns blame_line<CR>', 'Blame' },
@@ -106,8 +109,8 @@ return {
           s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
         },
       }
-      which_key.setup(setup)
-      which_key.register(mappings, opts)
+      wk.setup(setup)
+      wk.register(mappings, opts)
     end,
   },
 }

@@ -7,6 +7,7 @@ return {
     'nvim-telescope/telescope-fzf-native.nvim',
     'ahmedkhalf/project.nvim',
     'nvim-telescope/telescope-dap.nvim',
+    'LinArcX/telescope-ports.nvim'
   },
   lazy = false,
   cmd = 'Telescope',
@@ -33,5 +34,6 @@ return {
     require('telescope').load_extension 'projects'
     require('telescope').load_extension 'ui-select'
     require('telescope').load_extension 'file_browser'
+    require('telescope').load_extension 'ports'
   end,
 }

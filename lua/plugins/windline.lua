@@ -1,7 +1,6 @@
 return {
   {
     'windwp/windline.nvim',
-    lazy = false,
     config = function()
       local windline = require 'windline'
       local helper = require 'windline.helpers'

@@ -1,9 +1,6 @@
 return {
   {
-    "VonHeikemen/searchbox.nvim",
-    lazy = false,
-    config = function()
-      require("searchbox").setup()
-    end
-  }
+    'VonHeikemen/searchbox.nvim',
+    config = true,
+  },
 }

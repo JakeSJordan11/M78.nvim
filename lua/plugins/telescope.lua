@@ -6,6 +6,7 @@ return {
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-telescope/telescope-fzf-native.nvim',
     'ahmedkhalf/project.nvim',
+    'nvim-telescope/telescope-dap.nvim',
   },
   lazy = false,
   cmd = 'Telescope',

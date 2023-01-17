@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', 'JoosepAlviste/nvim-ts-context-commentstring',
-      'windwp/nvim-ts-autotag' },
+      'windwp/nvim-ts-autotag', 'nvim-treesitter/playground' },
     build = ':TSUpdate',
     event = 'BufReadPost',
     config = function()

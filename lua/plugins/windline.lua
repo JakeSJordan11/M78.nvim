@@ -1,25 +1,24 @@
 return {
   {
-    "windwp/windline.nvim",
+    'windwp/windline.nvim',
     lazy = false,
     config = function()
-      local windline = require('windline')
-      local helper = require('windline.helpers')
+      local windline = require 'windline'
+      local helper = require 'windline.helpers'
       local sep = helper.separators
-      -- local vim_components = require('windline.components.vim')
-      local b_components = require('windline.components.basic')
-      local state = require 'windLine'.state
-      local HSL = require "wlanimation.utils"
+      local b_components = require 'windline.components.basic'
+      local state = _G.WindLine.state
+      local HSL = require 'wlanimation.utils'
 
-      local lsp_comps = require "windline.components.lsp"
-      local git_comps = require "windline.components.git"
+      local lsp_comps = require 'windline.components.lsp'
+      local git_comps = require 'windline.components.git'
 
       local hl_list = {
-        Black = { "white", "black" },
-        White = { "black", "white" },
-        Normal = { "NormalFg", "NormalBg" },
-        Inactive = { "InactiveFg", "InactiveBg" },
-        Active = { "ActiveFg", "ActiveBg" },
+        Black = { 'white', 'black' },
+        White = { 'black', 'white' },
+        Normal = { 'NormalFg', 'NormalBg' },
+        Inactive = { 'InactiveFg', 'InactiveBg' },
+        Active = { 'ActiveFg', 'ActiveBg' },
       }
 
       local basic = {}
@@ -27,42 +26,42 @@ return {
       local airline_colors = {}
 
       airline_colors.a = {
-        NormalSep = { "red_a", "red_b" },
-        InsertSep = { "green_a", "green_b" },
-        VisualSep = { "yellow_a", "yellow_b" },
-        ReplaceSep = { "blue_a", "blue_b" },
-        CommandSep = { "magenta_a", "magenta_b" },
-        Normal = { "black", "red_a" },
-        Insert = { "black", "green_a" },
-        Visual = { "black", "yellow_a" },
-        Replace = { "black", "blue_a" },
-        Command = { "black", "magenta_a" },
+        NormalSep = { 'red_a', 'red_b' },
+        InsertSep = { 'green_a', 'green_b' },
+        VisualSep = { 'yellow_a', 'yellow_b' },
+        ReplaceSep = { 'blue_a', 'blue_b' },
+        CommandSep = { 'magenta_a', 'magenta_b' },
+        Normal = { 'black', 'red_a' },
+        Insert = { 'black', 'green_a' },
+        Visual = { 'black', 'yellow_a' },
+        Replace = { 'black', 'blue_a' },
+        Command = { 'black', 'magenta_a' },
       }
 
       airline_colors.b = {
-        NormalSep = { "red_b", "red_c" },
-        InsertSep = { "green_b", "green_c" },
-        VisualSep = { "yellow_b", "yellow_c" },
-        ReplaceSep = { "blue_b", "blue_c" },
-        CommandSep = { "magenta_b", "magenta_c" },
-        Normal = { "white", "red_b" },
-        Insert = { "white", "green_b" },
-        Visual = { "white", "yellow_b" },
-        Replace = { "white", "blue_b" },
-        Command = { "white", "magenta_b" },
+        NormalSep = { 'red_b', 'red_c' },
+        InsertSep = { 'green_b', 'green_c' },
+        VisualSep = { 'yellow_b', 'yellow_c' },
+        ReplaceSep = { 'blue_b', 'blue_c' },
+        CommandSep = { 'magenta_b', 'magenta_c' },
+        Normal = { 'white', 'red_b' },
+        Insert = { 'white', 'green_b' },
+        Visual = { 'white', 'yellow_b' },
+        Replace = { 'white', 'blue_b' },
+        Command = { 'white', 'magenta_b' },
       }
 
       airline_colors.c = {
-        NormalSep = { "red_c", "NormalBg" },
-        InsertSep = { "green_c", "NormalBg" },
-        VisualSep = { "yellow_c", "NormalBg" },
-        ReplaceSep = { "blue_c", "NormalBg" },
-        CommandSep = { "magenta_c", "NormalBg" },
-        Normal = { "white", "red_c" },
-        Insert = { "white", "green_c" },
-        Visual = { "white", "yellow_c" },
-        Replace = { "white", "blue_c" },
-        Command = { "white", "magenta_c" },
+        NormalSep = { 'red_c', 'NormalBg' },
+        InsertSep = { 'green_c', 'NormalBg' },
+        VisualSep = { 'yellow_c', 'NormalBg' },
+        ReplaceSep = { 'blue_c', 'NormalBg' },
+        CommandSep = { 'magenta_c', 'NormalBg' },
+        Normal = { 'white', 'red_c' },
+        Insert = { 'white', 'green_c' },
+        Visual = { 'white', 'yellow_c' },
+        Replace = { 'white', 'blue_c' },
+        Command = { 'white', 'magenta_c' },
       }
 
       basic.divider = { b_components.divider, hl_list.Normal }
@@ -74,13 +73,13 @@ return {
         text = function(_, _, width)
           if width > width_breakpoint then
             return {
-              { " " .. state.mode[1] .. " ", state.mode[2] },
-              { sep.right_filled, state.mode[2] .. "Sep" },
+              { ' ' .. state.mode[1] .. ' ', state.mode[2] },
+              { sep.right_filled, state.mode[2] .. 'Sep' },
             }
           end
           return {
-            { " " .. state.mode[1]:sub(1, 1) .. " ", state.mode[2] },
-            { sep.right_filled, state.mode[2] .. "Sep" },
+            { ' ' .. state.mode[1]:sub(1, 1) .. ' ', state.mode[2] },
+            { sep.right_filled, state.mode[2] .. 'Sep' },
           }
         end,
       }
@@ -91,11 +90,11 @@ return {
           if width > width_breakpoint and git_comps.is_git(bufnr) then
             return {
               { git_comps.git_branch(), state.mode[2] },
-              { " ", "" },
-              { sep.right_filled, state.mode[2] .. "Sep" },
+              { ' ', '' },
+              { sep.right_filled, state.mode[2] .. 'Sep' },
             }
           end
-          return { { sep.right_filled, state.mode[2] .. "Sep" } }
+          return { { sep.right_filled, state.mode[2] .. 'Sep' } }
         end,
       }
 
@@ -103,10 +102,10 @@ return {
         hl_colors = airline_colors.c,
         text = function()
           return {
-            { " ", state.mode[2] },
-            { b_components.cache_file_name("[No Name]", "unique") },
-            { " " },
-            { sep.right_filled, state.mode[2] .. "Sep" },
+            { ' ', state.mode[2] },
+            { b_components.cache_file_name('[No Name]', 'unique') },
+            { ' ' },
+            { sep.right_filled, state.mode[2] .. 'Sep' },
           }
         end,
       }
@@ -116,16 +115,16 @@ return {
         text = function(_, _, width)
           if width > width_breakpoint then
             return {
-              { sep.left_filled, state.mode[2] .. "Sep" },
-              { " ", state.mode[2] },
+              { sep.left_filled, state.mode[2] .. 'Sep' },
+              { ' ', state.mode[2] },
               { b_components.file_encoding() },
-              { " " },
+              { ' ' },
               { b_components.file_format { icon = true } },
-              { " " },
+              { ' ' },
             }
           end
           return {
-            { sep.left_filled, state.mode[2] .. "Sep" },
+            { sep.left_filled, state.mode[2] .. 'Sep' },
           }
         end,
       }
@@ -135,12 +134,12 @@ return {
         text = function(_, _, width)
           if width > width_breakpoint then
             return {
-              { sep.left_filled, state.mode[2] .. "Sep" },
+              { sep.left_filled, state.mode[2] .. 'Sep' },
               { b_components.cache_file_type { icon = true }, state.mode[2] },
-              { " " },
+              { ' ' },
             }
           end
-          return { { sep.left_filled, state.mode[2] .. "Sep" } }
+          return { { sep.left_filled, state.mode[2] .. 'Sep' } }
         end,
       }
 
@@ -149,66 +148,65 @@ return {
         text = function(_, _, width)
           if width > width_breakpoint then
             return {
-              { sep.left_filled, state.mode[2] .. "Sep" },
-              { "", state.mode[2] },
+              { sep.left_filled, state.mode[2] .. 'Sep' },
+              { '', state.mode[2] },
               { b_components.progress },
-              { " " },
+              { ' ' },
               { b_components.line_col },
             }
           end
           return {
-            { sep.left_filled, state.mode[2] .. "Sep" },
-            { " ", state.mode[2] },
+            { sep.left_filled, state.mode[2] .. 'Sep' },
+            { ' ', state.mode[2] },
             { b_components.line_col, state.mode[2] },
           }
         end,
       }
 
       basic.lsp_diagnos = {
-        name = "diagnostic",
+        name = 'diagnostic',
         hl_colors = {
-          red = { "red", "NormalBg" },
-          yellow = { "yellow", "NormalBg" },
-          blue = { "blue", "NormalBg" },
+          red = { 'red', 'NormalBg' },
+          yellow = { 'yellow', 'NormalBg' },
+          blue = { 'blue', 'NormalBg' },
         },
         text = function()
           return {
-            { lsp_comps.lsp_error { format = " ◉ %s", show_zero = true }, "red" },
-            { lsp_comps.lsp_warning { format = " ◉ %s", show_zero = true }, "yellow" },
-            { lsp_comps.lsp_hint { format = " ◉ %s", show_zero = true }, "blue" },
+            { lsp_comps.lsp_error { format = ' ◉ %s', show_zero = true }, 'red' },
+            { lsp_comps.lsp_warning { format = ' ◉ %s', show_zero = true }, 'yellow' },
+            { lsp_comps.lsp_hint { format = ' ◉ %s', show_zero = true }, 'blue' },
           }
         end,
       }
 
       basic.git = {
-        name = "git",
+        name = 'git',
         width = width_breakpoint,
         hl_colors = {
-          green = { "green", "NormalBg" },
-          red = { "red", "NormalBg" },
-          blue = { "blue", "NormalBg" },
+          green = { 'green', 'NormalBg' },
+          red = { 'red', 'NormalBg' },
+          blue = { 'blue', 'NormalBg' },
         },
         text = function(bufnr)
           if git_comps.is_git(bufnr) then
             return {
-              { git_comps.diff_added { format = "  %s" }, "green" },
-              { git_comps.diff_removed { format = "  %s" }, "red" },
-              { git_comps.diff_changed { format = " ◉ %s" }, "blue" },
+              { git_comps.diff_added { format = '  %s' }, 'green' },
+              { git_comps.diff_removed { format = '  %s' }, 'red' },
+              { git_comps.diff_changed { format = ' ◉ %s' }, 'blue' },
             }
           end
-          return ""
+          return ''
         end,
       }
 
       local default = {
-        filetypes = { "default" },
+        filetypes = { 'default' },
         active = {
           basic.section_a,
           basic.section_b,
           basic.section_c,
-          -- basic.lsp_diagnos,
+          basic.lsp_diagnos,
           basic.divider,
-          -- { vim_components.search_count(), { "white", "NormalBg" } },
           basic.git,
           basic.section_x,
           basic.section_y,
@@ -225,7 +223,7 @@ return {
       windline.setup {
         colors_name = function(colors)
           local mod = function(c, value)
-            if vim.o.background == "light" then
+            if vim.o.background == 'light' then
               return HSL.rgb_to_hsl(c):tint(value):to_rgb()
             end
             return HSL.rgb_to_hsl(c):shade(value):to_rgb()
@@ -257,6 +255,6 @@ return {
           default,
         },
       }
-    end
-  }
+    end,
+  },
 }

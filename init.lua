@@ -1,5 +1,4 @@
-require 'jake.autocmds'
 require 'jake.keymaps'
-require 'jake.lazy'
-require 'jake.neovide'
 require 'jake.options'
+require 'jake.neovide'
+require 'jake.lazy'

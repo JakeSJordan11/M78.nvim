@@ -40,6 +40,16 @@ return {
         ['P'] = { '<Cmd>Telescope projects<CR>', 'Projects' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
 
+        d = {
+          name = 'DAP',
+          b = { '<Cmd>lua require"dap".toggle_breakpoint()<CR>', 'Toggle Breakpoint' },
+          c = { '<Cmd>lua require"dap".continue()<CR>', 'Continue' },
+          i = { '<Cmd>lua require"dap".step_into()<CR>', 'Step Into' },
+          o = { '<Cmd>lua require"dap".step_over()<CR>', 'Step Over' },
+          u = { '<Cmd>lua require"dap".step_out()<CR>', 'Step Out' },
+          r = { '<Cmd>lua require"dap".repl.open()<CR>', 'Repl' },
+        },
+
         f = {
           name = 'Find',
           b = { '<Cmd>Telescope buffers<CR>', 'Buffers' },

@@ -16,22 +16,22 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', 'p', '"_dP')
 
 -- Move Lines
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==')
-vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
-vim.keymap.set('i', '<A-j>', '<Esc>:m .+1<CR>==gi')
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==')
-vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
-vim.keymap.set('i', '<A-k>', '<Esc>:m .-2<CR>==gi')
+vim.keymap.set('n', '<A-j>', '<Cmd>m .+1<CR>==')
+vim.keymap.set('v', '<A-j>', "<Cmd>m '>+1<CR>gv=gv")
+vim.keymap.set('i', '<A-j>', '<Esc><Cmd>m .+1<CR>==gi')
+vim.keymap.set('n', '<A-k>', '<Cmd>m .-2<CR>==')
+vim.keymap.set('v', '<A-k>', "<Cmd>m '<-2<CR>gv=gv")
+vim.keymap.set('i', '<A-k>', '<Esc><Cmd>m .-2<CR>==gi')
 
 -- Resize window using <shift> arrow keys
-vim.keymap.set('n', '<S-Up>', '<cmd>resize +2<CR>')
-vim.keymap.set('n', '<S-Down>', '<cmd>resize -2<CR>')
-vim.keymap.set('n', '<S-Left>', '<cmd>vertical resize -2<CR>')
-vim.keymap.set('n', '<S-Right>', '<cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<S-Up>', '<Cmd>resize +2<CR>')
+vim.keymap.set('n', '<S-Down>', '<Cmd>resize -2<CR>')
+vim.keymap.set('n', '<S-Left>', '<Cmd>vertical resize -2<CR>')
+vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
 
 -- control s save
-vim.keymap.set('n', '<C-s>', '<cmd>w!<CR>')
+vim.keymap.set('n', '<C-s>', '<Cmd>w!<CR>')
 
 -- switch buffers
-vim.keymap.set('n', '<S-l>', ':bnext<CR>', { silent = true })
-vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', '<S-l>', '<Cmd>bnext<CR>', { silent = true })
+vim.keymap.set('n', '<S-h>', '<Cmd>bprevious<CR>', { silent = true })

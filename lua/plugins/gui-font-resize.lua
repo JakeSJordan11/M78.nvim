@@ -3,9 +3,9 @@ return {
     'ktunprasert/gui-font-resize.nvim',
     cmd = { 'GUIFontSizeUp', 'GUIFontSizeDown', 'GUIFontSizeSet' },
     keys = {
-      { '<C-=>', '<cmd>GUIFontSizeUp<CR>', desc = 'Scale Font Up' },
-      { '<C-->', '<cmd>GUIFontSizeDown<CR>', desc = 'Scale Font Down' },
-      { '<C-0>', '<cmd>GUIFontSizeSet<CR>', desc = 'Set Font Scale' },
+      { '<D-=>', '<Cmd>GUIFontSizeUp<CR>', desc = 'Scale Font Up' },
+      { '<D-->', '<Cmd>GUIFontSizeDown<CR>', desc = 'Scale Font Down' },
+      { '<D-0>', '<Cmd>GUIFontSizeSet<CR>', desc = 'Set Font Scale' },
     },
     opts = {
       default_size = 16,

@@ -4,7 +4,7 @@ return {
     lazy = false,
     config = function()
       require("searchbox").setup()
-      vim.keymap.set('n', '<leader>/', '<cmd>SearchBoxIncSearch<CR>', { noremap = true })
+      vim.keymap.set('n', '<Leader>/', '<Cmd>SearchBoxIncSearch<CR>', { noremap = true })
     end
   }
 }

@@ -15,8 +15,8 @@ return {
 
         local n, p = {}, {}
         for key, obj in pairs(swap_objects) do
-          n[string.format('<leader>cx%s', key)] = obj
-          p[string.format('<leader>cX%s', key)] = obj
+          n[string.format('<Leader>cx%s', key)] = obj
+          p[string.format('<Leader>cX%s', key)] = obj
         end
 
         return n, p

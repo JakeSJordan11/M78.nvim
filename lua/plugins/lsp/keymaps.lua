@@ -16,15 +16,15 @@ function M.on_attach(client, buffer)
   self:map('[e', M.diagnostic_goto(false, 'ERROR'), { desc = 'Prev Error' })
   self:map(']w', M.diagnostic_goto(true, 'WARNING'), { desc = 'Next Warning' })
   self:map('[w', M.diagnostic_goto(false, 'WARNING'), { desc = 'Prev Warning' })
-  self:map('<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action', mode = { 'n', 'v' }, has = 'codeAction' })
+  self:map('<Leader>la', vim.lsp.buf.code_action, { desc = 'Code Action', mode = { 'n', 'v' }, has = 'codeAction' })
 
   local format = require('plugins.lsp.format').format
-  self:map('<leader>lf', format, { desc = 'Format Document', has = 'documentFormatting' })
-  self:map('<leader>lf', format, { desc = 'Format Range', mode = 'v', has = 'documentRangeFormatting' })
-  self:map('<leader>rn', M.rename, { expr = true, desc = 'Rename', has = 'rename' })
+  self:map('<Leader>lf', format, { desc = 'Format Document', has = 'documentFormatting' })
+  self:map('<Leader>lf', format, { desc = 'Format Range', mode = 'v', has = 'documentRangeFormatting' })
+  self:map('<Leader>rn', M.rename, { expr = true, desc = 'Rename', has = 'rename' })
 
-  self:map('<leader>ls', require('telescope.builtin').lsp_document_symbols, { desc = 'Document Symbols' })
-  self:map('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = 'Workspace Symbols' })
+  self:map('<Leader>ls', require('telescope.builtin').lsp_document_symbols, { desc = 'Document Symbols' })
+  self:map('<Leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = 'Workspace Symbols' })
 end
 
 function M.new(client, buffer)
@@ -43,7 +43,7 @@ function M:map(lhs, rhs, opts)
   vim.keymap.set(
     opts.mode or 'n',
     lhs,
-    type(rhs) == 'string' and ('<cmd>%s<cr>'):format(rhs) or rhs,
+    type(rhs) == 'string' and ('<Cmd>%s<CR>'):format(rhs) or rhs,
     { silent = true, buffer = self.buffer, expr = opts.expr, desc = opts.desc }
   )
 end

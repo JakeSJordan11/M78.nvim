@@ -27,10 +27,10 @@ return {
       "   dood8888888888888888888888888888888888b'",
     }
     dashboard.section.buttons.val = {
-      dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
-      dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-      dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-      dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+      dashboard.button("p", "  Find project", "<Cmd>Telescope projects<CR>"),
+      dashboard.button("r", "  Recently used files", "<Cmd>Telescope oldfiles<CR>"),
+      dashboard.button("c", "  Configuration", "<Cmd>e ~/.config/nvim/init.lua<CR>"),
+      dashboard.button("q", "  Quit Neovim", "<Cmd>qa<CR>"),
     }
 
     for _, value in ipairs(dashboard.section.buttons.val) do

@@ -22,7 +22,7 @@ return {
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
-    keys = { { '<leader>m', '<cmd>Mason<cr>', desc = 'Mason' } },
+    keys = { { '<Leader>m', '<Cmd>Mason<cr>', desc = 'Mason' } },
     config = function()
       require('mason').setup()
       local ensure_installed = {

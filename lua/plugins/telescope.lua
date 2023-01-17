@@ -7,7 +7,7 @@ return {
     'nvim-telescope/telescope-fzf-native.nvim',
     'ahmedkhalf/project.nvim',
     'nvim-telescope/telescope-dap.nvim',
-    'LinArcX/telescope-ports.nvim'
+    'LinArcX/telescope-ports.nvim',
   },
   lazy = false,
   cmd = 'Telescope',
@@ -20,13 +20,14 @@ return {
         sorting_strategy = 'ascending',
       },
       pickers = {
-        colorscheme = {
+        ['colorscheme'] = {
           theme = 'dropdown',
         },
       },
       extensions = {
-        file_browser = {
+        ['file_browser'] = {
           previewer = false,
+          theme = 'dropdown',
         },
       },
     }

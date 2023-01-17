@@ -7,32 +7,27 @@ return {
       local Terminal = require('toggleterm.terminal').Terminal
       local lazygit = Terminal:new { cmd = 'lazygit', hidden = true }
 
-      function _lazygit_toggle()
-        lazygit:toggle()
-      end
-
       local setup = {
-        operators = { gc = 'Comments' },
         key_labels = {
           ['<Leader>'] = 'LEADER',
         },
         window = {
-          border = 'rounded', -- none, single, double, shadow, rounded
-          position = 'top', -- bottom, top
-          margin = { 2, 6, 0, 6 }, -- extra window margin [top, right, bottom, left]
+          border = 'rounded',
+          position = 'top',
+          margin = { 2, 6, 0, 6 },
         },
         layout = {
-          align = 'center', -- align columns left, center or right
+          align = 'center',
         },
       }
 
       local opts = {
-        mode = 'n', -- NORMAL mode
+        mode = 'n',
         prefix = '<Leader>',
-        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
+        buffer = nil,
+        silent = true,
+        noremap = true,
+        nowait = true,
       }
 
       local mappings = {
@@ -75,7 +70,12 @@ return {
           c = { '<Cmd>Telescope git_commits<CR>', 'Checkout commit' },
           d = { '<Cmd>DiffviewOpen<CR>', 'Diff' },
           f = { '<Cmd>Telescope git_files<CR>', 'Git files' },
-          g = { '<Cmd>lua _lazygit_toggle()<CR>', 'Lazygit' },
+          g = {
+            function()
+              lazygit:toggle()
+            end,
+            'Lazygit',
+          },
           J = { '<Cmd>Gitsigns next_hunk<CR>', 'Next Hunk' },
           k = { '<Cmd>Gitsigns prev_hunk<CR>', 'Prev Hunk' },
           L = { '<Cmd>Gitsigns blame_line<CR>', 'Blame' },

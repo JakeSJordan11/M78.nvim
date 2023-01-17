@@ -35,6 +35,3 @@ vim.keymap.set('n', '<C-s>', '<cmd>w!<CR>')
 -- switch buffers
 vim.keymap.set('n', '<S-l>', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { silent = true })
-
-vim.keymap.set('n', '/', '<cmd>SearchBoxIncSearch<CR>', { noremap = true })
-vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })

@@ -13,7 +13,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
-      "jose-elias-alvarez/typescript.nvim",
+      'jose-elias-alvarez/typescript.nvim',
     },
     config = function(plugin)
       require('plugins.lsp.servers').setup(plugin)
@@ -50,7 +50,7 @@ return {
       local nls = require 'null-ls'
       nls.setup {
         sources = {
-          -- nls.builtins.formatting.stylua,
+          nls.builtins.formatting.stylua,
           -- nls.builtins.diagnostics.ruff.with { extra_args = { '--max-line-length=180' } },
         },
       }

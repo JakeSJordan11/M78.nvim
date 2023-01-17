@@ -38,5 +38,5 @@ keymap('n', '<C-s>', '<cmd>w!<CR>')
 keymap('n', '<S-l>', ':bnext<CR>', { silent = true })
 keymap('n', '<S-h>', ':bprevious<CR>', { silent = true })
 
-keymap('n', '<leader>/', '<cmd>SearchBoxMatchAll<CR>', { noremap = true })
-keymap('n', '<leader><CR>', '<cmd>FineCmdline<CR>', { noremap = true })
+keymap('n', '/', '<cmd>SearchBoxIncSearch<CR>', { noremap = true })
+keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })

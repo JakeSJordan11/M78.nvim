@@ -32,7 +32,7 @@ return {
           GruvboxBlueSign = { bg = 'NONE' },
           GruvboxPurpleSign = { bg = 'NONE' },
           GruvboxYellowSign = { bg = 'NONE' },
-          IncSearch = { bg = '#404040' }
+          IncSearch = { bg = '#484848' }
         },
       }
       gruvbox.load()

@@ -13,6 +13,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      "jose-elias-alvarez/typescript.nvim",
     },
     config = function(plugin)
       require('plugins.lsp.servers').setup(plugin)
@@ -22,18 +23,18 @@ return {
     'williamboman/mason.nvim',
     cmd = 'Mason',
     keys = { { '<leader>lm', '<cmd>Mason<cr>', desc = 'Mason' } },
-    ensure_installed = {
-      'stylua',
-      'ruff',
-      'rustfmt',
-      'rustywind',
-      'prettierd',
-      'eslint_d',
-    },
-    config = function(plugin)
+    config = function()
       require('mason').setup()
+      local ensure_installed = {
+        'stylua',
+        'ruff',
+        'rustfmt',
+        'rustywind',
+        'prettierd',
+        'eslint_d',
+      }
       local mr = require 'mason-registry'
-      for _, tool in ipairs(plugin.ensure_installed) do
+      for _, tool in ipairs(ensure_installed) do
         local p = mr.get_package(tool)
         if not p:is_installed() then
           p:install()
@@ -55,7 +56,7 @@ return {
       }
     end,
   },
-  --[[ {
+  {
     'utilyre/barbecue.nvim',
     event = 'VeryLazy',
     dependencies = {
@@ -64,5 +65,5 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = true,
-  }, ]]
+  },
 }

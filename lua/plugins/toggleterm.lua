@@ -1,9 +1,9 @@
 return {
   {
-    "akinsho/toggleterm.nvim",
+    'akinsho/toggleterm.nvim',
     keys = '<C-\\>',
-    opts = function()
-      require("toggleterm").setup {
+    config = function()
+      require('toggleterm').setup {
         size = 20,
         open_mapping = [[<c-\>]],
         hide_numbers = true,
@@ -13,15 +13,15 @@ return {
         start_in_insert = true,
         insert_mappings = true,
         persist_size = true,
-        direction = "float",
+        direction = 'float',
         close_on_exit = true,
         shell = vim.o.shell,
         float_opts = {
-          border = "curved",
+          border = 'curved',
           winblend = 0,
           highlights = {
-            border = "Normal",
-            background = "Normal",
+            border = 'Normal',
+            background = 'Normal',
           },
         },
       }

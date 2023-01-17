@@ -8,6 +8,7 @@ vim.opt.signcolumn = 'yes' -- Show sign column always
 vim.opt.clipboard = 'unnamedplus' -- Copy to system clipboard
 vim.opt.timeoutlen = 300 -- Time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.fillchars = { eob = ' ' } -- Hide ~ at the end of buffer
+vim.opt.showmode = false -- Hide mode
 
 -- neovide
 if vim.g.neovide then

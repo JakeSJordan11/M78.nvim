@@ -79,14 +79,6 @@ return {
         l = {
           name = 'LSP',
           a = { vim.lsp.buf.code_action, 'Code Action' },
-          d = {
-            '<cmd>Telescope lsp_document_diagnostics<cr>',
-            'Document Diagnostics',
-          },
-          w = {
-            '<cmd>Telescope lsp_workspace_diagnostics<cr>',
-            'Workspace Diagnostics',
-          },
           f = { vim.lsp.buf.formatting, 'Format' },
           i = { '<cmd>LspInfo<cr>', 'Info' },
           j = { vim.diagnostic.goto_next, 'Next Diagnostic' },

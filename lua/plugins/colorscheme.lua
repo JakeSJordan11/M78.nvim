@@ -24,7 +24,6 @@ return {
       require('gruvbox').setup {
         overrides = {
           SignColumn = { bg = 'NONE' },
-          Pmenu = { bg = 'NONE' },
           GruvboxGreenSign = { bg = 'NONE' },
           GruvboxAquaSign = { bg = 'NONE' },
           GruvboxOrangeSign = { bg = 'NONE' },
@@ -32,7 +31,6 @@ return {
           GruvboxBlueSign = { bg = 'NONE' },
           GruvboxPurpleSign = { bg = 'NONE' },
           GruvboxYellowSign = { bg = 'NONE' },
-          IncSearch = { bg = '#484848' }
         },
       }
       gruvbox.load()

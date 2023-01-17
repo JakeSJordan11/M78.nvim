@@ -14,6 +14,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'jose-elias-alvarez/typescript.nvim',
+      'windwp/windline.nvim',
     },
     config = function(plugin)
       require('plugins.lsp.servers').setup(plugin)
@@ -27,7 +28,6 @@ return {
       require('mason').setup()
       local ensure_installed = {
         'stylua',
-        'ruff',
         'rustfmt',
         'rustywind',
         'prettierd',
@@ -51,7 +51,6 @@ return {
       nls.setup {
         sources = {
           nls.builtins.formatting.stylua,
-          -- nls.builtins.diagnostics.ruff.with { extra_args = { '--max-line-length=180' } },
         },
       }
     end,

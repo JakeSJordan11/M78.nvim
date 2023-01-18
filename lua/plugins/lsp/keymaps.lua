@@ -13,7 +13,8 @@ M.on_attach = function(_, bufnr)
   vim.keymap.set('n', '<Leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<Leader>lf', function()
-    vim.lsp.buf.format { async = true }
+    -- vim.lsp.buf.format { async = true }
+    require('plugins.lsp.format').format()
   end, bufopts)
 end
 return M

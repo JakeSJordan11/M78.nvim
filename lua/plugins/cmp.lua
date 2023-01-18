@@ -2,6 +2,7 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
+      'onsails/lspkind.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer',
@@ -14,16 +15,17 @@ return {
       'petertriho/cmp-git',
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'Saecki/crates.nvim',
+      'David-Kunz/cmp-npm',
     },
     config = function()
-      -- Set up nvim-cmp.
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
 
       cmp.setup {
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            require('luasnip').lsp_expand(args.body)
           end,
         },
         window = {
@@ -37,7 +39,7 @@ return {
           ['<C-e>'] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
+            select = false,
           },
           ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -65,6 +67,7 @@ return {
           }),
         },
         sources = cmp.config.sources({
+          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'emoji' },
@@ -72,6 +75,24 @@ return {
         }, {
           { name = 'buffer' },
         }),
+        formatting = {
+          format = function(entry, vim_item)
+            if vim.tbl_contains({ 'path' }, entry.source.name) then
+              local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+              if icon then
+                vim_item.kind = icon
+                vim_item.kind_hl_group = hl_group
+                return vim_item
+              end
+            end
+            return require('lspkind').cmp_format { with_text = false }(entry, vim_item)
+          end,
+        },
+        require('lspkind').cmp_format {
+          mode = 'symbol',
+          max_width = 50,
+          symbol_map = { Copilot = '' },
+        },
       }
 
       cmp.setup.filetype('gitcommit', {

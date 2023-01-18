@@ -1,16 +1,35 @@
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes'
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.updatetime = 1000
+vim.opt.fillchars = { eob = ' ' }
+vim.opt.showmode = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.termguicolors = true
+vim.opt.completeopt = 'menuone,noselect'
+
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.wrap = false
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.belloff = 'all'
+vim.opt.hidden = true
+vim.opt.joinspaces = false
+vim.opt.undofile = true
+vim.opt.swapfile = false
+vim.opt.inccommand = 'split'
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.opt.number = true -- Show line numbers
-vim.opt.relativenumber = true -- Relative line numbers
-vim.opt.signcolumn = 'yes' -- Show sign column always
-vim.opt.clipboard = 'unnamedplus' -- Copy to system clipboard
-vim.opt.timeoutlen = 300 -- Time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.fillchars = { eob = ' ' } -- Hide ~ at the end of buffer
-vim.opt.showmode = false -- Hide mode
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- neovide
 if vim.g.neovide then
   vim.opt.guifont = 'OperatorMonoSSmLig NF:h16'
   vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'torpedo')

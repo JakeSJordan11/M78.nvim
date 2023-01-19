@@ -38,6 +38,7 @@ return {
         ['P'] = { require('telescope').extensions.projects.projects, 'Projects' },
         ['q'] = { '<Cmd>q!<CR>', 'Quit' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
+        ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
 
         d = {
           name = 'DAP',

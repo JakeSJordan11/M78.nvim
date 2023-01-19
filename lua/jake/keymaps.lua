@@ -31,7 +31,13 @@ vim.keymap.set('n', '<S-Down>', '<Cmd>resize -2<CR>')
 vim.keymap.set('n', '<S-Left>', '<Cmd>vertical resize -2<CR>')
 vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
 
--- control s save
+-- Resize window using <Cmmand + Shift> hjkl
+vim.keymap.set('n', '<DS-k>', '<Cmd>resize +2<CR>')
+vim.keymap.set('n', '<DS-j>', '<Cmd>resize -2<CR>')
+vim.keymap.set('n', '<DS-h>', '<Cmd>vertical resize -2<CR>')
+vim.keymap.set('n', '<DS-l>', '<Cmd>vertical resize +2<CR>')
+
+-- Command s save
 vim.keymap.set('n', '<D-s>', '<Cmd>w!<CR>')
 
 -- switch buffers

@@ -1,7 +1,6 @@
 return {
   {
     'folke/which-key.nvim',
-    lazy = false,
     config = function()
       local wk = require 'which-key'
       local Terminal = require('toggleterm.terminal').Terminal
@@ -35,7 +34,6 @@ return {
         ['b'] = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
         ['c'] = { '<Cmd>bdelete!<CR>', 'Close Buffer' },
         ['h'] = { '<Cmd>nohlsearch<CR>', 'No Highlight' },
-        ['P'] = { require('telescope').extensions.projects.projects, 'Projects' },
         ['q'] = { '<Cmd>q!<CR>', 'Quit' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
         ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
@@ -60,6 +58,7 @@ return {
           h = { '<Cmd>Telescope help_tags<CR>', 'Find Help' },
           k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
           M = { '<Cmd>Telescope man_pages<CR>', 'Man Pages' },
+          p = { require('telescope').extensions.projects.projects, 'Projects' },
           R = { '<Cmd>Telescope registers<CR>', 'Registers' },
           r = { '<Cmd>Telescope oldfiles<CR>', 'Open Recent File' },
           t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },
@@ -93,6 +92,7 @@ return {
         l = {
           name = 'LSP',
           a = 'Code Action',
+          d = { '<Cmd>TroubleToggle<CR>', 'Trouble' },
           f = 'Format',
           i = { '<Cmd>LspInfo<CR>', 'Info' },
           j = { vim.diagnostic.goto_next, 'Next Diagnostic' },

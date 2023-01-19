@@ -24,11 +24,13 @@ vim.opt.joinspaces = false
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.inccommand = 'split'
+vim.opt.hlsearch = false
+
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 if vim.g.neovide then
   vim.opt.guifont = 'OperatorMonoSSmLig NF:h16'

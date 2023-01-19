@@ -9,11 +9,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
 vim.opt.completeopt = 'menuone,noselect'
-
 vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.wrap = false
-
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -23,11 +21,12 @@ vim.opt.hidden = true
 vim.opt.joinspaces = false
 vim.opt.undofile = true
 vim.opt.swapfile = false
-vim.opt.inccommand = 'split'
 vim.opt.hlsearch = false
-
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+vim.opt.laststatus = 3
+vim.opt.splitkeep = 'screen'
+vim.opt.pumheight = 10
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

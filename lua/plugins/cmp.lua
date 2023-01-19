@@ -21,7 +21,6 @@ return {
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -42,7 +41,9 @@ return {
             select = true,
           },
           ['<C-n>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            if require('copilot.suggestion').is_visible() then
+              require('copilot.suggestion').next()
+            elseif cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
@@ -54,10 +55,22 @@ return {
             's',
           }),
           ['<C-p>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            if require('copilot.suggestion').is_visible() then
+              require('copilot.suggestion').prev()
+            elseif cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
               luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, {
+            'i',
+            's',
+          }),
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if require('copilot.suggestion').is_visible() then
+              require('copilot.suggestion').accept()
             else
               fallback()
             end

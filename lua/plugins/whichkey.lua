@@ -7,9 +7,6 @@ return {
       local lazygit = Terminal:new { cmd = 'lazygit', hidden = true }
 
       local setup = {
-        key_labels = {
-          ['<Leader>'] = 'LEADER',
-        },
         window = {
           border = 'rounded',
           position = 'top',
@@ -37,6 +34,7 @@ return {
         ['q'] = { '<Cmd>q!<CR>', 'Quit' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
         ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
+        ['w'] = { '<C-w>', 'window' },
 
         d = {
           name = 'DAP',
@@ -58,7 +56,7 @@ return {
           h = { '<Cmd>Telescope help_tags<CR>', 'Find Help' },
           k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
           M = { '<Cmd>Telescope man_pages<CR>', 'Man Pages' },
-          p = { require('telescope').extensions.projects.projects, 'Projects' },
+          p = { '<Cmd>Telescope projects<CR>', 'Projects' },
           R = { '<Cmd>Telescope registers<CR>', 'Registers' },
           r = { '<Cmd>Telescope oldfiles<CR>', 'Open Recent File' },
           t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },

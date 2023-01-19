@@ -1,16 +1,14 @@
 return {
-  {
-    'zbirenbaum/copilot.lua',
-    dependencies = {
-      {
-        'zbirenbaum/copilot-cmp',
-        config = true,
+  'zbirenbaum/copilot.lua',
+  lazy = false,
+  opts = {
+    suggestion = {
+      auto_trigger = true,
+      keymap = {
+        accept = '<Tab>',
+        next = '<C-n>',
+        prev = '<C-p>',
       },
-    },
-    lazy = false,
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
     },
   },
 }

@@ -33,13 +33,13 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert {
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete { reason = 'manual' },
           ['<C-e>'] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
+            select = true,
           },
           ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -67,11 +67,14 @@ return {
           }),
         },
         sources = cmp.config.sources({
-          { name = 'copilot' },
           { name = 'nvim_lsp' },
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'nvim_lua' },
           { name = 'luasnip' },
           { name = 'emoji' },
           { name = 'nerdfont' },
+          { name = 'npm' },
+          { name = 'crates' },
         }, {
           { name = 'buffer' },
         }),
@@ -88,16 +91,10 @@ return {
             return require('lspkind').cmp_format { with_text = false }(entry, vim_item)
           end,
         },
-        require('lspkind').cmp_format {
-          mode = 'symbol',
-          max_width = 50,
-          symbol_map = { Copilot = '' },
-        },
       }
-
       cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
-          { name = 'cmp_git' },
+          { name = 'git' },
         }, {
           { name = 'buffer' },
         }),
@@ -105,9 +102,11 @@ return {
 
       cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = {
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp_document_symbol' },
+        }, {
           { name = 'buffer' },
-        },
+        }),
       })
 
       cmp.setup.cmdline(':', {
@@ -116,8 +115,17 @@ return {
           { name = 'path' },
         }, {
           { name = 'cmdline' },
+          { name = 'cmdline_history' },
         }),
       })
+
+      cmp.event:on('menu_opened', function()
+        vim.b.copilot_suggestion_hidden = true
+      end)
+
+      cmp.event:on('menu_closed', function()
+        vim.b.copilot_suggestion_hidden = false
+      end)
     end,
   },
 }

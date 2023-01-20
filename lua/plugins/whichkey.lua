@@ -31,9 +31,10 @@ return {
         ['b'] = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
         ['c'] = { '<Cmd>bdelete!<CR>', 'Close Buffer' },
         ['h'] = { '<Cmd>nohlsearch<CR>', 'No Highlight' },
+        ['m'] = { '<Cmd>Mason<CR>', 'Mason' },
         ['q'] = { '<Cmd>q!<CR>', 'Quit' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
-        ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
+        -- ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
         ['w'] = { '<C-w>', 'window' },
 
         d = {
@@ -100,13 +101,13 @@ return {
           r = 'Rename',
         },
 
-        s = {
-          name = 'Search',
-          i = { '<Cmd>SearchBoxIncSearch<CR>', 'Include Serach' },
-          m = { '<Cmd>SearchBoxMatchAll<CR>', 'Match All' },
-          r = { '<Cmd>SearchBoxReplace<CR>', 'Replace' },
-          s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
-        },
+        -- s = {
+        --   name = 'Search',
+        --   i = { '<Cmd>SearchBoxIncSearch<CR>', 'Include Serach' },
+        --   m = { '<Cmd>SearchBoxMatchAll<CR>', 'Match All' },
+        --   r = { '<Cmd>SearchBoxReplace<CR>', 'Replace' },
+        --   s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
+        -- },
       }
       wk.setup(setup)
       wk.register(mappings, opts)

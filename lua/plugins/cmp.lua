@@ -2,7 +2,6 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'onsails/lspkind.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer',
@@ -17,10 +16,76 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'Saecki/crates.nvim',
       'David-Kunz/cmp-npm',
+      {
+        'L3MON4D3/LuaSnip',
+        dependencies = {
+          'rafamadriz/friendly-snippets',
+          config = function()
+            require('luasnip.loaders.from_vscode').lazy_load()
+          end,
+        },
+        opts = {
+          history = true,
+          delete_check_events = 'TextChanged',
+        },
+        keys = {
+          {
+            '<C-n>',
+            function()
+              return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<tab>'
+            end,
+            expr = true,
+            remap = true,
+            silent = true,
+            mode = 'i',
+          },
+          {
+            '<C-n>',
+            function()
+              require('luasnip').jump(1)
+            end,
+            mode = 's',
+          },
+          {
+            '<C-p>',
+            function()
+              require('luasnip').jump(-1)
+            end,
+            mode = { 'i', 's' },
+          },
+        },
+      },
     },
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local cmp_kinds = {
+        Text = '  ',
+        Method = '  ',
+        Function = '  ',
+        Constructor = '  ',
+        Field = '  ',
+        Variable = '  ',
+        Class = '  ',
+        Interface = '  ',
+        Module = '  ',
+        Property = '  ',
+        Unit = '  ',
+        Value = '  ',
+        Enum = '  ',
+        Keyword = '  ',
+        Snippet = '  ',
+        Color = '  ',
+        File = '  ',
+        Reference = '  ',
+        Folder = '  ',
+        EnumMember = '  ',
+        Constant = '  ',
+        Struct = '  ',
+        Event = '  ',
+        Operator = '  ',
+        TypeParameter = '  ',
+      }
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -30,6 +95,7 @@ return {
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
+          diagnostics = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert {
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -53,6 +119,7 @@ return {
           end, {
             'i',
             's',
+            'c',
           }),
           ['<C-p>'] = cmp.mapping(function(fallback)
             if require('copilot.suggestion').is_visible() then
@@ -67,6 +134,7 @@ return {
           end, {
             'i',
             's',
+            'c',
           }),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if require('copilot.suggestion').is_visible() then
@@ -79,7 +147,7 @@ return {
             's',
           }),
         },
-        sources = cmp.config.sources({
+        sources = cmp.config.sources {
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
@@ -88,20 +156,12 @@ return {
           { name = 'nerdfont' },
           { name = 'npm' },
           { name = 'crates' },
-        }, {
           { name = 'buffer' },
-        }),
+        },
         formatting = {
-          format = function(entry, vim_item)
-            if vim.tbl_contains({ 'path' }, entry.source.name) then
-              local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
-              if icon then
-                vim_item.kind = icon
-                vim_item.kind_hl_group = hl_group
-                return vim_item
-              end
-            end
-            return require('lspkind').cmp_format { with_text = false }(entry, vim_item)
+          format = function(_, vim_item)
+            vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+            return vim_item
           end,
         },
       }
@@ -114,22 +174,20 @@ return {
       })
 
       cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
+        mhpping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources {
           { name = 'nvim_lsp_document_symbol' },
-        }, {
           { name = 'buffer' },
-        }),
+        },
       })
 
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
+        sources = cmp.config.sources {
           { name = 'path' },
-        }, {
           { name = 'cmdline' },
           { name = 'cmdline_history' },
-        }),
+        },
       })
 
       cmp.event:on('menu_opened', function()

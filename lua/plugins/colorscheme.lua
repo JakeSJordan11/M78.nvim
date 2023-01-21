@@ -17,6 +17,7 @@ return {
   },
   {
     'ellisonleao/gruvbox.nvim',
+    event = 'VeryLazy',
     lazy = false,
     priority = 1000,
     config = function()

@@ -9,7 +9,6 @@ return {
     'nvim-telescope/telescope-dap.nvim',
     'LinArcX/telescope-ports.nvim',
   },
-  lazy = false,
   cmd = 'Telescope',
   config = function()
     require('telescope').setup {

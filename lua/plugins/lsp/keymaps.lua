@@ -1,21 +1,28 @@
 local M = {}
 M.on_attach = function(_, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<Leader>la', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>lj', vim.diagnostic.goto_next, bufopts)
-  vim.keymap.set('n', '<leader>lk', vim.diagnostic.goto_prev, bufopts)
-  vim.keymap.set('n', '<Leader>lf', function()
-    require('plugins.lsp.format').format()
-  end, bufopts)
+  local wk = require 'which-key'
+  wk.register {
+    ['<Leader>l'] = {
+      name = 'LSP',
+      a = { vim.lsp.buf.code_action, 'Code Action', buffer = bufnr },
+      D = { vim.lsp.buf.type_definition, 'Type Definition', buffer = bufnr },
+      d = { '<Cmd>TroubleToggle<CR>', 'Toggle Trouble', buffer = bufnr },
+      f = { require('plugins.lsp.format').format, 'Format', buffer = bufnr },
+      h = { vim.lsp.buf.hover, 'Hover', buffer = bufnr },
+      j = { vim.diagnostic.goto_next, 'Next Diagnostic', buffer = bufnr },
+      k = { vim.diagnostic.goto_prev, 'Previous Diagnostic', buffer = bufnr },
+      l = { vim.lsp.codelens.run, 'CodeLens Action' },
+      r = { vim.lsp.buf.rename, 'Rename', buffer = bufnr },
+      i = { '<Cmd>LspInfo<CR>', 'Lsp Info', buffer = bufnr },
+    },
+    ['g'] = {
+      name = 'Goto',
+      i = { '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation', buffer = bufnr },
+      D = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Declaration', buffer = bufnr },
+      d = { '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Definition', buffer = bufnr },
+      r = { '<Cmd>lua vim.lsp.buf.references()<CR>', 'References', buffer = bufnr },
+    },
+    ['<C-k'] = { '<Cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help', buffer = bufnr },
+  }
 end
 return M

@@ -10,15 +10,22 @@ return {
       'jayp0521/mason-nvim-dap.nvim',
     },
     config = function()
-      vim.keymap.set('n', '<Leader>dc', "<Cmd>lua require'dap'.continue()<CR>")
-      vim.keymap.set('n', '<Leader>do', "<Cmd>lua require'dap'.step_over()<CR>")
-      vim.keymap.set('n', '<Leader>di', "<Cmd>lua require'dap'.step_into()<CR>")
-      vim.keymap.set('n', '<Leader>du', "<Cmd>lua require'dap'.step_out()<CR>")
-      vim.keymap.set('n', '<Leader>db', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>")
-      vim.keymap.set('n', '<Leader>dr', "<Cmd>lua require'dap'.repl.open()<CR>")
-      vim.keymap.set('n', '<Leader>dd', "<Cmd>lua require'osv'.run_this()<CR>")
-
+      local wk = require 'which-key'
       local dap = require 'dap'
+      wk.register {
+        ['<Leader>d'] = {
+          name = 'Debug',
+          b = { dap.toggle_breakpoint, 'Toggle Breakpoint' },
+          c = { dap.continue, 'Continue' },
+          i = { dap.step_into, 'Step Into' },
+          o = { dap.step_out, 'Step Out' },
+          O = { dap.step_over, 'Step Over' },
+          r = { dap.repl.open, 'Open REPL' },
+          s = { dap.continue, 'Start' },
+          S = { dap.stop, 'Stop' },
+        },
+      }
+
       dap.configurations.lua = {
         {
           type = 'nlua',

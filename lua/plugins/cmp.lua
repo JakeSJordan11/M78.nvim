@@ -16,6 +16,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'Saecki/crates.nvim',
       'David-Kunz/cmp-npm',
+      'onsails/lspkind.nvim',
       {
         'L3MON4D3/LuaSnip',
         dependencies = {
@@ -59,33 +60,7 @@ return {
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      local cmp_kinds = {
-        Text = '  ',
-        Method = '  ',
-        Function = '  ',
-        Constructor = '  ',
-        Field = '  ',
-        Variable = '  ',
-        Class = '  ',
-        Interface = '  ',
-        Module = '  ',
-        Property = '  ',
-        Unit = '  ',
-        Value = '  ',
-        Enum = '  ',
-        Keyword = '  ',
-        Snippet = '  ',
-        Color = '  ',
-        File = '  ',
-        Reference = '  ',
-        Folder = '  ',
-        EnumMember = '  ',
-        Constant = '  ',
-        Struct = '  ',
-        Event = '  ',
-        Operator = '  ',
-        TypeParameter = '  ',
-      }
+      local lspkind = require 'lspkind'
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -159,7 +134,7 @@ return {
         },
         formatting = {
           format = function(_, vim_item)
-            vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+            vim_item.kind = (lspkind.presets.codicons[vim_item.kind] or '') .. ' ' .. vim_item.kind
             return vim_item
           end,
         },

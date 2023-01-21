@@ -34,7 +34,6 @@ return {
         ['m'] = { '<Cmd>Mason<CR>', 'Mason' },
         ['q'] = { '<Cmd>q!<CR>', 'Quit' },
         ['z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
-        -- ['<CR>'] = { '<Cmd>FineCmdline<CR>', 'Fine Cmdline' },
         ['w'] = { '<C-w>', 'window' },
 
         d = {
@@ -88,26 +87,18 @@ return {
           U = { '<Cmd>Gitsigns undo_stage_hunk<CR>', 'Undo Stage Hunk' },
         },
 
-        -- l = {
-        --   name = 'LSP',
-        --   a = 'Code Action',
-        --   d = { '<Cmd>TroubleToggle<CR>', 'Trouble' },
-        --   f = 'Format',
-        --   i = { '<Cmd>LspInfo<CR>', 'Info' },
-        --   j = { vim.diagnostic.goto_next, 'Next Diagnostic' },
-        --   k = { vim.diagnostic.goto_prev, 'Prev Diagnostic' },
-        --   l = { vim.lsp.codelens.run, 'CodeLens Action' },
-        --   q = { vim.lsp.diagnostic.set_loclist, 'Quickfix' },
-        --   r = 'Rename',
-        -- },
-
-        -- s = {
-        --   name = 'Search',
-        --   i = { '<Cmd>SearchBoxIncSearch<CR>', 'Include Serach' },
-        --   m = { '<Cmd>SearchBoxMatchAll<CR>', 'Match All' },
-        --   r = { '<Cmd>SearchBoxReplace<CR>', 'Replace' },
-        --   s = { '<Cmd>SearchBoxSimple<CR>', 'Simple' },
-        -- },
+        l = {
+          name = 'LSP',
+          a = 'Code Action',
+          d = { '<Cmd>TroubleToggle<CR>', 'Trouble' },
+          f = 'Format',
+          i = { '<Cmd>LspInfo<CR>', 'Info' },
+          j = { vim.diagnostic.goto_next, 'Next Diagnostic' },
+          k = { vim.diagnostic.goto_prev, 'Prev Diagnostic' },
+          l = { vim.lsp.codelens.run, 'CodeLens Action' },
+          q = { vim.lsp.diagnostic.set_loclist, 'Quickfix' },
+          r = 'Rename',
+        },
       }
       wk.setup(setup)
       wk.register(mappings, opts)

@@ -11,6 +11,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'jose-elias-alvarez/typescript.nvim',
+      { 'folke/trouble.nvim', config = true },
     },
     config = function(plugin)
       require('plugins.lsp.servers').setup(plugin)

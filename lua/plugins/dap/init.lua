@@ -6,6 +6,8 @@ return {
       'jayp0521/mason-nvim-dap.nvim',
       'theHamsta/nvim-dap-virtual-text',
       'rcarriga/nvim-dap-ui',
+      'williamboman/mason.nvim',
+      'jayp0521/mason-nvim-dap.nvim',
     },
     config = function()
       vim.keymap.set('n', '<Leader>dc', "<Cmd>lua require'dap'.continue()<CR>")

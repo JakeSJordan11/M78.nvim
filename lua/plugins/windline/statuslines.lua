@@ -1,29 +1,34 @@
-local M = {}
-local components = require 'plugins/windline/components'
-
-M.default = {
-  filetypes = { 'default' },
-  active = {
-    components.vi_mode,
-    components.file_name,
-    components.file_type,
-    components.progress,
-    components.line_col,
-    components.file_icon,
+local components = require 'plugins.windline.components'
+return {
+  default = {
+    filetypes = { 'default' },
+    active = {
+      components.section.vi_modes,
+      components.section.git_branch,
+      components.section.file_name,
+      components.section.lsp_errors,
+      components.divider,
+      components.section.git_diffs,
+      components.section.file_encoding,
+      components.section.file_type,
+      components.section.file_location,
+    },
+    inactive = {},
   },
-  inactive = {},
-}
 
-M.winbar = {
-  filetypes = { 'winbar' },
-  active = {
-    components.vi_mode,
-    components.file_name,
-    components.file_type,
-    components.progress,
-    components.line_col,
-    components.file_icon,
+  winbar = {
+    filetypes = { 'winbar' },
+    active = {
+      components.section.vi_modes,
+      components.section.git_branch,
+      components.section.file_name,
+      components.section.lsp_errors,
+      components.divider,
+      components.section.git_diffs,
+      components.section.file_encoding,
+      components.section.file_type,
+      components.section.file_location,
+    },
+    always_active = true,
   },
-  always_active = true,
 }
-return M

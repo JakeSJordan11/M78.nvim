@@ -27,12 +27,13 @@ vim.opt.timeoutlen = 300
 vim.opt.laststatus = 3
 vim.opt.splitkeep = 'screen'
 vim.opt.pumheight = 10
+vim.opt.scrolloff = 15
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  vim.opt.guifont = 'OperatorMonoSSmLig NF:h16'
+  vim.opt.guifont = 'Operator Mono SSm:h16'
   vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'torpedo')
   vim.api.nvim_set_var('neovide_cursor_vfx_particle_lifetime', 1.2)
   vim.api.nvim_set_var('neovide_cursor_vfx_particle_density', 7.0)

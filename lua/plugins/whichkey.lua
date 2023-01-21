@@ -88,18 +88,18 @@ return {
           U = { '<Cmd>Gitsigns undo_stage_hunk<CR>', 'Undo Stage Hunk' },
         },
 
-        l = {
-          name = 'LSP',
-          a = 'Code Action',
-          d = { '<Cmd>TroubleToggle<CR>', 'Trouble' },
-          f = 'Format',
-          i = { '<Cmd>LspInfo<CR>', 'Info' },
-          j = { vim.diagnostic.goto_next, 'Next Diagnostic' },
-          k = { vim.diagnostic.goto_prev, 'Prev Diagnostic' },
-          l = { vim.lsp.codelens.run, 'CodeLens Action' },
-          q = { vim.lsp.diagnostic.set_loclist, 'Quickfix' },
-          r = 'Rename',
-        },
+        -- l = {
+        --   name = 'LSP',
+        --   a = 'Code Action',
+        --   d = { '<Cmd>TroubleToggle<CR>', 'Trouble' },
+        --   f = 'Format',
+        --   i = { '<Cmd>LspInfo<CR>', 'Info' },
+        --   j = { vim.diagnostic.goto_next, 'Next Diagnostic' },
+        --   k = { vim.diagnostic.goto_prev, 'Prev Diagnostic' },
+        --   l = { vim.lsp.codelens.run, 'CodeLens Action' },
+        --   q = { vim.lsp.diagnostic.set_loclist, 'Quickfix' },
+        --   r = 'Rename',
+        -- },
 
         -- s = {
         --   name = 'Search',

@@ -179,7 +179,7 @@ return {
           return colors
         end,
 
-        statuslines = { statuslines.default, statuslines.winbar },
+        statuslines = { statuslines.default, statuslines.winbar, statuslines.quickfix },
       }
     end,
   },

@@ -216,4 +216,26 @@ M.section.file_location = {
   end,
 }
 
+M.section.quickfix = {
+  text = function(_, _, width)
+    if width > breakpoint then
+      return {
+        { '🚦 Quickfix ', { 'white', 'black' } },
+        { helper.separators.slant_right, { 'black', 'black_light' } },
+        {
+          function()
+            return vim.fn.getqflist({ title = 0 }).title
+          end,
+          { 'cyan', 'black_light' },
+        },
+        { ' Total : %L ', { 'cyan', 'black_light' } },
+        { helper.separators.slant_right, { 'black_light', 'InactiveBg' } },
+        { ' ', { 'InactiveFg', 'InactiveBg' } },
+        { helper.separators.slant_right, { 'InactiveBg', 'black' } },
+        { '🧛 ', { 'white', 'black' } },
+      }
+    end
+  end,
+}
+
 return M

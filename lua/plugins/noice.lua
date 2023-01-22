@@ -31,7 +31,6 @@ return {
         },
         view = 'split',
       }
-      vim.diagnostic.config { virtual_text = false, float = { border = 'rounded' } }
     end,
   },
 }

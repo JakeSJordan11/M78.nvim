@@ -8,11 +8,11 @@ return {
       { '<D-0>', '<Cmd>GUIFontSizeSet<CR>', desc = 'Set Font Scale' },
     },
     opts = {
-      default_size = 16,
+      default_size = 12,
       change_by = 1,
       bounds = {
-        maximum = 32,
-        minimum = 12,
+        maximum = 48,
+        minimum = 10,
       },
     },
   },

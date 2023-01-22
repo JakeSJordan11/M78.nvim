@@ -4,9 +4,9 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
-    'ahmedkhalf/project.nvim',
     'nvim-telescope/telescope-dap.nvim',
     'LinArcX/telescope-ports.nvim',
+    'nvim-telescope/telescope-project.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -33,10 +33,10 @@ return {
       },
     }
     require('telescope').load_extension 'fzf'
-    require('telescope').load_extension 'projects'
     require('telescope').load_extension 'ui-select'
     require('telescope').load_extension 'file_browser'
     require('telescope').load_extension 'ports'
+    require('telescope').load_extension 'project'
 
     local wk = require 'which-key'
     wk.register {
@@ -51,7 +51,7 @@ return {
         f = { '<Cmd>Telescope find_files<CR>', 'Files' },
         h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
         k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
-        p = { '<Cmd>Telescope projects<CR>', 'Projects' },
+        p = { '<Cmd>Telescope project<CR>', 'Projects' },
         R = { '<Cmd>Telescope registers<CR>', 'Registers' },
         r = { '<Cmd>Telescope oldfiles<CR>', 'Recent Files' },
         t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },

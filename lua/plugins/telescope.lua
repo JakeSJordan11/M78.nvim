@@ -4,10 +4,13 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
-    'nvim-telescope/telescope-fzf-native.nvim',
     'ahmedkhalf/project.nvim',
     'nvim-telescope/telescope-dap.nvim',
     'LinArcX/telescope-ports.nvim',
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+    },
   },
   config = function()
     require('telescope').setup {
@@ -29,7 +32,7 @@ return {
         },
       },
     }
-    pcall(require('telescope').load_extension, 'fzf')
+    require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'projects'
     require('telescope').load_extension 'ui-select'
     require('telescope').load_extension 'file_browser'

@@ -37,5 +37,10 @@ return {
     end
     dashboard.opts.opts.noautocmd = true
     require('alpha').setup(dashboard.opts)
+
+    local wk = require 'which-key'
+    wk.register {
+      ['<Leader>a'] = { '<Cmd>Alpha<CR>', 'Alpha' },
+    }
   end,
 }

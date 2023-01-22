@@ -7,6 +7,7 @@ return {
           border = 'rounded',
         },
       }
+
       local ensure_installed = {
         'stylua',
         'rustfmt',
@@ -21,6 +22,10 @@ return {
           p:install()
         end
       end
+      local wk = require 'which-key'
+      wk.register {
+        ['<Leader>m'] = { '<Cmd>Mason<CR>', 'Mason' },
+      }
     end,
   },
 }

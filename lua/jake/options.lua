@@ -26,8 +26,6 @@ vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 vim.opt.laststatus = 3
 vim.opt.splitkeep = 'screen'
-vim.opt.pumheight = 10
-vim.opt.scrolloff = 15
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

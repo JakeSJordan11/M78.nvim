@@ -20,4 +20,23 @@ require('lazy').setup {
   ui = {
     border = 'rounded',
   },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        -- "gzip",
+        -- "matchit",
+        -- "matchparen",
+        'netrwPlugin',
+        -- "tarPlugin",
+        -- "tohtml",
+        -- "tutor",
+        -- "zipPlugin",
+      },
+    },
+  },
+}
+
+local wk = require 'which-key'
+wk.register {
+  ['<Leader>z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
 }

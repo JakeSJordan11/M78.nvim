@@ -9,12 +9,13 @@ return {
       local setup = {
         window = {
           border = 'rounded',
-          position = 'bottom',
-          margin = { 2, 6, 2, 6 },
+          position = 'top',
+          margin = { 2, 8, 2, 8 },
         },
         layout = {
           align = 'center',
         },
+        ignore_missing = true,
       }
 
       local opts = {

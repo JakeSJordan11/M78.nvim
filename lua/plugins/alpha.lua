@@ -26,7 +26,7 @@ return {
       "   dood8888888888888888888888888888888888b'",
     }
     dashboard.section.buttons.val = {
-      dashboard.button('p', '  Find project', '<Cmd>Telescope projects<CR>'),
+      dashboard.button('p', '  Find project', '<Cmd>Telescope project<CR>'),
       dashboard.button('r', '  Recently used files', '<Cmd>Telescope oldfiles<CR>'),
       dashboard.button('c', '  Configuration', '<Cmd>e ~/.config/nvim/init.lua<CR>'),
       dashboard.button('q', '  Quit Neovim', '<Cmd>qa<CR>'),

@@ -12,7 +12,6 @@ local breakpoint = 100
 M.section = {}
 M.section.colors = {
   a = {
-
     Command = { 'black1', 'white2' },
     Insert = { 'black1', 'white2' },
     Visual = { 'black1', 'white2' },
@@ -25,7 +24,6 @@ M.section.colors = {
     ReplaceSep = { 'white2', 'blue5' },
     NormalSep = { 'white2', 'red6' },
   },
-
   b = {
 
     Command = { 'white1', 'cyan7' },
@@ -40,7 +38,6 @@ M.section.colors = {
     ReplaceSep = { 'blue5', 'blue7' },
     NormalSep = { 'red6', 'red8' },
   },
-
   c = {
 
     Command = { 'white1', 'black2' },
@@ -69,17 +66,18 @@ M.section.colors = {
     ReplaceSep = { 'blue7', 'NormalBg' },
     NormalSep = { 'red8', 'NormalBg' },
   },
-  f = {
-
-    error = { 'red', 'NormalBg' },
-    warning = { 'yellow', 'NormalBg' },
-    info = { 'blue', 'NormalBg' },
+  lsp = {
+    error = { 'DiagnostivcSignError', 'NormalBg' },
+    warning = { 'DiagnostivcSignWarn', 'NormalBg' },
+    info = { 'DiagnostivcSignInfo', 'NormalBg' },
+    hint = { 'DiagnostivcSignHint', 'NormalBg' },
+    seperator = { 'NormalBg', 'NormalBg' },
   },
-  g = {
-
-    green = { 'green', 'NormalBg' },
-    red = { 'red', 'NormalBg' },
-    blue = { 'blue', 'NormalBg' },
+  git = {
+    seperator = { 'NormalBg', 'NormalBg' },
+    diff_added = { 'GitSignsAdd', 'NormalBg' },
+    diff_removed = { 'GitSignsDelete', 'NormalBg' },
+    diff_changed = { 'GitSignsChange', 'NormalBg' },
   },
 }
 
@@ -125,7 +123,7 @@ M.section.file_name = {
   text = function()
     return {
       { ' ', state.mode[2] },
-      { b_components.cache_file_name('[No Name]', 'unique') },
+      { b_components.cache_file_name('[...]', 'unique') },
       { ' ' },
       { sep.right_filled, state.mode[2] .. 'Sep' },
     }
@@ -133,32 +131,32 @@ M.section.file_name = {
 }
 
 M.section.lsp_errors = {
-  hl_colors = M.section.colors.f,
+  hl_colors = M.section.colors.lsp,
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
       return {
-        { '  ', 'error' },
-        { lsp_comps.lsp_error { format = '%s', show_zero = true }, 'error' },
-        { '  ', 'warning' },
-        { lsp_comps.lsp_warning { format = '%s', show_zero = true }, 'warning' },
-        { '  ', 'info' },
-        { lsp_comps.lsp_info { format = '%s', show_zero = true }, 'info' },
+        { lsp_comps.lsp_error { format = '  %s', show_zero = true }, 'error' },
+        { lsp_comps.lsp_warning { format = '  %s', show_zero = true }, 'warning' },
+        { lsp_comps.lsp_info { format = '  %s', show_zero = true }, 'info' },
+        { lsp_comps.lsp_hint { format = '  %s', show_zero = true }, 'hint' },
+        { sep.right_filled, 'seperator' },
       }
     end
-    return nil
+    return { ' ', 'red' }
   end,
 }
 
 M.divider = { b_components.divider, { 'NormalFg', 'NormalBg' } }
 
 M.section.git_diffs = {
-  hl_colors = M.section.colors.g,
+  hl_colors = M.section.colors.git,
   text = function(bufnr)
     if git_comps.is_git(bufnr) then
       return {
-        { git_comps.diff_added { format = '  %s', show_zero = true }, 'green' },
-        { git_comps.diff_removed { format = '  %s', show_zero = true }, 'red' },
-        { git_comps.diff_changed { format = '  %s ', show_zero = true }, 'blue' },
+        { sep.left_filled, 'seperator' },
+        { git_comps.diff_added { format = '  %s', show_zero = true }, 'diff_added' },
+        { git_comps.diff_removed { format = '  %s', show_zero = true }, 'diff_removed' },
+        { git_comps.diff_changed { format = ' 柳%s ', show_zero = true }, 'diff_changed' },
       }
     end
   end,
@@ -221,17 +219,17 @@ M.section.quickfix = {
     if width > breakpoint then
       return {
         { '🚦 Quickfix ', { 'white', 'black' } },
-        { helper.separators.slant_right, { 'black', 'black_light' } },
+        { sep.slant_right, { 'black', 'black_light' } },
         {
           function()
             return vim.fn.getqflist({ title = 0 }).title
           end,
-          { 'cyan', 'black_light' },
+          { 'cyan5', 'black_light' },
         },
-        { ' Total : %L ', { 'cyan', 'black_light' } },
-        { helper.separators.slant_right, { 'black_light', 'InactiveBg' } },
+        { ' Total : %L ', { 'yellow', 'black_light' } },
+        { sep.slant_right, { 'black_light', 'InactiveBg' } },
         { ' ', { 'InactiveFg', 'InactiveBg' } },
-        { helper.separators.slant_right, { 'InactiveBg', 'black' } },
+        { sep.slant_right, { 'InactiveBg', 'black' } },
         { '🧛 ', { 'white', 'black' } },
       }
     end

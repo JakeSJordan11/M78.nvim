@@ -176,6 +176,15 @@ return {
           colors.white_light8 = mod(colors.white_light, 0.8)
           colors.white_light9 = mod(colors.white_light, 0.9)
 
+          colors.DiagnostivcSignError = require('windline.themes').get_hl_color 'DiagnosticSignError'
+          colors.DiagnostivcSignWarn = require('windline.themes').get_hl_color 'DiagnosticSignWarn'
+          colors.DiagnostivcSignInfo = require('windline.themes').get_hl_color 'DiagnosticSignInfo'
+          colors.DiagnostivcSignHint = require('windline.themes').get_hl_color 'DiagnosticSignHint'
+
+          colors.GitSignsAdd = require('windline.themes').get_hl_color 'GitSignsAdd'
+          colors.GitSignsChange = require('windline.themes').get_hl_color 'GitSignsChange'
+          colors.GitSignsDelete = require('windline.themes').get_hl_color 'GitSignsDelete'
+
           return colors
         end,
 

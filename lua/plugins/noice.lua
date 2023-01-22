@@ -21,7 +21,17 @@ return {
           inc_rename = true,
           lsp_doc_border = true,
         },
+        routes = {
+          {
+            view = 'notify',
+            filter = { event = 'msg_showmode' },
+          },
+          event = 'notify',
+          min_height = 15,
+        },
+        view = 'split',
       }
+      vim.diagnostic.config { virtual_text = false, float = { border = 'rounded' } }
     end,
   },
 }

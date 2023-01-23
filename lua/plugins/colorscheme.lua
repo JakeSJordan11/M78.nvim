@@ -2,7 +2,12 @@ return {
   {
     'folke/tokyonight.nvim',
     event = 'VeryLazy',
+    -- lazy = false,
     priority = 1000,
+    -- config = function()
+    --   local tokyonight = require 'tokyonight'
+    --   tokyonight.load()
+    -- end,
   },
   {
     'catppuccin/nvim',
@@ -22,7 +27,7 @@ return {
     priority = 1000,
     config = function()
       local gruvbox = require 'gruvbox'
-      require('gruvbox').setup {
+      gruvbox.setup {
         overrides = {
           SignColumn = { bg = 'NONE' },
           Pmenu = { bg = 'NONE' },

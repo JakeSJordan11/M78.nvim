@@ -41,9 +41,6 @@ local servers = {
   denols = {
     root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
   },
-  tsserver = {
-    root_dir = require('lspconfig').util.root_pattern 'package.json',
-  },
 }
 
 local function lsp_attach(on_attach)
@@ -82,6 +79,9 @@ function M.setup(_)
       opts.capabilities = lsp_capabilities()
       rt.setup { server = opts }
     end,
+  }
+  require('typescript').setup {
+    root_dir = require('lspconfig').util.root_pattern 'package.json',
   }
 end
 

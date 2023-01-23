@@ -3,8 +3,30 @@ return {
     'folke/noice.nvim',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
+      {
+        'rcarriga/nvim-notify',
+        opts = {
+          fps = 120,
+          stages = 'slide',
+          timeout = 3000,
+          top_down = false,
+        },
+      },
+      {
+        'smjonas/inc-rename.nvim',
+        config = function()
+          local wk = require 'which-key'
+          wk.register {
+            ['<leader>r'] = {
+              name = 'Rename',
+              n = { ':IncRename ', 'Rename' },
+            },
+          }
+          require('inc_rename').setup()
+        end,
+      },
     },
+
     config = function()
       require('noice').setup {
         lsp = {
@@ -21,15 +43,6 @@ return {
           inc_rename = true,
           lsp_doc_border = true,
         },
-        routes = {
-          {
-            view = 'notify',
-            filter = { event = 'msg_showmode' },
-          },
-          event = 'notify',
-          min_height = 15,
-        },
-        view = 'split',
       }
     end,
   },

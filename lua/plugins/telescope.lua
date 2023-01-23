@@ -37,6 +37,7 @@ return {
     require('telescope').load_extension 'file_browser'
     require('telescope').load_extension 'ports'
     require('telescope').load_extension 'project'
+    require('telescope').load_extension 'noice'
 
     local wk = require 'which-key'
     wk.register {

@@ -3,11 +3,11 @@ return {
   default = {
     filetypes = { 'default' },
     active = {
-      components.section.vi_modes,
-      components.section.git_branch,
-      components.section.file_name,
+      components.section.vi_modes.right,
+      components.section.git_branch.right,
+      components.section.file_name.right,
       components.section.lsp_errors,
-      components.divider,
+      components.section.divider,
     },
     inactive = {},
   },
@@ -15,20 +15,12 @@ return {
   winbar = {
     filetypes = { 'winbar' },
     active = {
-      components.divider,
+      components.section.divider,
       components.section.git_diffs,
-      components.section.file_encoding,
-      components.section.file_type,
-      components.section.file_location,
+      components.section.file_name.left,
+      components.section.git_branch.left,
+      components.section.vi_modes.left,
     },
-  },
-
-  quickfix = {
-    filetypes = { 'qf', 'Trouble' },
-    active = {
-      components.section.quickfix,
-    },
-    always_active = true,
-    show_last_status = true,
+    inactive = {},
   },
 }

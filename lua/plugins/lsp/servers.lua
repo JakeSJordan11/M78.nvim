@@ -38,24 +38,12 @@ local servers = {
       },
     },
   },
-  tsserver = {
-    disable_formatting = false,
+  denols = {
+    root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
   },
-  dockerls = {},
-  cssls = {},
-  emmet_ls = {},
-  html = {},
-  cssmodules_ls = {},
-  jsonls = {},
-  graphql = {},
-  prismals = {},
-  tailwindcss = {},
-  yamlls = {},
-  taplo = {},
-  stylelint_lsp = {},
-  kotlin_language_server = {},
-  jsonnet_ls = {},
-  quick_lint_js = {},
+  tsserver = {
+    root_dir = require('lspconfig').util.root_pattern 'package.json',
+  },
 }
 
 local function lsp_attach(on_attach)

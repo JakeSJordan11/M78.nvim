@@ -8,7 +8,7 @@ return {
         opts = {
           fps = 120,
           stages = 'slide',
-          timeout = 3000,
+          timeout = 2000,
           top_down = false,
         },
       },

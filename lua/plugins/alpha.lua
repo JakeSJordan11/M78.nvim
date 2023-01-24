@@ -1,8 +1,13 @@
 return {
   'goolord/alpha-nvim',
   config = function()
+    local wk = require 'which-key'
+    wk.register {
+      ['<Leader>a'] = { '<Cmd>Alpha<CR>', 'Alpha' },
+    }
     local dashboard = require 'alpha.themes.dashboard'
-    dashboard.section.header.val = {
+
+    local header = {
       "         You'll Find it Bud, I Promise    ",
       '',
       '    ooooooooooooooooooooooooooooooooooooo',
@@ -25,22 +30,39 @@ return {
       "    d     ...oood88888888888888888888888b',",
       "   dood8888888888888888888888888888888888b'",
     }
-    dashboard.section.buttons.val = {
-      dashboard.button('p', '  Find project', '<Cmd>Telescope project<CR>'),
-      dashboard.button('r', '  Recently used files', '<Cmd>Telescope oldfiles<CR>'),
-      dashboard.button('c', '  Configuration', '<Cmd>e ~/.config/nvim/init.lua<CR>'),
-      dashboard.button('q', '  Quit Neovim', '<Cmd>qa<CR>'),
+    local button = {
+      Projects = dashboard.button('p', 'Search Projects', '<Cmd>Telescope project<CR>'),
+      RecentFiles = dashboard.button('r', 'File History', '<Cmd>Telescope oldfiles<CR>'),
+      Configuration = dashboard.button('c', 'Configuration', ':cd ~/.config/nvim<CR>' .. '<Cmd>e init.lua<CR>'),
+      Quit = dashboard.button('q', 'Quit Neovim', '<Cmd>qa<CR>'),
     }
 
-    for _, value in ipairs(dashboard.section.buttons.val) do
-      value.opts.hl = 'Constant'
+    dashboard.section.header.val = header
+    dashboard.section.buttons.val = {
+      button.Projects,
+      button.RecentFiles,
+      button.Configuration,
+      button.Quit,
+    }
+
+    local icons = {
+      ' ',
+      ' ',
+      ' ',
+      ' ',
+    }
+    for index, value in ipairs(dashboard.section.buttons.val) do
+      local width = 25
+      value.opts.hl = 'Keyword'
+      value.opts.width = width
+      value.opts.cursor = width
+      value.opts.shortcut = icons[index]
+      value.opts.hl_shortcut = 'Special'
     end
+
     dashboard.opts.opts.noautocmd = true
     require('alpha').setup(dashboard.opts)
 
-    local wk = require 'which-key'
-    wk.register {
-      ['<Leader>a'] = { '<Cmd>Alpha<CR>', 'Alpha' },
-    }
+    require('alpha').setup(dashboard.config)
   end,
 }

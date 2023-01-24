@@ -21,6 +21,6 @@ return {
       components.section.git_branch.left,
       components.section.vi_modes.left,
     },
-    inactive = {},
+    always_active = true,
   },
 }

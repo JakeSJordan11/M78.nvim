@@ -5,6 +5,7 @@ return {
       require('mason').setup {
         ui = {
           border = 'rounded',
+          height = 0.8,
         },
       }
 
@@ -24,7 +25,10 @@ return {
       end
       local wk = require 'which-key'
       wk.register {
-        ['<Leader>m'] = { '<Cmd>Mason<CR>', 'Mason' },
+        ['<Leader>n'] = {
+          name = 'Neovim',
+          m = { '<Cmd>Mason<CR>', 'Mason' },
+        },
       }
     end,
   },

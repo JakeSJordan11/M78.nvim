@@ -1,4 +1,4 @@
-vim.opt.highlight.blend = 100
+vim.opt.highlight.blend = 100 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'

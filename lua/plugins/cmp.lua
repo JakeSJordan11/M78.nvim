@@ -81,9 +81,7 @@ return {
             select = true,
           },
           ['<C-n>'] = cmp.mapping(function(fallback)
-            if require('copilot.suggestion').is_visible() then
-              require('copilot.suggestion').next()
-            elseif cmp.visible() then
+            if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
@@ -96,9 +94,7 @@ return {
             'c',
           }),
           ['<C-p>'] = cmp.mapping(function(fallback)
-            if require('copilot.suggestion').is_visible() then
-              require('copilot.suggestion').prev()
-            elseif cmp.visible() then
+            if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
               luasnip.jump(-1)
@@ -110,18 +106,9 @@ return {
             's',
             'c',
           }),
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if require('copilot.suggestion').is_visible() then
-              require('copilot.suggestion').accept()
-            else
-              fallback()
-            end
-          end, {
-            'i',
-            's',
-          }),
         },
         sources = cmp.config.sources {
+          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
@@ -134,17 +121,21 @@ return {
         },
         formatting = {
           format = function(_, vim_item)
-            vim_item.kind = (lspkind.presets.codicons[vim_item.kind] or '') .. ' ' .. vim_item.kind
+            lspkind.cmp_format {
+              mode = 'symbol',
+              max_width = 50,
+              symbol_map = { Copilot = '' },
+            }
+            vim_item.kind = (lspkind.symbol_map[vim_item.kind] or '') .. ' ' .. vim_item.kind
             return vim_item
           end,
         },
       }
       cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources({
+        sources = cmp.config.sources {
           { name = 'git' },
-        }, {
           { name = 'buffer' },
-        }),
+        },
       })
 
       cmp.setup.cmdline({ '/', '?' }, {
@@ -158,19 +149,11 @@ return {
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources {
-          { name = 'path' },
           { name = 'cmdline' },
           { name = 'cmdline_history' },
+          { name = 'path' },
         },
       })
-
-      cmp.event:on('menu_opened', function()
-        vim.b.copilot_suggestion_hidden = true
-      end)
-
-      cmp.event:on('menu_closed', function()
-        vim.b.copilot_suggestion_hidden = false
-      end)
     end,
   },
 }

@@ -41,19 +41,17 @@ return {
 
     local wk = require 'which-key'
     wk.register {
-      ['<Leader>b'] = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
 
       ['<Leader>f'] = {
         name = 'Find',
+        B = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
         b = { '<Cmd>Telescope file_browser<CR>', 'Files with file browser' },
-        C = { '<Cmd>Telescope commands<CR>', 'Commands' },
         c = { '<Cmd>Telescope colorscheme<CR>', 'Colorschemes' },
         d = { '<Cmd>Telescope diagnostics<CR>', 'Document diagnostics' },
         f = { '<Cmd>Telescope find_files<CR>', 'Files' },
         h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
         k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
         p = { '<Cmd>Telescope project<CR>', 'Projects' },
-        R = { '<Cmd>Telescope registers<CR>', 'Registers' },
         r = { '<Cmd>Telescope oldfiles<CR>', 'Recent Files' },
         t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },
       },

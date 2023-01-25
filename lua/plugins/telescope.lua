@@ -2,6 +2,7 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'ibhagwan/fzf-lua',
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-telescope/telescope-dap.nvim',
@@ -11,6 +12,8 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
+    { 'AckslD/nvim-neoclip.lua', config = true },
+    'olacin/telescope-gitmoji.nvim',
   },
   config = function()
     require('telescope').setup {
@@ -21,14 +24,23 @@ return {
         sorting_strategy = 'ascending',
       },
       pickers = {
-        ['colorscheme'] = {
+        colorscheme = {
           theme = 'dropdown',
         },
       },
       extensions = {
-        ['file_browser'] = {
+        file_browser = {
           previewer = false,
           theme = 'dropdown',
+        },
+        project = {
+          base_dirs = {
+            '~/Development/',
+          },
+          -- hidden_files = true, -- default: false
+          theme = 'dropdown',
+          -- order_by = 'asc',
+          -- search_by = 'title',
         },
       },
     }
@@ -37,7 +49,10 @@ return {
     require('telescope').load_extension 'file_browser'
     require('telescope').load_extension 'ports'
     require('telescope').load_extension 'project'
+    require('telescope').load_extension 'projects'
     require('telescope').load_extension 'noice'
+    require('telescope').load_extension 'neoclip'
+    require('telescope').load_extension 'gitmoji'
 
     local wk = require 'which-key'
     wk.register {
@@ -51,7 +66,7 @@ return {
         f = { '<Cmd>Telescope find_files<CR>', 'Files' },
         h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
         k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
-        p = { '<Cmd>Telescope project<CR>', 'Projects' },
+        p = { '<Cmd>Telescope projects<CR>', 'Projects' },
         r = { '<Cmd>Telescope oldfiles<CR>', 'Recent Files' },
         t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },
       },
@@ -60,7 +75,8 @@ return {
         name = 'Git',
         b = { '<Cmd>Telescope git_branches<CR>', 'Checkout Branch' },
         c = { '<Cmd>Telescope git_commits<CR>', 'Checkout Commit' },
-        o = { '<Cmd>Telescope git_status<CR>', 'Git Status' },
+        s = { '<Cmd>Telescope git_status<CR>', 'Git Status' },
+        m = { '<Cmd>Telescope gitmoji<CR>', 'Gitmoji' },
       },
     }
   end,

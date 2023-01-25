@@ -1,6 +1,7 @@
 return {
   {
     'hrsh7th/nvim-cmp',
+    event = 'BufRead',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
@@ -112,6 +113,7 @@ return {
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
+          { name = 'path' },
           { name = 'luasnip' },
           { name = 'emoji' },
           { name = 'nerdfont' },
@@ -126,6 +128,7 @@ return {
               max_width = 50,
               symbol_map = { Copilot = '' },
             }
+            vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { link = 'Constant' })
             vim_item.kind = (lspkind.symbol_map[vim_item.kind] or '') .. ' ' .. vim_item.kind
             return vim_item
           end,

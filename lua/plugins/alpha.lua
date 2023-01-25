@@ -30,34 +30,66 @@ return {
       "    d     ...oood88888888888888888888888b',",
       "   dood8888888888888888888888888888888888b'",
     }
-    local button = {
-      Projects = dashboard.button('p', 'Search Projects', '<Cmd>Telescope project<CR>'),
-      RecentFiles = dashboard.button('r', 'File History', '<Cmd>Telescope oldfiles<CR>'),
-      Configuration = dashboard.button('c', 'Configuration', ':cd ~/.config/nvim<CR>' .. '<Cmd>e init.lua<CR>'),
-      Quit = dashboard.button('q', 'Quit Neovim', '<Cmd>qa<CR>'),
+
+    local buttons = {
+      Projects = {
+        button = dashboard.button('p', 'Projects', '<Cmd>Telescope projects<CR>'),
+        icon = ' ',
+      },
+      RecentFiles = {
+        button = dashboard.button('r', 'Recent Files', '<Cmd>Telescope oldfiles<CR>'),
+        icon = ' ',
+      },
+      Configuration = {
+        button = dashboard.button('c', 'Neovim Configuration', '<Cmd>e ~/.config/nvim/init.lua<CR>'),
+        icon = ' ',
+      },
+      Lazy = {
+        button = dashboard.button('z', 'Lazy', '<Cmd>Lazy<CR>'),
+        icon = '鈴',
+      },
+      Mason = {
+        button = dashboard.button('m', 'Mason', '<Cmd>Mason<CR>'),
+        icon = ' ',
+      },
+      Reopen = {
+        button = dashboard.button('o', 'Reopen Last File', '<C-o><C-o>'),
+        icon = '淚',
+      },
+      Quit = {
+        button = dashboard.button('q', 'Quit Neovim', '<Cmd>qa<CR>'),
+        icon = ' ',
+      },
     }
 
     dashboard.section.header.val = header
     dashboard.section.buttons.val = {
-      button.Projects,
-      button.RecentFiles,
-      button.Configuration,
-      button.Quit,
+      buttons.Projects.button,
+      buttons.RecentFiles.button,
+      buttons.Configuration.button,
+      buttons.Lazy.button,
+      buttons.Mason.button,
+      buttons.Reopen.button,
+      buttons.Quit.button,
     }
 
     local icons = {
-      ' ',
-      ' ',
-      ' ',
-      ' ',
+      buttons.Projects.icon,
+      buttons.RecentFiles.icon,
+      buttons.Configuration.icon,
+      buttons.Lazy.icon,
+      buttons.Mason.icon,
+      buttons.Reopen.icon,
+      buttons.Quit.icon,
     }
+
     for index, value in ipairs(dashboard.section.buttons.val) do
       local width = 25
       value.opts.hl = 'Keyword'
       value.opts.width = width
       value.opts.cursor = width
-      value.opts.shortcut = icons[index]
       value.opts.hl_shortcut = 'Special'
+      value.opts.shortcut = icons[index]
     end
 
     dashboard.opts.opts.noautocmd = true

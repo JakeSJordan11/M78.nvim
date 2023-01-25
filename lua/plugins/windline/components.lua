@@ -89,7 +89,7 @@ M.section.file_name = {
     text = function()
       return {
         { ' ', state.mode[2] },
-        { b_components.cache_file_name(nil, 'unique'), state.mode[2] },
+        { b_components.cache_file_name('', 'unique'), state.mode[2] },
         { sep.right_filled .. ' ', state.mode[2] },
       }
     end,
@@ -101,7 +101,7 @@ M.section.file_name = {
       return {
         { ' ', state.mode[2] },
         { sep.left_filled .. ' ', state.mode[2] },
-        { b_components.cache_file_name(nil, 'unique'), state.mode[2] },
+        { b_components.cache_file_name('', 'unique'), state.mode[2] },
       }
     end,
   },

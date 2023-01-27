@@ -1,6 +1,7 @@
 return {
   {
     'sindrets/diffview.nvim',
+    event = 'BufRead',
     config = function()
       require('diffview').setup()
       local wk = require 'which-key'

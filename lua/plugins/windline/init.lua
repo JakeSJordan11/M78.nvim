@@ -15,8 +15,15 @@ return {
             return HSL.rgb_to_hsl(c):shade(value):to_rgb()
           end
 
-          local NormalFg, NormalBg = require('windline.themes').get_hl_color 'Normal'
-          colors.Normal = { NormalFg, NormalBg }
+          colors.Normal = require('windline.themes').get_hl_color 'Normal'
+          colors.Normal2 = mod(colors.Normal, 0.2)
+          colors.Normal3 = mod(colors.Normal, 0.3)
+          colors.Normal4 = mod(colors.Normal, 0.4)
+          colors.Normal5 = mod(colors.Normal, 0.5)
+          colors.Normal6 = mod(colors.Normal, 0.6)
+          colors.Normal7 = mod(colors.Normal, 0.7)
+          colors.Normal8 = mod(colors.Normal, 0.8)
+          colors.Normal9 = mod(colors.Normal, 0.9)
 
           -- GruvboxPurple
           colors.Constant = require('windline.themes').get_hl_color 'Constant'
@@ -35,19 +42,19 @@ return {
 
           colors.Comment = require('windline.themes').get_hl_color 'Comment'
 
-          -- colors.DiagnosticError = require('windline.themes').get_hl_color 'DiagnosticError'
-          -- colors.DiagnosticWarn = require('windline.themes').get_hl_color 'DiagnosticWarn'
-          -- colors.DiagnosticInfo = require('windline.themes').get_hl_color 'DiagnosticInfo'
-          -- colors.DiagnosticHint = require('windline.themes').get_hl_color 'DiagnosticHint'
-          --
-          -- colors.diffAdded = require('windline.themes').get_hl_color 'diffAdded'
-          -- colors.diffChanged = require('windline.themes').get_hl_color 'diffChanged'
-          -- colors.diffRemoved = require('windline.themes').get_hl_color 'diffRemoved'
+          colors.DiagnosticError = require('windline.themes').get_hl_color 'DiagnosticError'
+          colors.DiagnosticWarn = require('windline.themes').get_hl_color 'DiagnosticWarn'
+          colors.DiagnosticInfo = require('windline.themes').get_hl_color 'DiagnosticInfo'
+          colors.DiagnosticHint = require('windline.themes').get_hl_color 'DiagnosticHint'
+
+          colors.diffAdded = require('windline.themes').get_hl_color 'diffAdded'
+          colors.diffChanged = require('windline.themes').get_hl_color 'diffChanged'
+          colors.diffRemoved = require('windline.themes').get_hl_color 'diffRemoved'
 
           return colors
         end,
 
-        statuslines = { statuslines.default, statuslines.winbar, statuslines.quickfix },
+        statuslines = { statuslines.default, statuslines.winbar, statuslines.trouble },
       }
     end,
   },

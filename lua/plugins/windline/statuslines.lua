@@ -3,11 +3,12 @@ return {
   default = {
     filetypes = { 'default' },
     active = {
-      components.section.vi_modes.right,
-      components.section.git_branch.right,
-      components.section.file_name.right,
-      components.section.lsp_errors,
-      components.section.divider,
+      components.vi_modes.default,
+      components.git_branch.default,
+      components.file_name.default,
+      components.git_diffs.default,
+      components.lsp_errors.default,
+      components.divider,
     },
     inactive = {},
   },
@@ -15,12 +16,22 @@ return {
   winbar = {
     filetypes = { 'winbar' },
     active = {
-      components.section.divider,
-      components.section.git_diffs,
-      components.section.file_name.left,
-      components.section.git_branch.left,
-      components.section.vi_modes.left,
+      components.divider,
+      components.lsp_errors.winbar,
+      components.git_diffs.winbar,
+      components.file_name.winbar,
+      components.git_branch.winbar,
+      components.vi_modes.winbar,
     },
     always_active = true,
+  },
+
+  trouble = {
+    filetypes = { 'Trouble' },
+    active = {
+      components.lsp_errors.default,
+    },
+    always_active = true,
+    show_last_status = true,
   },
 }

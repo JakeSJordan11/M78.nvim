@@ -9,6 +9,15 @@ return {
     'LinArcX/telescope-ports.nvim',
     'nvim-telescope/telescope-project.nvim',
     'olacin/telescope-gitmoji.nvim',
+    'nvim-telescope/telescope-symbols.nvim',
+    'nvim-telescope/telescope-node-modules.nvim',
+    'nvim-telescope/telescope-z.nvim',
+    'LinArcX/telescope-scriptnames.nvim',
+    'LinArcX/telescope-changes.nvim',
+    'nat-418/telescope-color-names.nvim',
+    'olacin/telescope-cc.nvim',
+    'danielvolchek/tailiscope.nvim',
+    { 'nvim-telescope/telescope-frecency.nvim', dependencies = 'kkharji/sqlite.lua' },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -52,6 +61,14 @@ return {
     require('telescope').load_extension 'noice'
     require('telescope').load_extension 'neoclip'
     require('telescope').load_extension 'gitmoji'
+    require('telescope').load_extension 'node_modules'
+    require('telescope').load_extension 'z'
+    require('telescope').load_extension 'scriptnames'
+    require('telescope').load_extension 'changes'
+    require('telescope').load_extension 'color_names'
+    require('telescope').load_extension 'conventional_commits'
+    require('telescope').load_extension 'tailiscope'
+    require('telescope').load_extension 'frecency'
 
     local wk = require 'which-key'
     wk.register {

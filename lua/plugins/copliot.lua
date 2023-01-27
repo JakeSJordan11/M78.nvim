@@ -14,8 +14,7 @@ return {
         end,
       },
     },
-    cmd = 'Copilot',
-    event = 'VimEnter',
+    event = 'BufReadPre',
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },

@@ -8,12 +8,13 @@ return {
     'nvim-telescope/telescope-dap.nvim',
     'LinArcX/telescope-ports.nvim',
     'nvim-telescope/telescope-project.nvim',
+    'olacin/telescope-gitmoji.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
     { 'AckslD/nvim-neoclip.lua', config = true },
-    'olacin/telescope-gitmoji.nvim',
+    { 'pwntester/octo.nvim', config = true },
   },
   config = function()
     require('telescope').setup {
@@ -36,11 +37,9 @@ return {
         project = {
           base_dirs = {
             '~/Development/',
+            '~/.config/nvim/',
           },
-          -- hidden_files = true, -- default: false
           theme = 'dropdown',
-          -- order_by = 'asc',
-          -- search_by = 'title',
         },
       },
     }

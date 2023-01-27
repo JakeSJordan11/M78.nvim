@@ -1,4 +1,5 @@
 require 'jake.options'
 require 'jake.lazy'
+require 'impatient'
 require 'jake.autocmds'
 require 'jake.keymaps'

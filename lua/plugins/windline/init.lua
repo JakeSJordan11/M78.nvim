@@ -1,7 +1,9 @@
 return {
   {
     'windwp/windline.nvim',
+    event = 'BufRead',
     config = function()
+      vim.opt.laststatus = 3
       local windline = require 'windline'
       local HSL = require 'wlanimation.utils'
       local statuslines = require 'plugins.windline.statuslines'

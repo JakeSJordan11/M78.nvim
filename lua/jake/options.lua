@@ -1,4 +1,4 @@
-vim.opt.highlight.blend = 100 
+vim.opt.highlight.blend = 100
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
@@ -20,7 +20,7 @@ vim.opt.swapfile = false
 vim.opt.hlsearch = false
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 vim.opt.splitkeep = 'screen'
 vim.opt.formatoptions:append 'j'
 vim.opt.autoread = true
@@ -54,6 +54,7 @@ vim.opt.history = 1000
 vim.opt.modeline = false
 vim.opt.spell = false
 vim.opt.fillchars = 'eob: '
+vim.opt.pumheight = 16
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

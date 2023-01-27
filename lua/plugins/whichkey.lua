@@ -38,6 +38,8 @@ return {
             end,
             'Lazygit',
           },
+          P = { '<Cmd>!git push<CR>', 'Push' },
+          p = { '<Cmd>!git pull<CR>', 'Pull' },
         },
 
         w = {

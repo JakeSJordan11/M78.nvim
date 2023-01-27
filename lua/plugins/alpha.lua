@@ -1,5 +1,6 @@
 return {
   'goolord/alpha-nvim',
+  event = 'VimEnter',
   config = function()
     local wk = require 'which-key'
     wk.register {
@@ -56,7 +57,27 @@ return {
       value.opts.hl_shortcut = 'Special'
       value.opts.shortcut = icons[index]
     end
-    dashboard.config.opts.margin = 100
+
+    if vim.o.filetype == 'lazy' then
+      vim.cmd.close()
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'AlphaReady',
+        callback = function()
+          require('lazy').show()
+        end,
+      })
+    end
+
     require('alpha').setup(dashboard.config)
+
+    vim.api.nvim_create_autocmd('User', {
+      callback = function()
+        local stats = require('lazy').stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        dashboard.section.footer.val = '⚡ Neovim loaded ' .. stats.count .. ' plugins in ' .. ms .. 'ms'
+        pcall(vim.cmd.AlphaRedraw)
+      end,
+      pattern = 'LazyVimStarted',
+    })
   end,
 }

@@ -18,6 +18,7 @@ return {
       'Saecki/crates.nvim',
       'David-Kunz/cmp-npm',
       'onsails/lspkind.nvim',
+      'jcha0713/cmp-tw2css',
       {
         'L3MON4D3/LuaSnip',
         dependencies = {
@@ -113,8 +114,9 @@ return {
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
-          { name = 'path' },
           { name = 'luasnip' },
+          { name = 'cmp-tw2css' },
+          { name = 'path' },
           { name = 'emoji' },
           { name = 'nerdfont' },
           { name = 'npm' },

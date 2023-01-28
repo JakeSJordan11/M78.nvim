@@ -1,2 +1,3 @@
 # M78.nvim
-my personal infinately changing neovim config
+
+my personal infinitely changing neovim config

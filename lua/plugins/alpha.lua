@@ -43,9 +43,9 @@ return {
     dashboard.section.header.val = header
     dashboard.section.buttons.val = {
       dashboard.button('p', '[P]rojects', '<Cmd>Telescope projects<CR>'),
-      dashboard.button('r', '[R]ecent Files', '<Cmd>Telescope oldfiles<CR>'),
+      dashboard.button('r', '[R]ecent Files', '<Cmd>Telescope frecency<CR>'),
       dashboard.button('o', '[O]pen Last File', '<C-o><C-o>'),
-      dashboard.button('c', '[C]onfiguration', '<Cmd>e ~/.config/nvim/init.lua<CR>'),
+      dashboard.button('c', '[C]onfiguration', '<Cmd>e ~/Development/M78.nvim/init.lua<CR>'),
       dashboard.button('q', '[Q]uit Neovim', '<Cmd>qa<CR>'),
     }
 

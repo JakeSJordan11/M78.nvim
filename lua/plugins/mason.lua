@@ -25,10 +25,7 @@ return {
       end
       local wk = require 'which-key'
       wk.register {
-        ['<Leader>n'] = {
-          name = 'Neovim',
-          m = { '<Cmd>Mason<CR>', 'Mason' },
-        },
+        ['<Leader>m'] = { '<Cmd>Mason<CR>', 'Mason' },
       }
     end,
   },

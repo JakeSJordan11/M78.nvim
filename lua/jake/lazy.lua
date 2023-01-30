@@ -38,7 +38,5 @@ require('lazy').setup {
 
 local wk = require 'which-key'
 wk.register {
-  ['<Leader>n'] = {
-    z = { '<Cmd>Lazy<CR>', 'Lazy' },
-  },
+  ['<Leader>z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
 }

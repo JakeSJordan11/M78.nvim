@@ -110,12 +110,12 @@ return {
           }),
         },
         sources = cmp.config.sources {
+          { name = 'cmp-tw2css' },
           { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
           { name = 'luasnip' },
-          { name = 'cmp-tw2css' },
           { name = 'path' },
           { name = 'emoji' },
           { name = 'nerdfont' },

@@ -49,7 +49,7 @@ return {
       dashboard.button('q', '[Q]uit Neovim', '<Cmd>qa<CR>'),
     }
 
-    for index, value in ipairs(dashboard.section.buttons.val) do
+    for index, value in pairs(dashboard.section.buttons.val) do
       local width = 30
       value.opts.hl = 'Keyword'
       value.opts.width = width

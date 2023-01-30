@@ -8,6 +8,7 @@ return {
       nls.setup {
         sources = {
           nls.builtins.formatting.stylua,
+          nls.builtins.formatting.prettierd,
         },
       }
     end,

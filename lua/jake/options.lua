@@ -60,12 +60,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  vim.opt.guifont = 'OperatorMonoSSmLig Nf:h20'
-  vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'torpedo')
-  vim.api.nvim_set_var('neovide_cursor_vfx_particle_lifetime', 1.2)
-  vim.api.nvim_set_var('neovide_cursor_vfx_particle_density', 7.0)
-  vim.api.nvim_set_var('neovide_cursor_vfx_particle_speed', 10.0)
-  vim.api.nvim_set_var('neovide_input_use_logo', true)
-  vim.api.nvim_set_var('neovide_macos_alt_is_meta', false)
+  vim.opt.guifont = { 'OperatorMonoSSmLig Nf:h16' }
+  vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'pixiedust')
   vim.api.nvim_set_var('neovide_hide_mouse_when_typing', true)
+  vim.api.nvim_set_var('neovide_refresh_rate', 120)
+  vim.api.nvim_set_var('neovide_refresh_rate_idle', 5)
+  vim.api.nvim_set_var('neovide_fullscreen', true)
+  vim.api.nvim_set_var('neovide_input_macos_alt_is_meta', true)
 end

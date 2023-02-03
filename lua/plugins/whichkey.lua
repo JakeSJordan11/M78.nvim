@@ -42,6 +42,13 @@ return {
           p = { '<Cmd>!git pull<CR>', 'Pull' },
         },
 
+        u = {
+          name = 'User Interface',
+          l = { '<Cmd>set background=light<CR>', 'Light Mode' },
+          d = { '<Cmd>set background=dark<CR>', 'Dark Mode' },
+          c = { '<Cmd>Telescope colorscheme<CR>', 'Colorschemes' },
+        },
+
         w = {
           name = 'Window',
           cmd = '<C-w>',

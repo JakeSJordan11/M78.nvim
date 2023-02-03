@@ -82,7 +82,6 @@ return {
         a = { '<Cmd>Telescope adjacent<CR>', 'Adjacent' },
         B = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
         b = { '<Cmd>Telescope file_browser<CR>', 'Files with file browser' },
-        c = { '<Cmd>Telescope colorscheme<CR>', 'Colorschemes' },
         d = { '<Cmd>Telescope diagnostics<CR>', 'Document diagnostics' },
         f = { '<Cmd>Telescope find_files<CR>', 'Files' },
         h = { '<Cmd>Telescope help_tags<CR>', 'Help' },

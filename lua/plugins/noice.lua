@@ -9,7 +9,6 @@ return {
           fps = 120,
           stages = 'slide',
           timeout = 2000,
-          top_down = false,
         },
       },
     },

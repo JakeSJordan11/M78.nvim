@@ -51,6 +51,7 @@ return {
     require('telescope').load_extension 'adjacent'
     require('telescope').load_extension 'projects'
     require('telescope').load_extension 'frecency'
+    require('telescope').load_extension 'notify'
 
     local wk = require 'which-key'
     wk.register {

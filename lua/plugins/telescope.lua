@@ -2,6 +2,7 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
     'ibhagwan/fzf-lua',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -18,19 +19,6 @@ return {
       end,
     },
     { 'nvim-telescope/telescope-frecency.nvim', dependencies = 'kkharji/sqlite.lua' },
-    -- 'nvim-telescope/telescope-project.nvim',
-    -- 'nvim-telescope/telescope-dap.nvim',
-    -- 'nvim-telescope/telescope-node-modules.nvim',
-    -- 'nvim-telescope/telescope-z.nvim',
-    -- 'nvim-telescope/telescope-ui-select.nvim',
-    -- 'LinArcX/telescope-ports.nvim',
-    -- 'nvim-telescope/telescope-symbols.nvim',
-    -- 'LinArcX/telescope-scriptnames.nvim',
-    -- 'LinArcX/telescope-changes.nvim',
-    -- 'nat-418/telescope-color-names.nvim',
-    -- 'olacin/telescope-cc.nvim',
-    -- 'danielvolchek/tailiscope.nvim',
-    -- { 'pwntester/octo.nvim', config = true },
   },
   config = function()
     require('telescope').setup {
@@ -63,16 +51,6 @@ return {
     require('telescope').load_extension 'adjacent'
     require('telescope').load_extension 'projects'
     require('telescope').load_extension 'frecency'
-    -- require('telescope').load_extension 'project'
-    -- require('telescope').load_extension 'ui-select'
-    -- require('telescope').load_extension 'ports'
-    -- require('telescope').load_extension 'node_modules'
-    -- require('telescope').load_extension 'z'
-    -- require('telescope').load_extension 'scriptnames'
-    -- require('telescope').load_extension 'changes'
-    -- require('telescope').load_extension 'color_names'
-    -- require('telescope').load_extension 'conventional_commits'
-    -- require('telescope').load_extension 'tailiscope'
 
     local wk = require 'which-key'
     wk.register {

@@ -19,13 +19,6 @@ return {
 
           colors.Normal = require('windline.themes').get_hl_color 'Normal'
           colors.Normal2 = mod(colors.Normal, 0.2)
-          colors.Normal3 = mod(colors.Normal, 0.3)
-          colors.Normal4 = mod(colors.Normal, 0.4)
-          colors.Normal5 = mod(colors.Normal, 0.5)
-          colors.Normal6 = mod(colors.Normal, 0.6)
-          colors.Normal7 = mod(colors.Normal, 0.7)
-          colors.Normal8 = mod(colors.Normal, 0.8)
-          colors.Normal9 = mod(colors.Normal, 0.9)
 
           -- GruvboxPurple
           colors.Constant = require('windline.themes').get_hl_color 'Constant'
@@ -53,10 +46,11 @@ return {
           colors.diffChanged = require('windline.themes').get_hl_color 'diffChanged'
           colors.diffRemoved = require('windline.themes').get_hl_color 'diffRemoved'
 
+          colors.Statement2 = mod(colors.Identifier, 0.5)
           return colors
         end,
 
-        statuslines = { statuslines.default, statuslines.winbar, statuslines.trouble },
+        statuslines = { statuslines.default, statuslines.winbar },
       }
     end,
   },

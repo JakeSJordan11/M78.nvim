@@ -40,28 +40,28 @@ M.vi_modes = {
 
   winbar = {
     hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
+      Command = { 'NormalBg', 'NormalFg' },
+      Insert = { 'NormalBg', 'NormalFg' },
+      Visual = { 'NormalBg', 'NormalFg' },
+      Replace = { 'NormalBg', 'NormalFg' },
+      Normal = { 'NormalBg', 'NormalFg' },
 
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
+      CommandSep = { 'NormalFg', 'NormalBg' },
+      InsertSep = { 'NormalFg', 'NormalBg' },
+      VisualSep = { 'NormalFg', 'NormalBg' },
+      ReplaceSep = { 'NormalFg', 'NormalBg' },
+      NormalSep = { 'NormalFg', 'NormalBg' },
     },
     text = function(_, _, width)
       if width > width_breakpoint then
         return {
-          { sep.left_filled, state.mode[2] },
-          { ' ' .. state.mode[1] .. ' ', state.mode[2] .. 'Sep' },
+          { sep.left_filled, state.mode[2] .. 'Sep' },
+          { ' ' .. state.mode[1] .. ' ', state.mode[2] },
         }
       end
       return {
-        { sep.left_filled, state.mode[2] },
-        { ' ' .. state.mode[1]:sub(1, 1) .. ' ', state.mode[2] .. 'Sep' },
+        { sep.left_filled, state.mode[2] .. 'Sep' },
+        { ' ' .. state.mode[1]:sub(1, 1) .. ' ', state.mode[2] },
       }
     end,
   },

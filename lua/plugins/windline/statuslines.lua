@@ -23,15 +23,5 @@ return {
       components.git_branch.winbar,
       components.vi_modes.winbar,
     },
-    always_active = true,
-  },
-
-  trouble = {
-    filetypes = { 'Trouble' },
-    active = {
-      components.lsp_errors.default,
-    },
-    always_active = true,
-    show_last_status = true,
   },
 }

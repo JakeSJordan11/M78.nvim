@@ -12,9 +12,8 @@ return {
       local ensure_installed = {
         'stylua',
         'rustfmt',
-        'rustywind',
         'prettierd',
-        'eslint_d',
+        -- 'typescript-language-server',
       }
       local mr = require 'mason-registry'
       for _, tool in ipairs(ensure_installed) do

@@ -1,18 +1,6 @@
 local M = {}
 
 local servers = {
-  pyright = {
-    settings = {
-      python = {
-        analysis = {
-          typeCheckingMode = 'off',
-          autoSearchPaths = true,
-          useLibraryCodeForTypes = true,
-          diagnosticMode = 'workspace',
-        },
-      },
-    },
-  },
   rust_analyzer = {
     settings = {
       ['rust-analyzer'] = {
@@ -38,9 +26,7 @@ local servers = {
       },
     },
   },
-  denols = {
-    root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
-  },
+  tsserver = {},
 }
 
 local function lsp_attach(on_attach)
@@ -73,15 +59,6 @@ function M.setup(_)
       opts.capabilities = lsp_capabilities()
       require('lspconfig')[server].setup(opts)
     end,
-    ['rust_analyzer'] = function(server)
-      local rt = require 'rust-tools'
-      local opts = servers[server] or {}
-      opts.capabilities = lsp_capabilities()
-      rt.setup { server = opts }
-    end,
-  }
-  require('typescript').setup {
-    root_dir = require('lspconfig').util.root_pattern 'package.json',
   }
 end
 

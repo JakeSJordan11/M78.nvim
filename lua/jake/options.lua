@@ -42,7 +42,6 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.wildmenu = true
 vim.opt.wildignore:append '.pyc,.swp'
 vim.opt.visualbell = true
-vim.opt.title = true
 vim.opt.confirm = false
 vim.opt.foldmethod = 'indent'
 vim.opt.foldnestmax = 3

@@ -20,7 +20,6 @@ vim.opt.swapfile = false
 vim.opt.hlsearch = false
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
-vim.opt.laststatus = 0
 vim.opt.splitkeep = 'screen'
 vim.opt.formatoptions:append 'j'
 vim.opt.autoread = true
@@ -57,6 +56,7 @@ vim.opt.pumheight = 16
 vim.opt.title = true
 vim.opt.titlestring = '%t'
 vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -67,6 +67,6 @@ if vim.g.neovide then
   vim.api.nvim_set_var('neovide_hide_mouse_when_typing', true)
   vim.api.nvim_set_var('neovide_refresh_rate', 120)
   vim.api.nvim_set_var('neovide_refresh_rate_idle', 5)
-  vim.api.nvim_set_var('neovide_fullscreen', true)
+  -- vim.api.nvim_set_var('neovide_fullscreen', true)
   vim.api.nvim_set_var('neovide_input_macos_alt_is_meta', true)
 end

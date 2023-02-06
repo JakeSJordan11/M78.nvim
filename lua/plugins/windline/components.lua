@@ -9,21 +9,23 @@ local lsp_comps = require 'windline.components.lsp'
 
 local width_breakpoint = 100
 
+M.basic_colors = {
+  Command = { 'NormalFg', 'NormalBg' },
+  Insert = { 'NormalFg', 'NormalBg' },
+  Visual = { 'NormalFg', 'NormalBg' },
+  Replace = { 'NormalFg', 'NormalBg' },
+  Normal = { 'NormalFg', 'NormalBg' },
+
+  CommandSep = { 'NormalBg', 'NormalFg' },
+  InsertSep = { 'NormalBg', 'NormalFg' },
+  VisualSep = { 'NormalBg', 'NormalFg' },
+  ReplaceSep = { 'NormalBg', 'NormalFg' },
+  NormalSep = { 'NormalBg', 'NormalFg' },
+}
+
 M.vi_modes = {
   default = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function(_, _, width)
       if width > width_breakpoint then
         return {
@@ -39,19 +41,7 @@ M.vi_modes = {
   },
 
   winbar = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function(_, _, width)
       if width > width_breakpoint then
         return {
@@ -69,19 +59,7 @@ M.vi_modes = {
 
 M.git_branch = {
   default = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function()
       return {
         { git_comps.git_branch(), state.mode[2] },
@@ -92,19 +70,7 @@ M.git_branch = {
   },
 
   winbar = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function()
       return {
         { sep.left_filled, state.mode[2] .. 'Sep' },
@@ -117,45 +83,20 @@ M.git_branch = {
 
 M.file_name = {
   default = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function()
       return {
         { ' ' },
         { b_components.cache_file_name('', 'unique'), state.mode[2] .. 'Sep' },
-        { sep.right_filled .. ' ', state.mode[2] },
+        { sep.right_filled, state.mode[2] },
       }
     end,
   },
 
   winbar = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
+    hl_colors = M.basic_colors,
     text = function()
       return {
-        { ' ', state.mode[2] },
         { sep.left_filled, state.mode[2] },
         { ' ', state.mode[2] .. 'Sep' },
         { b_components.cache_file_name('', 'unique'), state.mode[2] .. 'Sep' },
@@ -165,107 +106,26 @@ M.file_name = {
 }
 
 M.lsp_errors = {
-  default = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
-    text = function(bufnr)
-      if lsp_comps.check_lsp(bufnr) then
-        return {
-          { lsp_comps.lsp_error { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_warning { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_info { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_hint { format = '  %s ', show_zero = true }, state.mode[2] .. 'Sep' },
-          { sep.right_filled .. ' ', state.mode[2] },
-        }
-      end
-    end,
-  },
-  winbar = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
-    text = function(bufnr)
-      if lsp_comps.check_lsp(bufnr) then
-        return {
-          { sep.left_filled, state.mode[2] },
-          { lsp_comps.lsp_error { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_warning { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_info { format = '  %s', show_zero = true }, state.mode[2] .. 'Sep' },
-          { lsp_comps.lsp_hint { format = '  %s ', show_zero = true }, state.mode[2] .. 'Sep' },
-        }
-      end
-    end,
-  },
+  text = function(bufnr)
+    if lsp_comps.check_lsp(bufnr) then
+      return {
+        { lsp_comps.lsp_error { format = '  %s', show_zero = true }, 'DiagnosticError' },
+        { lsp_comps.lsp_warning { format = '  %s', show_zero = true }, 'DiagnosticWarn' },
+        { lsp_comps.lsp_info { format = '  %s', show_zero = true }, 'DiagnosticInfo' },
+        { lsp_comps.lsp_hint { format = '  %s', show_zero = true }, 'DiagnosticHint' },
+      }
+    end
+  end,
 }
 
 M.git_diffs = {
-  default = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
-    text = function()
-      return {
-        { git_comps.diff_added { format = ' %s', show_zero = true }, state.mode[2] },
-        { git_comps.diff_changed { format = ' 柳%s', show_zero = true }, state.mode[2] },
-        { git_comps.diff_removed { format = '  %s ', show_zero = true }, state.mode[2] },
-        { sep.right_filled, state.mode[2] .. 'Sep' },
-      }
-    end,
-  },
-  winbar = {
-    hl_colors = {
-      Command = { 'NormalFg', 'NormalBg' },
-      Insert = { 'NormalFg', 'NormalBg' },
-      Visual = { 'NormalFg', 'NormalBg' },
-      Replace = { 'NormalFg', 'NormalBg' },
-      Normal = { 'NormalFg', 'NormalBg' },
-
-      CommandSep = { 'NormalBg', 'NormalFg' },
-      InsertSep = { 'NormalBg', 'NormalFg' },
-      VisualSep = { 'NormalBg', 'NormalFg' },
-      ReplaceSep = { 'NormalBg', 'NormalFg' },
-      NormalSep = { 'NormalBg', 'NormalFg' },
-    },
-    text = function()
-      return {
-        { sep.left_filled, state.mode[2] .. 'Sep' },
-        { git_comps.diff_added { format = '  %s', show_zero = true }, state.mode[2] },
-        { git_comps.diff_changed { format = ' 柳%s', show_zero = true }, state.mode[2] },
-        { git_comps.diff_removed { format = '  %s', show_zero = true }, state.mode[2] },
-      }
-    end,
-  },
+  text = function()
+    return {
+      { git_comps.diff_added { format = ' %s', show_zero = true }, 'GitSignsAdd' },
+      { git_comps.diff_changed { format = ' 柳%s', show_zero = true }, 'GitSignsChange' },
+      { git_comps.diff_removed { format = '  %s ', show_zero = true }, 'GitSignsDelete' },
+    }
+  end,
 }
 
 M.divider = { b_components.divider, { 'NormalBg', 'NormalBg' } }

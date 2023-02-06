@@ -34,6 +34,7 @@ return {
 
     local icons = {
       ' ',
+      ' ',
       ' ',
       ' ',
       ' ',
@@ -43,6 +44,7 @@ return {
     dashboard.section.header.val = header
     dashboard.section.buttons.val = {
       dashboard.button('p', '[P]rojects', '<Cmd>Telescope projects<CR>'),
+      dashboard.button('t', '[T]erminal', '<Cmd>terminal<CR>'),
       dashboard.button('r', '[R]ecent Files', '<Cmd>Telescope frecency<CR>'),
       dashboard.button('o', '[O]pen Last File', '<C-o><C-o>'),
       dashboard.button('c', '[C]onfiguration', '<Cmd>e ~/.config/nvim/init.lua<CR>'),

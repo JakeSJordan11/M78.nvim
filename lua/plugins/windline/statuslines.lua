@@ -3,6 +3,8 @@ return {
   default = {
     filetypes = { 'default' },
     active = {
+      components.git_branch,
+      components.lsp_errors,
       components.divider,
     },
     inactive = {},

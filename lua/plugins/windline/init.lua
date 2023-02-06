@@ -41,7 +41,7 @@ return {
           return colors
         end,
 
-        statuslines = { statuslines.default, statuslines.trouble },
+        statuslines = { statuslines.default, statuslines.trouble, statuslines.winbar },
       }
     end,
   },

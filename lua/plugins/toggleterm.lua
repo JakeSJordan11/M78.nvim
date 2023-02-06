@@ -1,9 +1,9 @@
 return {
   {
     'akinsho/toggleterm.nvim',
-    keys = '<C-\\>',
+    keys = [[<C-\>]],
     opts = {
-      size = 20,
+      size = 25,
       open_mapping = [[<c-\>]],
       hide_numbers = true,
       shade_filetypes = {},
@@ -11,6 +11,7 @@ return {
       shading_factor = 2,
       start_in_insert = true,
       insert_mappings = true,
+      terminal_mappings = false,
       persist_size = true,
       direction = 'horizontal',
       close_on_exit = true,

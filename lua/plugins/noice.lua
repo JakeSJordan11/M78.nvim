@@ -18,8 +18,14 @@ return {
           local notify = require 'notify'
           notify.setup {
             fps = 120,
-            timeout = 2000,
-            level = 3,
+            -- timeout = 2000,
+            -- level = 3,
+            max_height = function()
+              return math.floor(vim.o.lines * 0.50)
+            end,
+            max_width = function()
+              return math.floor(vim.o.columns * 0.45)
+            end,
             on_open = function(win)
               vim.api.nvim_win_set_config(win, { focusable = false })
             end,
@@ -28,6 +34,9 @@ return {
       },
     },
     config = function()
+      vim.keymap.set('c', '<S-Enter>', function()
+        require('noice').redirect(vim.fn.getcmdline())
+      end, { desc = 'Redirect Cmdline' })
       require('noice').setup {
         presets = {
           command_palette = true,
@@ -38,6 +47,18 @@ return {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
             ['vim.lsp.util.stylize_markdown'] = true,
             ['cmp.entry.get_documentation'] = true,
+          },
+        },
+        views = {
+          notify = {
+            replace = true,
+            -- merge = true,
+          },
+        },
+        routes = {
+          {
+            view = 'notify',
+            filter = { event = 'msg_showmode' },
           },
         },
       }

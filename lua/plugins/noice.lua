@@ -18,8 +18,7 @@ return {
           local notify = require 'notify'
           notify.setup {
             fps = 120,
-            -- timeout = 2000,
-            -- level = 3,
+            timeout = 1500,
             max_height = function()
               return math.floor(vim.o.lines * 0.50)
             end,

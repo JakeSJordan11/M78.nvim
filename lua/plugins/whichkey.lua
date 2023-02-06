@@ -4,7 +4,7 @@ return {
     config = function()
       local wk = require 'which-key'
       local Terminal = require('toggleterm.terminal').Terminal
-      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true }
+      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 
       local setup = {
         window = {

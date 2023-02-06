@@ -23,15 +23,20 @@ return {
       components.git_branch.winbar,
       components.vi_modes.winbar,
     },
-    always_active = true,
+  },
+
+  terminal = {
+    filetypes = { 'terminal', 'toggleterm' },
+    active = {
+      components.divider,
+    },
   },
 
   trouble = {
-    filetypes = { 'Trouble' },
+    filetypes = { 'Trouble', 'winbar' },
     active = {
       components.lsp_errors.default,
+      components.divider,
     },
-    always_active = true,
-    show_last_status = true,
   },
 }

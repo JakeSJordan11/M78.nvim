@@ -268,6 +268,6 @@ M.git_diffs = {
   },
 }
 
-M.divider = { b_components.divider }
+M.divider = { b_components.divider, { 'NormalBg', 'NormalBg' } }
 
 return M

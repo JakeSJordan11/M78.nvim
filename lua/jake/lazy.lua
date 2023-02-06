@@ -20,18 +20,6 @@ require('lazy').setup {
   ui = {
     border = 'rounded',
   },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        'gzip',
-        'netrwPlugin',
-        'tarPlugin',
-        'tohtml',
-        'tutor',
-        'zip Plugin',
-      },
-    },
-  },
 }
 
 local wk = require 'which-key'

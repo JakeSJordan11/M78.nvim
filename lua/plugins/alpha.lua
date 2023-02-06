@@ -2,6 +2,7 @@ return {
   'goolord/alpha-nvim',
   event = 'VimEnter',
   config = function()
+    vim.opt.laststatus = 0
     local wk = require 'which-key'
     wk.register {
       ['<Leader>a'] = { '<Cmd>Alpha<CR>', 'Alpha' },

@@ -55,8 +55,6 @@ vim.opt.fillchars = 'eob: '
 vim.opt.pumheight = 16
 vim.opt.title = true
 vim.opt.titlestring = '%t'
-vim.opt.cmdheight = 0
-vim.opt.laststatus = 0
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

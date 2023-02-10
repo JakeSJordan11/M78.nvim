@@ -3,7 +3,8 @@ return {
     'neovim/nvim-lspconfig',
     event = 'BufReadPre',
     dependencies = {
-      { 'folke/neodev.nvim', config = true },
+      'folke/neodev.nvim',
+      'jose-elias-alvarez/typescript.nvim',
       {
         'williamboman/mason.nvim',
         dependencies = {
@@ -16,11 +17,8 @@ return {
               height = 0.8,
             },
           }
-
           local ensure_installed = {
             'stylua',
-            -- 'rustfmt',
-            'prettierd',
             'typescript-language-server',
           }
           local mr = require 'mason-registry'
@@ -36,10 +34,18 @@ return {
           }
         end,
       },
-      'simrat39/rust-tools.nvim',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'jose-elias-alvarez/typescript.nvim',
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        event = 'BufReadPre',
+        config = function()
+          local nls = require 'null-ls'
+          nls.setup {
+            sources = {
+              nls.builtins.formatting.stylua,
+            },
+          }
+        end,
+      },
       {
         'folke/trouble.nvim',
         config = function()

@@ -3,8 +3,8 @@ return {
     'neovim/nvim-lspconfig',
     event = 'BufReadPre',
     dependencies = {
-      'folke/neodev.nvim',
       'jose-elias-alvarez/typescript.nvim',
+      { 'folke/neodev.nvim', config = true },
       {
         'williamboman/mason.nvim',
         dependencies = {

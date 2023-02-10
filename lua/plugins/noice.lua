@@ -18,6 +18,7 @@ return {
           local notify = require 'notify'
           notify.setup {
             fps = 120,
+            top_down = false,
             timeout = 1500,
             max_height = function()
               return math.floor(vim.o.lines * 0.50)
@@ -33,15 +34,15 @@ return {
       },
     },
     config = function()
-      vim.keymap.set('c', '<S-Enter>', function()
-        require('noice').redirect(vim.fn.getcmdline())
-      end, { desc = 'Redirect Cmdline' })
       require('noice').setup {
         presets = {
           command_palette = true,
           lsp_doc_border = true,
         },
         lsp = {
+          progress = {
+            view = 'notify',
+          },
           override = {
             ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
             ['vim.lsp.util.stylize_markdown'] = true,
@@ -51,13 +52,6 @@ return {
         views = {
           notify = {
             replace = true,
-            -- merge = true,
-          },
-        },
-        routes = {
-          {
-            view = 'notify',
-            filter = { event = 'msg_showmode' },
           },
         },
       }

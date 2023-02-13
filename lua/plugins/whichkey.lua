@@ -3,8 +3,6 @@ return {
     'folke/which-key.nvim',
     config = function()
       local wk = require 'which-key'
-      local Terminal = require('toggleterm.terminal').Terminal
-      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 
       local setup = {
         window = {
@@ -32,12 +30,6 @@ return {
 
         g = {
           name = 'Git',
-          g = {
-            function()
-              lazygit:toggle()
-            end,
-            'Lazygit',
-          },
           P = { '<Cmd>!git push<CR>', 'Push' },
           p = { '<Cmd>!git pull<CR>', 'Pull' },
         },

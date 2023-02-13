@@ -1,29 +1,28 @@
 return {
   {
     'akinsho/toggleterm.nvim',
-    keys = [[<C-\>]],
-    opts = {
-      size = 25,
-      open_mapping = [[<c-\>]],
-      hide_numbers = true,
-      shade_filetypes = {},
-      shade_terminals = true,
-      shading_factor = 2,
-      start_in_insert = true,
-      insert_mappings = true,
-      terminal_mappings = false,
-      persist_size = true,
-      direction = 'horizontal',
-      close_on_exit = true,
-      shell = vim.o.shell,
-      float_opts = {
-        border = 'curved',
-        winblend = 0,
-        highlights = {
-          border = 'Normal',
-          background = 'Normal',
+    event = 'VeryLazy',
+    config = function()
+      local toggleTerm = require 'toggleterm'
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float', float_opts = { border = 'rounded' } }
+
+      local wk = require 'which-key'
+
+      wk.register {
+        ['<Leader>gg'] = {
+          function()
+            lazygit:toggle()
+          end,
+          'Lazygit',
         },
-      },
-    },
+      }
+      toggleTerm.setup {
+        size = 25,
+        open_mapping = [[<c-\>]],
+        shade_terminals = false,
+        direction = 'horizontal',
+      }
+    end,
   },
 }

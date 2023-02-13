@@ -3,9 +3,9 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'BufRead',
     dependencies = {
+      'jcha0713/cmp-tw2css',
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
@@ -18,7 +18,7 @@ return {
       'Saecki/crates.nvim',
       'David-Kunz/cmp-npm',
       'onsails/lspkind.nvim',
-      'jcha0713/cmp-tw2css',
+      'hrsh7th/cmp-buffer',
       {
         'L3MON4D3/LuaSnip',
         dependencies = {
@@ -111,7 +111,6 @@ return {
         },
         sources = cmp.config.sources {
           { name = 'cmp-tw2css' },
-          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lua' },
@@ -121,16 +120,12 @@ return {
           { name = 'nerdfont' },
           { name = 'npm' },
           { name = 'crates' },
+        },
+        {
           { name = 'buffer' },
         },
         formatting = {
           format = function(_, vim_item)
-            lspkind.cmp_format {
-              mode = 'symbol',
-              max_width = 50,
-              symbol_map = { Copilot = '' },
-            }
-            vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { link = 'Constant' })
             vim_item.kind = (lspkind.symbol_map[vim_item.kind] or '') .. ' ' .. vim_item.kind
             return vim_item
           end,
@@ -159,6 +154,14 @@ return {
           { name = 'path' },
         },
       })
+
+      cmp.event:on('menu_opened', function()
+        vim.b.copilot_suggestion_hidden = true
+      end)
+
+      cmp.event:on('menu_closed', function()
+        vim.b.copilot_suggestion_hidden = false
+      end)
     end,
   },
 }

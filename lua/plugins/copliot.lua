@@ -1,23 +1,23 @@
 return {
   {
     'zbirenbaum/copilot.lua',
-    dependencies = {
-      {
-        'zbirenbaum/copilot-cmp',
-        config = function()
-          require('copilot_cmp').setup {
-            method = 'getPanelCompletions',
-            formatters = {
-              insert_text = require('copilot_cmp.format').remove_existing,
-            },
-          }
-        end,
-      },
-    },
-    event = 'BufReadPre',
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    },
+    event = 'InsertEnter',
+    config = function()
+      vim.keymap.set('i', '<Tab>', function()
+        if require('copilot.suggestion').is_visible() then
+          require('copilot.suggestion').accept()
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', false)
+        end
+      end, {
+        silent = true,
+      })
+      require('copilot').setup {
+        suggestion = {
+          auto_trigger = true,
+          accept = false,
+        },
+      }
+    end,
   },
 }

@@ -13,6 +13,7 @@ local servers = {
       },
     },
   },
+  cssmodules_ls = {},
   cssls = {},
 }
 
@@ -24,11 +25,6 @@ local function lsp_attach(on_attach)
       on_attach(client, bufnr)
     end,
   })
-end
-
-local function lsp_capabilities()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  return require('cmp_nvim_lsp').default_capabilities(capabilities)
 end
 
 function M.setup(_)
@@ -43,7 +39,7 @@ function M.setup(_)
   require('mason-lspconfig').setup_handlers {
     function(server)
       local opts = servers[server] or {}
-      opts.capabilities = lsp_capabilities()
+      opts.capabilities = require('plugins.lsp.capabilities').lsp_capabilities()
       require('lspconfig')[server].setup(opts)
     end,
   }

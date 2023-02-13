@@ -1,5 +1,10 @@
 local M = {}
 
+function M.lsp_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  return require('cmp_nvim_lsp').default_capabilities(capabilities)
+end
+
 function M.on_attach(client, buffer)
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })

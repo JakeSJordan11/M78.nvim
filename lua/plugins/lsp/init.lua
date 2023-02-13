@@ -20,6 +20,7 @@ return {
           local ensure_installed = {
             'stylua',
             'typescript-language-server',
+            'prettier',
           }
           local mr = require 'mason-registry'
           for _, tool in ipairs(ensure_installed) do
@@ -42,6 +43,7 @@ return {
           nls.setup {
             sources = {
               nls.builtins.formatting.stylua,
+              nls.builtins.formatting.prettier,
             },
           }
         end,

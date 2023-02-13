@@ -1,7 +1,7 @@
 local M = {}
 
 local servers = {
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         diagnostics = {
@@ -13,6 +13,7 @@ local servers = {
       },
     },
   },
+  cssls = {},
 }
 
 local function lsp_attach(on_attach)

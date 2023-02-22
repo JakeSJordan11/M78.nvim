@@ -6,7 +6,7 @@ return {
       components.vi_modes.default,
       components.git_branch.default,
       components.file_name.default,
-      components.lsp_errors,
+      components.git_diffs,
       components.divider,
     },
     inactive = {},
@@ -16,7 +16,7 @@ return {
     filetypes = { 'winbar' },
     active = {
       components.divider,
-      components.git_diffs,
+      components.lsp_errors,
       components.file_name.winbar,
       components.git_branch.winbar,
       components.vi_modes.winbar,

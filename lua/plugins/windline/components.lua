@@ -7,9 +7,7 @@ local b_components = require 'windline.components.basic'
 local git_comps = require 'windline.components.git'
 local lsp_comps = require 'windline.components.lsp'
 
-local width_breakpoint = 100
-
-M.basic_colors = {
+M.colors = {
   Command = { 'NormalFg', 'NormalBg' },
   Insert = { 'NormalFg', 'NormalBg' },
   Visual = { 'NormalFg', 'NormalBg' },
@@ -25,33 +23,21 @@ M.basic_colors = {
 
 M.vi_modes = {
   default = {
-    hl_colors = M.basic_colors,
-    text = function(_, _, width)
-      if width > width_breakpoint then
-        return {
-          { ' ' .. state.mode[1] .. ' ', state.mode[2] .. 'Sep' },
-          { sep.right_filled, state.mode[2] },
-        }
-      end
+    hl_colors = M.colors,
+    text = function()
       return {
-        { ' ' .. state.mode[1]:sub(1, 1) .. ' ', state.mode[2] .. 'Sep' },
+        { ' ' .. state.mode[1] .. ' ', state.mode[2] .. 'Sep' },
         { sep.right_filled, state.mode[2] },
       }
     end,
   },
 
   winbar = {
-    hl_colors = M.basic_colors,
-    text = function(_, _, width)
-      if width > width_breakpoint then
-        return {
-          { sep.left_filled, state.mode[2] },
-          { ' ' .. state.mode[1] .. ' ', state.mode[2] .. 'Sep' },
-        }
-      end
+    hl_colors = M.colors,
+    text = function()
       return {
         { sep.left_filled, state.mode[2] },
-        { ' ' .. state.mode[1]:sub(1, 1) .. ' ', state.mode[2] .. 'Sep' },
+        { ' ' .. state.mode[1] .. ' ', state.mode[2] .. 'Sep' },
       }
     end,
   },
@@ -59,7 +45,7 @@ M.vi_modes = {
 
 M.git_branch = {
   default = {
-    hl_colors = M.basic_colors,
+    hl_colors = M.colors,
     text = function()
       return {
         { git_comps.git_branch(), state.mode[2] },
@@ -70,7 +56,7 @@ M.git_branch = {
   },
 
   winbar = {
-    hl_colors = M.basic_colors,
+    hl_colors = M.colors,
     text = function()
       return {
         { sep.left_filled, state.mode[2] .. 'Sep' },
@@ -83,23 +69,27 @@ M.git_branch = {
 
 M.file_name = {
   default = {
-    hl_colors = M.basic_colors,
+    hl_colors = M.colors,
     text = function()
       return {
         { ' ' },
         { b_components.cache_file_name('', 'unique'), state.mode[2] .. 'Sep' },
+        { b_components.file_icon { default = '' } },
+        { ' ' },
         { sep.right_filled, state.mode[2] },
       }
     end,
   },
 
   winbar = {
-    hl_colors = M.basic_colors,
+    hl_colors = M.colors,
     text = function()
       return {
         { sep.left_filled, state.mode[2] },
         { ' ', state.mode[2] .. 'Sep' },
         { b_components.cache_file_name('', 'unique'), state.mode[2] .. 'Sep' },
+        { b_components.file_icon { default = '' } },
+        { ' ' },
       }
     end,
   },
@@ -112,7 +102,7 @@ M.lsp_errors = {
         { lsp_comps.lsp_error { format = '  %s', show_zero = true }, 'DiagnosticError' },
         { lsp_comps.lsp_warning { format = '  %s', show_zero = true }, 'DiagnosticWarn' },
         { lsp_comps.lsp_info { format = '  %s', show_zero = true }, 'DiagnosticInfo' },
-        { lsp_comps.lsp_hint { format = '  %s', show_zero = true }, 'DiagnosticHint' },
+        { lsp_comps.lsp_hint { format = '  %s ', show_zero = true }, 'DiagnosticHint' },
       }
     end
   end,
@@ -121,7 +111,7 @@ M.lsp_errors = {
 M.git_diffs = {
   text = function()
     return {
-      { git_comps.diff_added { format = ' %s', show_zero = true }, 'GitSignsAdd' },
+      { git_comps.diff_added { format = '  %s', show_zero = true }, 'GitSignsAdd' },
       { git_comps.diff_changed { format = ' 柳%s', show_zero = true }, 'GitSignsChange' },
       { git_comps.diff_removed { format = '  %s ', show_zero = true }, 'GitSignsDelete' },
     }

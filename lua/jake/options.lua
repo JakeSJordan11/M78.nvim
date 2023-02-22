@@ -39,7 +39,7 @@ if vim.g.neovide then
   vim.opt.guifont = { 'OperatorMonoSSmLig Nf:h16' }
   vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'pixiedust')
   vim.api.nvim_set_var('neovide_hide_mouse_when_typing', true)
-  vim.api.nvim_set_var('neovide_refresh_rate', 120)
+  vim.api.nvim_set_var('neovide_refresh_rate', 60)
   vim.api.nvim_set_var('neovide_refresh_rate_idle', 5)
   -- vim.api.nvim_set_var('neovide_fullscreen', true)
   vim.api.nvim_set_var('neovide_input_macos_alt_is_meta', true)

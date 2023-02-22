@@ -8,7 +8,7 @@ return {
         config = function()
           local notify = require 'notify'
           notify.setup {
-            fps = 120,
+            fps = 60,
             top_down = false,
             timeout = 1500,
             max_height = function()

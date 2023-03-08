@@ -3,7 +3,7 @@ return {
   config = function()
     local notify = require 'notify'
     notify.setup {
-      fps = 120,
+      fps = 60,
       timeout = 1500,
       stages = 'slide',
       max_height = function()

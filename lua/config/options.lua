@@ -3,11 +3,16 @@ vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
   vim.opt.guifont = { 'OperatorMonoSSmLig Nf:h18' }
-  vim.api.nvim_set_var('neovide_cursor_vfx_mode', 'pixiedust')
-  vim.api.nvim_set_var('neovide_hide_mouse_when_typing', true)
-  vim.api.nvim_set_var('neovide_refresh_rate', 120)
-  vim.api.nvim_set_var('neovide_refresh_rate_idle', 5)
-  vim.api.nvim_set_var('neovide_input_macos_alt_is_meta', true)
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_cursor_vfx_mode = 'pixiedust'
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_refresh_rate_idle = 5
+  vim.g.neovide_input_macos_alt_is_meta = true
 end
 
 local opt = vim.opt
@@ -17,7 +22,6 @@ opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.completeopt = 'menu,menuone,noselect'
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
-opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.formatoptions = 'jcroqlnt' -- tcqj
 opt.grepformat = '%f:%l:%c:%m'

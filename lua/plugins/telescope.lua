@@ -11,6 +11,7 @@ return {
     'olacin/telescope-gitmoji.nvim',
     { 'AckslD/nvim-neoclip.lua', config = true },
     'MaximilianLloyd/adjacent.nvim',
+    'nvim-telescope/telescope-project.nvim',
     {
       'ahmedkhalf/project.nvim',
       config = function()
@@ -32,15 +33,6 @@ return {
           theme = 'dropdown',
         },
       },
-      extensions = {
-        file_browser = {
-          previewer = false,
-          theme = 'dropdown',
-        },
-        project = {
-          theme = 'dropdown',
-        },
-      },
     }
     require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'file_browser'
@@ -51,6 +43,7 @@ return {
     require('telescope').load_extension 'projects'
     require('telescope').load_extension 'frecency'
     require('telescope').load_extension 'notify'
+    require('telescope').load_extension 'project'
 
     local wk = require 'which-key'
     wk.register {

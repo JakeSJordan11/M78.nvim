@@ -1,4 +1,4 @@
-require 'jake.options'
-require 'jake.lazy'
-require 'jake.autocmds'
-require 'jake.keymaps'
+require 'config.options'
+require 'config.lazy'
+require 'config.autocmds'
+require 'config.keymaps'

@@ -21,6 +21,9 @@ function M.on_attach(client, buffer)
       group = 'lsp_document_highlight',
       desc = 'Clear All the References',
     })
+    if client.server_capabilities.documentSymbolProvider then
+      require('nvim-navic').attach(client, buffer)
+    end
   end
 end
 

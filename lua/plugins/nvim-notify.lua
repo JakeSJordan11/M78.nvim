@@ -6,6 +6,7 @@ return {
       fps = 60,
       timeout = 1500,
       stages = 'slide',
+      level = 'warn',
       max_height = function()
         return math.floor(vim.o.lines * 0.50)
       end,

@@ -2,15 +2,15 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  vim.opt.guifont = { 'OperatorMonoSSmLig Nf:h18' }
-  vim.g.neovide_padding_top = 0
+  vim.opt.guifont = { 'OperatorMonoSSMLig NF:h18' }
+  vim.g.neovide_padding_top = 50
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 0
   vim.g.neovide_padding_left = 0
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_vfx_mode = 'pixiedust'
   vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_refresh_rate = 120
   vim.g.neovide_refresh_rate_idle = 5
   vim.g.neovide_input_macos_alt_is_meta = true
 end

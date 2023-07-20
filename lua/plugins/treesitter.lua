@@ -17,6 +17,7 @@ return {
         },
         autotag = {
           enable = true,
+          filetypes = { 'html', 'xml', 'javascript', 'typescriptreact', 'javascriptreact', 'tsx', 'jsx' },
         },
         context_commentstring = {
           enable = true,

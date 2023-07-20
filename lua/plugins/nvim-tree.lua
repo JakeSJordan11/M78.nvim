@@ -3,9 +3,12 @@ return {
   config = function()
     local nvimTree = require 'nvim-tree'
     nvimTree.setup {
-      view = {
-        hide_root_folder = true,
+      renderer = {
+        root_folder_label = false,
       },
+      -- view = {
+      --   hide_root_folder = true,
+      -- },
       diagnostics = {
         enable = true,
         show_on_dirs = true,

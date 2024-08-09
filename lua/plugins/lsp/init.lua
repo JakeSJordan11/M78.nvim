@@ -29,10 +29,6 @@ return {
               p:install()
             end
           end
-          local wk = require 'which-key'
-          wk.register {
-            ['<Leader>m'] = { '<Cmd>Mason<CR>', 'Mason' },
-          }
         end,
       },
       {
@@ -46,24 +42,6 @@ return {
               nls.builtins.formatting.prettier,
             },
           }
-        end,
-      },
-      {
-        'folke/trouble.nvim',
-        config = function()
-          local wk = require 'which-key'
-          wk.register {
-            ['<leader>x'] = {
-              name = 'Trouble',
-              x = { '<cmd>TroubleToggle<cr>', 'Toggle' },
-              w = { '<cmd>Trouble workspace_diagnostics<cr>', 'Workspace Diagnostics' },
-              d = { '<cmd>Trouble document_diagnostics<cr>', 'Document Diagnostics' },
-              l = { '<cmd>Trouble loclist<cr>', 'Loclist' },
-              q = { '<cmd>Trouble quickfix<cr>', 'Quickfix' },
-              r = { '<cmd>Trouble lsp_references<cr>', 'References' },
-            },
-          }
-          require('trouble').setup()
         end,
       },
     },

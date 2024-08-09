@@ -18,7 +18,5 @@ return {
         update_root = true,
       },
     }
-    local wk = require 'which-key'
-    wk.register({ e = { '<Cmd>NvimTreeToggle<CR>', 'Explorer' } }, { prefix = '<leader>' })
   end,
 }

@@ -30,7 +30,6 @@ end
 function M.setup(_)
   lsp_attach(function(client, buffer)
     require('plugins.lsp.format').on_attach(client, buffer)
-    require('plugins.lsp.keymaps').on_attach(client, buffer)
     require('plugins.lsp.capabilities').on_attach(client, buffer)
     require('plugins.lsp.handlers').on_attach()
   end)

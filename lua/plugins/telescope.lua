@@ -44,31 +44,5 @@ return {
     require('telescope').load_extension 'frecency'
     require('telescope').load_extension 'notify'
     require('telescope').load_extension 'project'
-
-    local wk = require 'which-key'
-    wk.register {
-
-      ['<Leader>f'] = {
-        name = 'Find',
-        a = { '<Cmd>Telescope adjacent<CR>', 'Adjacent' },
-        B = { '<Cmd>Telescope buffers<CR>', 'Buffers' },
-        b = { '<Cmd>Telescope file_browser<CR>', 'Files with file browser' },
-        d = { '<Cmd>Telescope diagnostics<CR>', 'Document diagnostics' },
-        f = { '<Cmd>Telescope find_files<CR>', 'Files' },
-        h = { '<Cmd>Telescope help_tags<CR>', 'Help' },
-        k = { '<Cmd>Telescope keymaps<CR>', 'Keymaps' },
-        p = { '<Cmd>Telescope projects<CR>', 'Projects' },
-        r = { '<Cmd>Telescope frecency<CR>', 'Recent Files' },
-        t = { '<Cmd>Telescope live_grep<CR>', 'Find Text' },
-      },
-
-      ['<Leader>g'] = {
-        name = 'Git',
-        b = { '<Cmd>Telescope git_branches<CR>', 'Checkout Branch' },
-        c = { '<Cmd>Telescope git_commits<CR>', 'Checkout Commit' },
-        s = { '<Cmd>Telescope git_status<CR>', 'Git Status' },
-        m = { '<Cmd>Telescope gitmoji<CR>', 'Gitmoji' },
-      },
-    }
   end,
 }

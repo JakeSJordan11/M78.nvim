@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  vim.opt.guifont = { 'OperatorMonoSSMLig NF:h18' }
+  vim.opt.guifont = { 'OperatorMonoSSMLig NF:h16' }
   vim.g.neovide_padding_top = 50
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 0
@@ -12,7 +12,7 @@ if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_refresh_rate = 120
   vim.g.neovide_refresh_rate_idle = 5
-  vim.g.neovide_input_macos_alt_is_meta = true
+  vim.g.neovide_theme = 'auto'
 end
 
 local opt = vim.opt
@@ -30,10 +30,10 @@ opt.ignorecase = true -- Ignore case
 opt.inccommand = 'nosplit' -- preview incremental substitute
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = 'a' -- Enable mouse mode
-opt.number = true -- Print line number
+opt.number = false -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
-opt.relativenumber = true -- Relative line numbers
+opt.relativenumber = false -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
 opt.shiftround = true -- Round indent

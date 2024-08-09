@@ -21,8 +21,3 @@ require('lazy').setup {
     border = 'rounded',
   },
 }
-
-local wk = require 'which-key'
-wk.register {
-  ['<Leader>z'] = { '<Cmd>Lazy<CR>', 'Lazy' },
-}

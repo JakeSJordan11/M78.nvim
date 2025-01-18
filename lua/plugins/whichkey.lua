@@ -2,6 +2,15 @@ return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
   opts = {
+    preset = 'modern',
+    win = {
+      border = 'none',
+      no_overlap = false,
+      row = 0,
+    },
+    layout = {
+      spacing = 10,
+    },
     spec = {
       { '<leader>f', group = 'Find' },
       { '<leader>fB', '<Cmd>Telescope buffers<CR>', desc = 'Buffers' },
@@ -43,12 +52,12 @@ return {
       { '<leader>gSU', '<Cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Undo Stage Hunk' },
 
       { '<leader>x', group = 'Trouble' },
-      { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
-      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Buffer Diagnostics (Trouble)' },
-      { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols (Trouble)' },
-      { '<leader>xl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', desc = 'LSP Definitions / references / ... (Trouble)' },
-      { '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
-      { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics' },
+      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Buffer Diagnostics' },
+      { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols' },
+      { '<leader>xl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', desc = 'LSP Definitions / references / ... ' },
+      { '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List' },
+      { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List' },
 
       { 'g', group = 'Goto' },
       { 'gi', vim.lsp.buf.implementation, desc = 'Implementation' },
@@ -80,13 +89,15 @@ return {
       { '<leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Explorer' },
       { '<leader>m', '<Cmd>Mason<CR>', desc = 'Mason' },
       { '<leader>z', '<Cmd>Lazy<CR>', desc = 'Lazy' },
+      { '<leader>c', '<Cmd>bd<CR>', desc = 'delete buffer' },
+      { '<leader>?', '<Cmd>WhichKey<CR>', desc = 'WhichKey' },
     },
   },
   keys = {
     {
       '<lader>?',
       function()
-        require('which-key').show { global = false }
+        require('which-key').show { global = true }
       end,
       desc = 'Buffer Local Keymaps (which-key)',
     },

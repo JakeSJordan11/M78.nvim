@@ -45,5 +45,8 @@ return {
         end,
       },
     },
+    config = function(plugin)
+      require('plugins.lsp.servers').setup(plugin)
+    end,
   },
 }

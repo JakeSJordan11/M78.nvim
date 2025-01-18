@@ -34,6 +34,7 @@ function M.setup(_)
     require('plugins.lsp.handlers').on_attach()
   end)
 
+  require('mason-lspconfig').setup { ensure_installed = vim.tbl_keys(servers) }
   require('mason-lspconfig').setup_handlers {
     function(server)
       local opts = servers[server] or {}
@@ -41,6 +42,9 @@ function M.setup(_)
       require('lspconfig')[server].setup(opts)
     end,
   }
+  --[[ require('typescript').setup {
+    root_dir = require('lspconfig').util.root_pattern 'package.json',
+  } ]]
 end
 
 return M

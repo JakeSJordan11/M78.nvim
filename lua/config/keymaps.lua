@@ -38,6 +38,13 @@ vim.keymap.set('n', '<DS-l>', '<Cmd>vertical resize +2<CR>')
 -- Command s save
 vim.keymap.set('n', '<D-s>', '<Cmd>w!<CR>')
 
+-- Allow clipboard copy paste in neovim
+vim.g.neovide_input_use_logo = 1
+vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true })
+
 -- switch buffers
 vim.keymap.set('n', '<S-l>', '<Cmd>bnext<CR>', { silent = true })
 vim.keymap.set('n', '<S-h>', '<Cmd>bprevious<CR>', { silent = true })

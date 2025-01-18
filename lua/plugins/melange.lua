@@ -1,4 +1,1 @@
-return {
-  'savq/melange-nvim',
-  event = 'VeryLazy',
-}
+return { 'savq/melange-nvim', event = 'VeryLazy' }
